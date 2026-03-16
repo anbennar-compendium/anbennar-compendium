@@ -130,6 +130,70 @@ def parse_formable_decisions():
     return formables
 
 
+def parse_formable_missions():
+    """
+    Parse all mission files for change_tag lines.
+    Returns dict: tag -> {"file": filename, "decision": mission_name}
+    """
+    formables = {}
+    missions_dir = os.path.join(MOD_PATH, "missions")
+    change_tag_re = re.compile(r'\bchange_tag\s*=\s*([A-Z][A-Z0-9]{2})')
+
+    for fname in os.listdir(missions_dir):
+        if not fname.endswith(".txt"):
+            continue
+        fpath = os.path.join(missions_dir, fname)
+        try:
+            with open(fpath, "r", encoding="utf-8-sig", errors="replace") as f:
+                content = f.read()
+        except Exception as e:
+            print(f"  Warning: could not read {fname}: {e}")
+            continue
+
+        for m in change_tag_re.finditer(content):
+            tag = m.group(1)
+            if tag not in formables:
+                formables[tag] = {
+                    "file": fname,
+                    "decision": f"mission in {fname}",
+                }
+
+    return formables
+
+
+def parse_formable_events():
+    """
+    Parse event files for change_tag lines.
+    Returns dict: tag -> {"file": filename, "decision": event_name}
+    """
+    formables = {}
+    events_dir = os.path.join(MOD_PATH, "events")
+    change_tag_re = re.compile(r'\bchange_tag\s*=\s*([A-Z][A-Z0-9]{2})')
+
+    if not os.path.isdir(events_dir):
+        return formables
+
+    for fname in os.listdir(events_dir):
+        if not fname.endswith(".txt"):
+            continue
+        fpath = os.path.join(events_dir, fname)
+        try:
+            with open(fpath, "r", encoding="utf-8-sig", errors="replace") as f:
+                content = f.read()
+        except Exception:
+            continue
+
+        for m in change_tag_re.finditer(content):
+            tag = m.group(1)
+            if tag not in formables:
+                formables[tag] = {
+                    "file": fname,
+                    "decision": f"event in {fname}",
+                }
+
+    return formables
+
+
 def main():
     print("Parsing country tags...")
     all_tags = parse_all_country_tags()
@@ -141,7 +205,22 @@ def main():
 
     print("Parsing formable decisions...")
     formables = parse_formable_decisions()
-    print(f"  Found {len(formables)} formable nations")
+    print(f"  Found {len(formables)} formable nations (decisions)")
+
+    print("Parsing formable missions...")
+    mission_formables = parse_formable_missions()
+    # Merge — decisions take priority
+    for tag, info in mission_formables.items():
+        if tag not in formables:
+            formables[tag] = info
+    print(f"  Found {len(mission_formables)} formable nations (missions), {len(formables)} total")
+
+    print("Parsing formable events...")
+    event_formables = parse_formable_events()
+    for tag, info in event_formables.items():
+        if tag not in formables:
+            formables[tag] = info
+    print(f"  Found {len(event_formables)} formable nations (events), {len(formables)} total")
 
     # Build output
     result = {}
