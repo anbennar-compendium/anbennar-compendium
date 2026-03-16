@@ -888,6 +888,105 @@ body {
   display: inline-block;
 }
 .toggle-raw:hover { color: var(--text-secondary); }
+/* Map */
+.map-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5632 / 2048;
+  overflow: hidden;
+  background: #0e1420;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: grab;
+  user-select: none;
+}
+.map-container:active { cursor: grabbing; }
+.map-container canvas {
+  position: absolute;
+  top: 0; left: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.map-controls {
+  position: absolute;
+  top: 8px; right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 2;
+}
+.map-ctrl-btn {
+  width: 32px; height: 32px;
+  background: rgba(20,20,30,0.85);
+  border: 1px solid var(--border);
+  color: var(--gold);
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-ctrl-btn:hover { background: rgba(40,40,55,0.9); }
+.map-tooltip {
+  position: absolute;
+  background: rgba(15,15,25,0.95);
+  border: 1px solid var(--gold);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  display: none;
+  z-index: 3;
+  white-space: nowrap;
+}
+.map-province-panel {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  background: rgba(15,15,25,0.95);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 12px;
+  display: none;
+  z-index: 3;
+  min-width: 180px;
+  max-width: 260px;
+}
+.map-province-panel .prov-name { font-size: 14px; font-weight: bold; color: var(--gold); margin-bottom: 6px; }
+.map-province-panel .prov-row { display: flex; justify-content: space-between; margin: 2px 0; }
+.map-province-panel .prov-label { color: var(--text-secondary); }
+.map-province-panel .prov-val { color: var(--text-primary); font-weight: 500; }
+.map-province-panel .prov-dev { color: #7dcea0; }
+.map-diplo-info {
+  background: rgba(20,20,35,0.6);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.diplo-row { margin: 3px 0; }
+.diplo-label { color: var(--text-secondary); }
+.diplo-val { color: var(--gold); cursor: pointer; }
+.diplo-val:hover { text-decoration: underline; }
+.diplo-type { color: var(--text-secondary); font-size: 11px; }
+.diplo-sub { padding-left: 16px; }
+.map-legend {
+  position: absolute;
+  bottom: 8px; right: 8px;
+  background: rgba(15,15,25,0.9);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  z-index: 2;
+}
+.map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.map-legend-swatch { width: 12px; height: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2); }
 </style>
 </head>
 <body>
@@ -939,7 +1038,12 @@ body {
 
 <script>
 // --- DATA ---
-let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {};
+let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {};
+// Map state
+let mapBaseImg = null, mapIdImg = null, mapIdData = null, mapBounds = null;
+let mapScale = 1, mapOffX = 0, mapOffY = 0, mapCurrentTag = null;
+let mapRenderedData = null; // Store rendered pixel data for province click restore
+const MAP_W = 5632, MAP_H = 2048;
 let countries = [];
 let filteredCountries = [];
 let selectedTag = null;
@@ -950,8 +1054,8 @@ async function loadData() {
   const el = document.getElementById('country-list');
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
-    const v = '2';
-    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11] = await Promise.all([
+    const v = '3';
+    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14] = await Promise.all([
       fetch('anbennar_data.json?v='+v).then(r => r.json()),
       fetch('religions_data.json?v='+v).then(r => r.json()),
       fetch('wiki_data.json?v='+v).then(r => r.json()),
@@ -962,8 +1066,11 @@ async function loadData() {
       fetch('province_names.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('modifiers_data.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('startup_lore.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('province_owners.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('diplomacy_data.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('province_details.json?v='+v).then(r => r.json()).catch(() => ({})),
     ]);
-    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {};
+    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {};
 
     countries = Object.values(DATA);
     countries.sort(countrySorter);
@@ -2569,6 +2676,7 @@ function selectCountry(tag) {
   document.getElementById('welcome').style.display = 'none';
   const detail = document.getElementById('detail');
   detail.className = 'visible';
+  detail.dataset.tag = tag;
 
   const w = WIKI[tag] || {};
   const reg = REGIONS[tag] || {};
@@ -2647,6 +2755,8 @@ function selectCountry(tag) {
   if (hasLore) { html += `<button class="tab-btn active" data-tab="lore">Lore</button>`; firstTab = firstTab || 'lore'; }
   if (hasIdeas) { html += `<button class="tab-btn${!hasLore ? ' active' : ''}" data-tab="ideas">National Ideas<span class="count">${ideaCount}</span></button>`; firstTab = firstTab || 'ideas'; }
   if (hasMissions) { html += `<button class="tab-btn${!hasLore && !hasIdeas ? ' active' : ''}" data-tab="missions">Mission Tree<span class="count">${c.missions.length}</span></button>`; firstTab = firstTab || 'missions'; }
+  const hasMap = PROVINCE_OWNERS && PROVINCE_OWNERS[tag] && PROVINCE_OWNERS[tag].length > 0;
+  if (hasMap) { html += `<button class="tab-btn" data-tab="map">Map</button>`; }
   html += '</div>';
 
   // Lore tab (default first tab)
@@ -2714,6 +2824,39 @@ function selectCountry(tag) {
   if (hasMissions) {
     html += `<div class="tab-content${firstTab === 'missions' ? ' active' : ''}" data-tab="missions">`;
     html += renderMissions(c);
+    html += '</div>';
+  }
+
+  // Map tab
+  if (hasMap) {
+    html += `<div class="tab-content" data-tab="map">`;
+    // Diplomatic relationships
+    const diplo = DIPLOMACY[tag] || {};
+    if (diplo.overlord_of || diplo.subject_of) {
+      html += '<div class="map-diplo-info">';
+      if (diplo.subject_of) {
+        const oName = DATA[diplo.subject_of.tag] ? DATA[diplo.subject_of.tag].name : diplo.subject_of.tag;
+        html += `<div class="diplo-row"><span class="diplo-label">Subject of</span> <span class="diplo-val clickable" onclick="selectCountry('${diplo.subject_of.tag}')">${esc(oName)}</span> <span class="diplo-type">(${esc(diplo.subject_of.type_name)})</span></div>`;
+      }
+      if (diplo.overlord_of && diplo.overlord_of.length) {
+        html += '<div class="diplo-row"><span class="diplo-label">Subjects:</span></div>';
+        diplo.overlord_of.forEach(s => {
+          const sName = DATA[s.tag] ? DATA[s.tag].name : s.tag;
+          html += `<div class="diplo-row diplo-sub"><span class="diplo-val clickable" onclick="selectCountry('${s.tag}')">${esc(sName)}</span> <span class="diplo-type">(${esc(s.type_name)})</span></div>`;
+        });
+      }
+      html += '</div>';
+    }
+    html += `<div class="map-container" id="map-container">
+      <canvas id="map-canvas"></canvas>
+      <div class="map-controls">
+        <button class="map-ctrl-btn" onclick="mapZoom(1)">+</button>
+        <button class="map-ctrl-btn" onclick="mapZoom(-1)">&minus;</button>
+        <button class="map-ctrl-btn" onclick="mapReset()">&#8634;</button>
+      </div>
+      <div class="map-tooltip" id="map-tooltip"></div>
+      <div class="map-province-panel" id="map-province-panel"></div>
+    </div>`;
     html += '</div>';
   }
 
@@ -2990,6 +3133,409 @@ document.addEventListener('mouseover', (e) => {
 document.addEventListener('mouseout', (e) => {
   const ref = e.target.closest('.mod-ref');
   if (ref) _modTT.style.display = 'none';
+});
+
+// === MAP RENDERING ===
+async function loadMapAssets() {
+  if (mapBaseImg) return; // already loaded
+  const v = '3';
+  const [baseImg, idImg, bounds] = await Promise.all([
+    new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'map_base.png?v='+v; }),
+    new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'province_id_map.png?v='+v; }),
+    fetch('province_bounds.json?v='+v).then(r => r.json()),
+  ]);
+  mapBaseImg = baseImg;
+  mapIdImg = idImg;
+  mapBounds = bounds;
+  // Extract ID pixel data into offscreen canvas
+  const oc = document.createElement('canvas');
+  oc.width = MAP_W; oc.height = MAP_H;
+  const octx = oc.getContext('2d');
+  octx.drawImage(idImg, 0, 0);
+  mapIdData = octx.getImageData(0, 0, MAP_W, MAP_H).data;
+}
+
+async function renderMap(tag) {
+  const container = document.getElementById('map-container');
+  const canvas = document.getElementById('map-canvas');
+  if (!container || !canvas) return;
+
+  const cw = container.clientWidth, ch = container.clientHeight;
+  canvas.width = cw; canvas.height = ch;
+  canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#0e1420'; ctx.fillRect(0, 0, cw, ch);
+  ctx.fillStyle = '#9e9eb0'; ctx.font = '16px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Loading map...', cw/2, ch/2);
+
+  await loadMapAssets();
+
+  canvas.width = MAP_W; canvas.height = MAP_H;
+  const fitScale = cw / MAP_W;
+  canvas.style.width = cw + 'px';
+  canvas.style.height = Math.round(MAP_H * fitScale) + 'px';
+
+  const ctx2 = canvas.getContext('2d');
+  ctx2.drawImage(mapBaseImg, 0, 0);
+
+  const provIds = PROVINCE_OWNERS[tag] || [];
+  const c = DATA[tag];
+  const color = c && c.color ? c.color : [201, 168, 76];
+  const hr = color[0], hg = color[1], hb = color[2];
+  const provSet = new Set(provIds);
+
+  // Collect subject province IDs
+  const diplo = DIPLOMACY[tag] || {};
+  const subjectProvs = new Set();
+  const subjectColors = {};
+  if (diplo.overlord_of) {
+    diplo.overlord_of.forEach(s => {
+      const sProvs = PROVINCE_OWNERS[s.tag] || [];
+      const sc = DATA[s.tag];
+      const sColor = sc && sc.color ? sc.color : [100, 100, 150];
+      sProvs.forEach(p => { subjectProvs.add(p); subjectColors[p] = sColor; });
+    });
+  }
+
+  // All provinces to consider for zoom bounds
+  const allRelevantProvs = [...provIds];
+  subjectProvs.forEach(p => allRelevantProvs.push(p));
+
+  const imgData = ctx2.getImageData(0, 0, MAP_W, MAP_H);
+  const pixels = imgData.data;
+
+  // Dim entire map
+  for (let i = 0; i < pixels.length; i += 4) {
+    pixels[i] = Math.floor(pixels[i] * 0.3);
+    pixels[i+1] = Math.floor(pixels[i+1] * 0.3);
+    pixels[i+2] = Math.floor(pixels[i+2] * 0.3);
+  }
+
+  // Highlight subject provinces (slightly dimmer, with striped pattern)
+  for (const pid of subjectProvs) {
+    if (provSet.has(pid)) continue; // skip if also owned by main country
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    const sc = subjectColors[pid] || [100, 100, 150];
+    const [x1, y1, x2, y2] = b;
+    for (let y = y1; y <= y2; y++) {
+      for (let x = x1; x <= x2; x++) {
+        const idx = (y * MAP_W + x) * 4;
+        const provIdHere = (mapIdData[idx] << 8) | mapIdData[idx + 1];
+        if (subjectProvs.has(provIdHere) && !provSet.has(provIdHere)) {
+          // Slightly dimmer than main, with diagonal stripe pattern
+          const stripe = (x + y) % 6 < 3;
+          const factor = stripe ? 0.7 : 0.5;
+          pixels[idx] = Math.min(255, Math.floor(sc[0] * factor) + 40);
+          pixels[idx+1] = Math.min(255, Math.floor(sc[1] * factor) + 40);
+          pixels[idx+2] = Math.min(255, Math.floor(sc[2] * factor) + 40);
+          pixels[idx+3] = 255;
+        }
+      }
+    }
+  }
+
+  // Highlight main country provinces brightly
+  for (const pid of provIds) {
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    const [x1, y1, x2, y2] = b;
+    for (let y = y1; y <= y2; y++) {
+      for (let x = x1; x <= x2; x++) {
+        const idx = (y * MAP_W + x) * 4;
+        const provIdHere = (mapIdData[idx] << 8) | mapIdData[idx + 1];
+        if (provSet.has(provIdHere)) {
+          pixels[idx] = Math.min(255, hr + 60);
+          pixels[idx+1] = Math.min(255, hg + 60);
+          pixels[idx+2] = Math.min(255, hb + 60);
+          pixels[idx+3] = 255;
+        }
+      }
+    }
+  }
+
+  // Borders: outer (white), internal province (dark), main-vs-subject (gold)
+  const allHighlighted = new Set([...provSet, ...subjectProvs]);
+  const borderPixels = new Uint8ClampedArray(pixels);
+  for (const pid of allHighlighted) {
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    const [x1, y1, x2, y2] = b;
+    for (let y = y1; y <= y2; y++) {
+      for (let x = x1; x <= x2; x++) {
+        const idx = (y * MAP_W + x) * 4;
+        const provIdHere = (mapIdData[idx] << 8) | mapIdData[idx + 1];
+        if (provIdHere !== pid) continue; // only process pixels belonging to this province
+        for (const [dx, dy] of [[-1,0],[1,0],[0,-1],[0,1]]) {
+          const nx = x+dx, ny = y+dy;
+          if (nx < 0 || nx >= MAP_W || ny < 0 || ny >= MAP_H) {
+            // Edge of map = outer border
+            borderPixels[idx] = 255; borderPixels[idx+1] = 255; borderPixels[idx+2] = 255; borderPixels[idx+3] = 255;
+            break;
+          }
+          const ni = (ny * MAP_W + nx) * 4;
+          const nid = (mapIdData[ni] << 8) | mapIdData[ni+1];
+          if (nid === provIdHere) continue; // same province, no border
+          if (!allHighlighted.has(nid)) {
+            // Outer border: white
+            borderPixels[idx] = 255; borderPixels[idx+1] = 255; borderPixels[idx+2] = 255; borderPixels[idx+3] = 255;
+            break;
+          }
+          // Border between main country and subject: gold dashed
+          const thisIsMain = provSet.has(provIdHere);
+          const neighborIsMain = provSet.has(nid);
+          if (thisIsMain !== neighborIsMain) {
+            if ((x + y) % 4 < 2) {
+              borderPixels[idx] = 201; borderPixels[idx+1] = 168; borderPixels[idx+2] = 76; borderPixels[idx+3] = 255;
+            }
+            break;
+          }
+          // Internal province border within same realm: darken
+          const r0 = borderPixels[idx], g0 = borderPixels[idx+1], b0 = borderPixels[idx+2];
+          borderPixels[idx] = Math.floor(r0 * 0.55);
+          borderPixels[idx+1] = Math.floor(g0 * 0.55);
+          borderPixels[idx+2] = Math.floor(b0 * 0.55);
+          break;
+        }
+      }
+    }
+  }
+  imgData.data.set(borderPixels);
+  ctx2.putImageData(imgData, 0, 0);
+
+  // Save rendered state for province click restore
+  mapRenderedData = new Uint8ClampedArray(borderPixels);
+  mapCurrentTag = tag;
+
+  // Add legend if subjects exist
+  const existingLegend = container.querySelector('.map-legend');
+  if (existingLegend) existingLegend.remove();
+  if (subjectProvs.size > 0) {
+    const legend = document.createElement('div');
+    legend.className = 'map-legend';
+    legend.innerHTML = `<div class="map-legend-item"><div class="map-legend-swatch" style="background:rgb(${hr+60},${hg+60},${hb+60})"></div> ${esc(c.name)}</div>`;
+    if (diplo.overlord_of) {
+      diplo.overlord_of.forEach(s => {
+        const sn = DATA[s.tag] ? DATA[s.tag].name : s.tag;
+        const sc = DATA[s.tag] && DATA[s.tag].color ? DATA[s.tag].color : [100,100,150];
+        legend.innerHTML += `<div class="map-legend-item"><div class="map-legend-swatch" style="background:rgb(${Math.floor(sc[0]*0.7)+40},${Math.floor(sc[1]*0.7)+40},${Math.floor(sc[2]*0.7)+40})"></div> ${esc(sn)} (${esc(s.type_name)})</div>`;
+      });
+    }
+    container.appendChild(legend);
+  }
+
+  // Auto-zoom to fit
+  let minX = MAP_W, minY = MAP_H, maxX = 0, maxY = 0;
+  for (const pid of allRelevantProvs) {
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    minX = Math.min(minX, b[0]); minY = Math.min(minY, b[1]);
+    maxX = Math.max(maxX, b[2]); maxY = Math.max(maxY, b[3]);
+  }
+  const pw = maxX - minX, ph = maxY - minY;
+  const centerX = (minX + maxX) / 2, centerY = (minY + maxY) / 2;
+  const pad = 1.8;
+  mapScale = Math.min(cw / (pw * fitScale * pad), ch / (ph * fitScale * pad), 8);
+  mapScale = Math.max(mapScale, 1);
+  mapOffX = cw/2 - centerX * fitScale * mapScale;
+  mapOffY = ch/2 - centerY * fitScale * mapScale;
+  applyMapTransform();
+
+  setupMapInteraction(container, canvas);
+}
+
+function applyMapTransform() {
+  const canvas = document.getElementById('map-canvas');
+  if (!canvas) return;
+  canvas.style.transformOrigin = '0 0';
+  canvas.style.transform = `translate(${mapOffX}px, ${mapOffY}px) scale(${mapScale})`;
+}
+
+function mapZoom(dir) {
+  const container = document.getElementById('map-container');
+  if (!container) return;
+  const cw = container.clientWidth, ch = container.clientHeight;
+  const cx = cw/2, cy = ch/2;
+  const factor = dir > 0 ? 1.3 : 1/1.3;
+  const newScale = Math.max(0.5, Math.min(10, mapScale * factor));
+  mapOffX = cx - (cx - mapOffX) * (newScale / mapScale);
+  mapOffY = cy - (cy - mapOffY) * (newScale / mapScale);
+  mapScale = newScale;
+  applyMapTransform();
+}
+
+function mapReset() {
+  if (mapCurrentTag) renderMap(mapCurrentTag);
+}
+
+let _mapHandlersSet = false;
+function getMapProvAtCoord(mx, my) {
+  const fitScale = document.getElementById('map-container').clientWidth / MAP_W;
+  const mapX = Math.floor((mx - mapOffX) / (mapScale * fitScale));
+  const mapY = Math.floor((my - mapOffY) / (mapScale * fitScale));
+  if (mapX < 0 || mapX >= MAP_W || mapY < 0 || mapY >= MAP_H) return 0;
+  const idx = (mapY * MAP_W + mapX) * 4;
+  return (mapIdData[idx] << 8) | mapIdData[idx+1];
+}
+
+function highlightProvince(pid) {
+  const canvas = document.getElementById('map-canvas');
+  const ctx = canvas.getContext('2d');
+  if (!mapRenderedData) return;
+  // Restore base rendered state
+  const imgData = ctx.createImageData(MAP_W, MAP_H);
+  imgData.data.set(mapRenderedData);
+  // Highlight the clicked province
+  const b = mapBounds[String(pid)];
+  if (b) {
+    const [x1, y1, x2, y2] = b;
+    for (let y = y1; y <= y2; y++) {
+      for (let x = x1; x <= x2; x++) {
+        const idx = (y * MAP_W + x) * 4;
+        const provIdHere = (mapIdData[idx] << 8) | mapIdData[idx + 1];
+        if (provIdHere === pid) {
+          // Bright yellow-white highlight
+          imgData.data[idx] = 255;
+          imgData.data[idx+1] = 240;
+          imgData.data[idx+2] = 180;
+          imgData.data[idx+3] = 255;
+        }
+      }
+    }
+    // Border for highlighted province
+    for (let y = y1; y <= y2; y++) {
+      for (let x = x1; x <= x2; x++) {
+        const idx = (y * MAP_W + x) * 4;
+        const provIdHere = (mapIdData[idx] << 8) | mapIdData[idx + 1];
+        if (provIdHere !== pid) continue;
+        for (const [dx, dy] of [[-1,0],[1,0],[0,-1],[0,1]]) {
+          const nx = x+dx, ny = y+dy;
+          if (nx < 0 || nx >= MAP_W || ny < 0 || ny >= MAP_H) continue;
+          const ni = (ny * MAP_W + nx) * 4;
+          const nid = (mapIdData[ni] << 8) | mapIdData[ni+1];
+          if (nid !== pid) {
+            imgData.data[idx] = 255; imgData.data[idx+1] = 215; imgData.data[idx+2] = 0; imgData.data[idx+3] = 255;
+            break;
+          }
+        }
+      }
+    }
+  }
+  ctx.putImageData(imgData, 0, 0);
+}
+
+function showProvincePanel(pid) {
+  const panel = document.getElementById('map-province-panel');
+  if (!panel) return;
+  const name = PROVINCES[String(pid)] || ('Province ' + pid);
+  const d = PROV_DETAILS[String(pid)] || {};
+  const tax = d.t || 0, prod = d.p || 0, man = d.m || 0;
+  const totalDev = tax + prod + man;
+  const tg = d.g ? d.g.replace(/_/g, ' ') : 'Unknown';
+  const culture = d.c ? d.c.replace(/_/g, ' ') : 'Unknown';
+  const religion = d.r ? d.r.replace(/_/g, ' ') : 'Unknown';
+  const owner = d.o ? (DATA[d.o] ? DATA[d.o].name : d.o) : 'Uncolonized';
+
+  let html = `<div class="prov-name">${esc(name)}</div>`;
+  html += `<div class="prov-row"><span class="prov-label">Owner</span><span class="prov-val">${esc(owner)}</span></div>`;
+  html += `<div class="prov-row"><span class="prov-label">Development</span><span class="prov-val prov-dev">${totalDev} (${tax}/${prod}/${man})</span></div>`;
+  html += `<div class="prov-row"><span class="prov-label">Trade Good</span><span class="prov-val">${esc(titleCase(tg))}</span></div>`;
+  html += `<div class="prov-row"><span class="prov-label">Culture</span><span class="prov-val">${esc(titleCase(culture))}</span></div>`;
+  html += `<div class="prov-row"><span class="prov-label">Religion</span><span class="prov-val">${esc(titleCase(religion))}</span></div>`;
+  if (d.n) html += `<div class="prov-row"><span class="prov-label">Capital</span><span class="prov-val">${esc(d.n)}</span></div>`;
+
+  panel.innerHTML = html;
+  panel.style.display = 'block';
+}
+
+function setupMapInteraction(container, canvas) {
+  if (_mapHandlersSet) return;
+  _mapHandlersSet = true;
+  let dragging = false, lastX, lastY, didDrag = false;
+
+  container.addEventListener('mousedown', (e) => {
+    dragging = true; didDrag = false;
+    lastX = e.clientX; lastY = e.clientY;
+    container.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (dragging) {
+      const dx = e.clientX - lastX, dy = e.clientY - lastY;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
+      mapOffX += dx; mapOffY += dy;
+      lastX = e.clientX; lastY = e.clientY;
+      applyMapTransform();
+    }
+  });
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    if (container) container.style.cursor = 'grab';
+  });
+
+  // Province click
+  container.addEventListener('click', (e) => {
+    if (didDrag) return; // don't trigger on drag
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const pid = getMapProvAtCoord(mx, my);
+    if (pid > 0 && PROV_DETAILS[String(pid)]) {
+      highlightProvince(pid);
+      showProvincePanel(pid);
+    } else {
+      // Click on empty area — hide panel, restore base render
+      const panel = document.getElementById('map-province-panel');
+      if (panel) panel.style.display = 'none';
+      if (mapRenderedData) {
+        const ctx = canvas.getContext('2d');
+        const imgData = ctx.createImageData(MAP_W, MAP_H);
+        imgData.data.set(mapRenderedData);
+        ctx.putImageData(imgData, 0, 0);
+      }
+    }
+  });
+
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const factor = e.deltaY < 0 ? 1.15 : 1/1.15;
+    const newScale = Math.max(0.5, Math.min(10, mapScale * factor));
+    mapOffX = mx - (mx - mapOffX) * (newScale / mapScale);
+    mapOffY = my - (my - mapOffY) * (newScale / mapScale);
+    mapScale = newScale;
+    applyMapTransform();
+  }, { passive: false });
+
+  // Province hover tooltip
+  container.addEventListener('mousemove', (e) => {
+    if (dragging || !mapIdData) return;
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    const pid = getMapProvAtCoord(mx, my);
+    const tt = document.getElementById('map-tooltip');
+    if (pid > 0 && PROVINCES[String(pid)]) {
+      const d = PROV_DETAILS[String(pid)];
+      const dev = d ? `${(d.t||0)+(d.p||0)+(d.m||0)} dev` : '';
+      tt.textContent = PROVINCES[String(pid)] + (dev ? ' \u2022 ' + dev : '');
+      tt.style.display = 'block';
+      tt.style.left = (mx + 12) + 'px';
+      tt.style.top = (my - 8) + 'px';
+    } else {
+      tt.style.display = 'none';
+    }
+  });
+  container.addEventListener('mouseleave', () => {
+    document.getElementById('map-tooltip').style.display = 'none';
+  });
+}
+
+// Hook: when map tab is activated, render the map
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.tab-btn[data-tab="map"]');
+  if (btn) {
+    const tag = document.getElementById('detail')?.dataset?.tag;
+    if (tag) setTimeout(() => renderMap(tag), 50);
+  }
 });
 
 // Init
