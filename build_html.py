@@ -1661,7 +1661,7 @@ function parseTriggerToReadable(raw) {
   const results = [];
   let depth = 0;
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
-  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'hidden_trigger', 'hidden_effect', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
+  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'hidden_trigger', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
   // Track current scope (area/region/province) for context-aware claim handling
   const scopeStack = []; // [{name, type, depth}]
 
@@ -1770,7 +1770,7 @@ function parseTriggerToReadable(raw) {
 
     depth = Math.max(0, newDepth);
   }
-  return results.slice(0, 30);
+  return results.slice(0, 50);
 }
 
 function negateCondition(text) {
@@ -2288,6 +2288,89 @@ function triggerToText(key, val) {
     'any_core_country': 'Any core country:',
     'any_province': 'Any province:',
     'any_owned_province': 'Any owned province:',
+    // Scope iterators (audit round 2)
+    'all_subject_country': 'All subjects:',
+    'any_country': 'Any country:',
+    'every_country': 'Every country:',
+    'random_known_country': 'A random known country:',
+    'random_subject_country': 'A random subject:',
+    'random_neighbor_country': 'A random neighbor:',
+    'random_ally': 'A random ally:',
+    'all_core_province': 'All core provinces:',
+    'all_ally': 'All allies:',
+    'all_owned_province': 'All owned provinces:',
+    'overlord': 'Overlord:',
+    'emperor': 'Emperor:',
+    'location': null, // internal scope
+    'home_trade_node': null, // internal scope
+    'any_neighbor_province': 'Any neighboring province:',
+    'any_core_province': 'Any core province:',
+    'every_core_country': 'Every country with cores:',
+    'random_neighbor_province': 'A random neighboring province:',
+    'random_empty_neighbor_province': 'A random empty neighboring province:',
+    'every_ally': 'Every ally:',
+    'any_heretic_province': 'Any heretic province:',
+    'any_trade_node': 'Any trade node:',
+    // Missing triggers (audit round 2)
+    'reverse_has_opinion': null, // complex nested diplomacy check
+    'faction_influence': (() => { const fm = val.match(/faction\s*=\s*(\w+)/); const vm = val.match(/influence\s*=\s*(\d+)/); if (fm && vm) return `${fm[1].replace(/_/g, ' ')} faction influence at least <span class="val">${vm[1]}</span>`; return null; })(),
+    'trading_bonus': `Has trading bonus in: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'any_hired_mercenary_company': 'Has hired mercenary company:',
+    'army_strength': (() => { if (isScopeVar(val)) return null; return /^\d+$/.test(val) ? `Army strength at least <span class="val">${val}</span>` : `Army strength at least equal to <span class="tag">${tagName(val)}</span>`; })(),
+    'subsidised_percent_amount': null, // internal subsidy check
+    'export_to_variable': null, // internal scripting
+    'has_custom_ideas': val === 'yes' ? 'Has custom national ideas' : null,
+    'has_regency': val === 'yes' ? 'Has a regency' : val === 'no' ? 'Does not have a regency' : null,
+    'has_heir': val === 'yes' ? 'Has an heir' : val === 'no' ? 'Has no heir' : null,
+    'has_ruler': val === 'yes' ? 'Has a ruler' : null,
+    'has_female_heir': val === 'yes' ? 'Has a female heir' : null,
+    'has_consort': val === 'yes' ? 'Has a consort' : val === 'no' ? 'Has no consort' : null,
+    'ruler_age': `Ruler age at least <span class="val">${val}</span>`,
+    'heir_age': `Heir age at least <span class="val">${val}</span>`,
+    'ruler_has_personality': `Ruler has personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'total_base_tax': `Total base tax at least <span class="val">${val}</span>`,
+    'trade_income_percentage': `Trade income at least <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span> of total`,
+    'production_income_percentage': `Production income at least <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span> of total`,
+    // Missing effects (audit round 2)
+    'spawn_rebels': (() => { const tm = val.match(/type\s*=\s*(\w+)/); const sm = val.match(/size\s*=\s*(\d+)/); return tm ? `Spawn <span class="tag">${tm[1].replace(/_/g, ' ')}</span> rebels${sm ? ' (size ' + sm[1] + ')' : ''}` : 'Spawn rebels'; })(),
+    'define_conquistador': (() => { const nm = val.match(/name\s*=\s*"?([^"}\n]+)"?/); return nm ? `Gain a new conquistador: <span class="tag">${nm[1].trim()}</span>` : 'Gain a new conquistador'; })(),
+    'define_explorer': (() => { const nm = val.match(/name\s*=\s*"?([^"}\n]+)"?/); return nm ? `Gain a new explorer: <span class="tag">${nm[1].trim()}</span>` : 'Gain a new explorer'; })(),
+    'define_heir': (() => { const nm = val.match(/name\s*=\s*"?([^"}\n]+)"?/); return nm ? `Gain a new heir: <span class="tag">${nm[1].trim()}</span>` : 'Gain a new heir'; })(),
+    'add_favors': (() => { const wm = val.match(/who\s*=\s*(\w+)/); const vm = val.match(/amount\s*=\s*(-?\d+)/); if (wm && vm) { if (isScopeVar(wm[1])) return `Add <span class="val">${vm[1]}</span> favors`; return `Add <span class="val">${vm[1]}</span> favors with <span class="tag">${tagName(wm[1])}</span>`; } return null; })(),
+    'reverse_add_casus_belli': 'Target gains CB against us',
+    'add_ruler_personality': `Add ruler personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'remove_ruler_personality': `Remove ruler personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'add_heir_personality': `Add heir personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'add_consort_personality': `Add consort personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'add_ruler_modifier': (() => { const mk = extractModKey(val); return `Add ruler modifier: ${modRef(mk)}`; })(),
+    'change_ruler_stat': (() => { const tm = val.match(/type\s*=\s*(\w+)/); const am = val.match(/amount\s*=\s*(-?\d+)/); if (tm && am) return `Change ruler ${tm[1].replace(/_/g, ' ')} by <span class="val">${am[1]}</span>`; return null; })(),
+    'set_ruler_flag': null, // internal
+    'clr_ruler_flag': null, // internal
+    'hidden_effect': null, // transparent — parser descends into block
+    'custom_tooltip': null, // tooltip-only, handled separately
+    'tooltip': null,
+    'show_scope_change': null,
+    'if': null, // conditional block — parser descends
+    'else': null, // conditional block
+    'else_if': null, // conditional block
+    'trigger_switch': null, // conditional block
+    'switch': null, // conditional block
+    'while': null, // loop
+    'break': null,
+    'change_variable': null, // internal scripting
+    'set_variable': null, // internal scripting
+    'subtract_variable': null,
+    'multiply_variable': null,
+    'divide_variable': null,
+    'is_variable_equal': null,
+    // Anbennar custom (audit round 2)
+    'hold_condition': null, // internal Anbennar mechanic
+    'pashaine_unity_culture_trigger': null, // Anbennar custom
+    'add_innovativeness_or_monarch_power_anb': 'Add innovativeness (or monarch power)',
+    'complex_dynamic_effect': null, // Anbennar scripted
+    'siadan_add_scope_permanent_claim': 'Gain permanent claims on provinces',
+    'add_stability_or_adm_power_anb': 'Add <span class="val">1</span> stability (or <span class="val">100</span> admin power if at 3)',
+    'add_reform_progress_medium_effect': 'Add moderate reform progress',
     // Suppress Paradox scope variables
     'ROOT': null,
     'FROM': null,
