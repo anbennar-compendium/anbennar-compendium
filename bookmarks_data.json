@@ -1,0 +1,234 @@
+[
+ {
+  "name": "£bookmark_cannor£",
+  "description": "Cannor                                                                                                £icon_new_player£ Recommended for players who are new to the setting. \\n\\n£bookmark_race_human££bookmark_race_elven££bookmark_race_halfling££bookmark_race_dwarven££bookmark_race_gnomish££bookmark_race_kobold££bookmark_race_troll££bookmark_race_gnollish£\\n    £bookmark_separator£\\nA year has passed since the end of the Lilac Wars, a dynastic war of succession between the imperial Grand Duchy of Dameria and its neighbour, the Kingdom of Lorent. Lorent stands tired yet victorious, due to the betrayal of their Damerian enemies by their imperial allies like the Grand Duke of Wex, whom now holds the imperial seat. The balance of power is broken and new challenges will arise, but will the dream of Anbennar (unity) finally be achieved or will Cannor once again descend into chaos?",
+  "countries": [
+   "A33",
+   "A45",
+   "A61",
+   "A95",
+   "A49",
+   "A26",
+   "Z88",
+   "Z22"
+  ],
+  "easy_countries": [
+   "A33",
+   "A45"
+  ],
+  "file": "a_cannor.txt"
+ },
+ {
+  "name": "£bookmark_escann£",
+  "description": "Escann                                                                       £icon_veteran£ Recommended for EU4 veterans who are looking for something unique.\\n\\n£bookmark_race_human££bookmark_race_orcish££bookmark_race_goblin££bookmark_race_elven££bookmark_race_dwarven££bookmark_race_halfling£\\n    £bookmark_separator£\\nFor 20 years, the orc clans ravaged the land of Escann, destroying the chivalric kingdoms that succeeded old Castanor, the greatest human empire. Now with the death of Korgus, the orc chieftain, a new era has begun, with adventurers from all of Cannor roaming Escann in search of wealth, fame, and adventure, inspired by Corin, the adventurer-turned goddess that defeated the orcish warlord. Will the kingdoms of old arise once more, or will the lands of Castanor become the birthplace of new kingdoms, both human and orc?",
+  "countries": [
+   "A59",
+   "B07",
+   "B12",
+   "B04",
+   "B24",
+   "I29",
+   "I33",
+   "Z18"
+  ],
+  "easy_countries": [
+   "A59",
+   "B07",
+   "B12"
+  ],
+  "file": "b_escann.txt"
+ },
+ {
+  "name": "£bookmark_serpentspine£",
+  "description": "The Serpentspine                                                         £icon_veteran£ Recommended for EU4 veterans who are looking for something unique.\\n\\n£bookmark_race_dwarven££bookmark_race_goblin££bookmark_race_orcish££bookmark_race_kobold££bookmark_race_ogre£\\n    £bookmark_separator£\\nThe Greentide was a disaster for Escann, but for the dwarves and goblins of the Western Serpentspine it presented a unique opportunity. With so many orcs leaving for the surface, a power vacuum has been created in the Dwarovar. Goblins cast off the shackles of their former orcish slave masters, and dwarves from both surface and remnant holds seek to reclaim what they lost long ago. In the east, goblins carve out their domains in the Tree of Stone, in the shadow of the powerful hobgoblin Command.",
+  "countries": [
+   "B17",
+   "H71",
+   "F47",
+   "I02",
+   "H75",
+   "H74",
+   "H73",
+   "H83"
+  ],
+  "easy_countries": [
+   "B17",
+   "H75",
+   "F47"
+  ],
+  "file": "c_the_dwarovar.txt"
+ },
+ {
+  "name": "£bookmark_bulwar£",
+  "description": "Bulwar\\n\\n£bookmark_race_elven££bookmark_race_human££bookmark_race_gnollish££bookmark_race_harpy££bookmark_race_goblin££bookmark_race_dwarven£\\n    £bookmark_separator£\\nDarkness spreads over the land of the Sun, as the Sun Elven kingdoms are too weak to defend their lands from the renewed attack from old and new enemies: The demon-worshiping gnolls invade from the desert, the restored harpy queendoms lurk from the hills and the goblin tribes swarm from the mountains. Amidst the chaos, their human subjects start questioning their ability, while a new faith arises in the eastern sands. Will the Sun Elves manage to restore the Phoenix Empire? or a new empire will rise from the ashes?",
+  "countries": [
+   "F46",
+   "F34",
+   "F30",
+   "F22",
+   "F21",
+   "F50",
+   "F23",
+   "F29"
+  ],
+  "easy_countries": [
+   "F21",
+   "F29",
+   "F46"
+  ],
+  "file": "d_bulwar.txt"
+ },
+ {
+  "name": "£bookmark_rahen£",
+  "description": "Rahen\\n\\n£bookmark_race_hobgoblin££bookmark_race_harimari££bookmark_race_human££bookmark_race_ogre££bookmark_race_harpy£\\n    £bookmark_separator£\\nOnce inhabited only by humans, the tigerlike harimari have ruled Rahen since their ascension on the Day of Ashen Skies, their empire interrupted only briefly by the conquests of Jaher. Native rule was reestablished under the Dhenijanraj, now a waning power whose vassals such as Rabaghekhur and Buhaanjirghal strain against their rule. To the north, Rajnadhaga stands against the invasion of the hobgoblin Command while the reclusive ogres of Azjakuma plot how best to exploit Rahen's chaos. Further east, Jianglusi, nominal leader of the Xia monks, and the Dragon King of Bianfang turn their gazes towards a battle for their very survival.",
+  "countries": [
+   "R62",
+   "R51",
+   "R38",
+   "R50",
+   "R18",
+   "R07",
+   "R04"
+  ],
+  "easy_countries": [],
+  "file": "e_rahen.txt"
+ },
+ {
+  "name": "£bookmark_haless£",
+  "description": "Haless\\n\\n£bookmark_race_human££bookmark_race_harimari££bookmark_race_kobold££bookmark_race_dwarven£\\n    £bookmark_separator£\\nThe days of the Phoenix have long since passed, and the Warlords of Haless thrive in the vacuous chaos that remains. The many human and harimari kingdoms of Yanshen prosper in a brief peace, unaware of the rising threat of the Faceless Queen and her hordes of terror birds emerging from the northern steppes. To the west, the secluded monastaries of the Xia recoil after a crushing defeat at the hands of the hobgoblins, looking for any hope to resist the oncoming threat of the Great Command. And to the south lies the shattered empire of Baihon Xinh, failing to unite the Kai people and embroiled in civil war.",
+  "countries": [
+   "Y09",
+   "Y86",
+   "Y20",
+   "Y01",
+   "Y51",
+   "Y97",
+   "Y63",
+   "Y26",
+   "Y91"
+  ],
+  "easy_countries": [
+   "Y09",
+   "Y86",
+   "Y20"
+  ],
+  "file": "f_haless.txt"
+ },
+ {
+  "name": "£bookmark_forbidden_plains£",
+  "description": "The Forbidden Plains\\n\\n£bookmark_race_centaur££bookmark_race_ogre££bookmark_race_human£\\n    £bookmark_separator£\\nA failed invasion has resulted in the centaur race scattered in hordes across the plains, the human republics united in cause upon the lakes, and the ogre clans preparing to reassert themselves from within their valley. Fragmented they are forgotten to the world, but consolidated they could make it tremble.",
+  "countries": [
+   "I61",
+   "I57",
+   "I80",
+   "I78",
+   "I90",
+   "J46",
+   "J02",
+   "J24"
+  ],
+  "easy_countries": [
+   "I90",
+   "J02",
+   "I61"
+  ],
+  "file": "g_the_forbidden_plains.txt"
+ },
+ {
+  "name": "£bookmark_north_aelantir£",
+  "description": "North Aelantir\\n\\n£bookmark_race_ruinborn£\\n    £bookmark_separator£\\nThe Day of Ashen Skies obliterated the old home of the elves. The mutated survivors, the ruinborn elves, now walk among the hostile ruins of a magical halcyon era. From the fey-touched realms of Eordand, to the feudal knights of the Ynn, to the sandworm riders facing mouthless horrors in Haraf, to the tribes eking out an existence on the haunted shores of the Ruined Sea, only time will tell if the ruinborn will weather the coming apocalypse from the east, or if they will join their ancestors in annihilation.",
+  "countries": [
+   "H01",
+   "H08",
+   "H16",
+   "G35",
+   "G32",
+   "G21",
+   "G43",
+   "G01"
+  ],
+  "easy_countries": [
+   "H01",
+   "H08",
+   "G32",
+   "G21"
+  ],
+  "file": "h_north_aelantir.txt"
+ },
+ {
+  "name": "£bookmark_south_aelantir£",
+  "description": "South Aelantir\\n\\n£bookmark_race_ruinborn£\\n    £bookmark_separator£\\nFate's cruel indifference spared the elves of South Aelantir from the worst of the Day of Ashen Skies. The survivors emerged into a new, inhospitable nightmare. Mana-infused winds inflict ruinous cancer in the west, while the sentient Effelai jungle’s alluring songs enslave minds in the east, and festering ambitions drive them to endless war in the south. Will the ruinborn elves be able to build a home for themselves in this brave new world, or will they burn it all down to claim the ashes as their sole birthright?",
+  "countries": [
+   "G52",
+   "G46",
+   "G58",
+   "G64",
+   "G67",
+   "J73",
+   "G15",
+   "J90"
+  ],
+  "easy_countries": [
+   "G52",
+   "G46",
+   "G64"
+  ],
+  "file": "i_south_aelantir.txt"
+ },
+ {
+  "name": "£bookmark_west_sarhal£",
+  "description": "West Sarhal\\n\\n£bookmark_race_human££bookmark_race_gnollish££bookmark_race_halfling££bookmark_race_elven£\\n    £bookmark_separator£\\nThe age of gnolls is at hand. Kheterata is a state of ruin, split in two by the legendary pack leader Grizaka and the forces of Gnollakaz. To the west lie the remnants of the once great Fangaula empire, rival of Kheterata, who too have felt the wrath of the gnoll hordes. For some though, the collapse of the old empires represents opportunity. The Vyzemby halflings on the island of Fahvanosy eye the coastal Ananoma forts on the mainland they abandoned long ago. The former subjects of Kheterata find themselves independent and free to pursue their own futures. Will they rebuild the great empires of yore, or forge a future of their own?",
+  "countries": [
+   "U01",
+   "U09",
+   "F62",
+   "U10",
+   "L03",
+   "U08",
+   "L37",
+   "L22"
+  ],
+  "easy_countries": [
+   "U09",
+   "L37"
+  ],
+  "file": "j_west_sarhal.txt"
+ },
+ {
+  "name": "£bookmark_east_sarhal£",
+  "description": "East Sarhal\\n\\n£bookmark_race_human££bookmark_race_lizardfolk££bookmark_race_troll££bookmark_race_harpy££bookmark_race_harimari££bookmark_race_gnollish£\\n    £bookmark_separator£\\nIt is a dark age for eastern Sarhal. The Dakinshi warlords are locked in a brutal civil war, the lizardfolk empire is stagnant with its collapse inevitable, and Rahen colonisers have taken the northern coast looking for riches and slaves. The greatest evil of all lurks beneath the monochrome mangroves of the Shadow Swamp where the Shadow Hags reside. Yet beyond this darkness there is hope. The Ashhana lizardfolk, cursed by the Shadow Swamp's foul magic, have found refuge through the songs of their faith. The Baashidi people to the south are in their golden age, keen to explore the oceans and expand their borders. ",
+  "countries": [
+   "L95",
+   "S15",
+   "L81",
+   "S23",
+   "S57",
+   "S28",
+   "S18",
+   "L62"
+  ],
+  "easy_countries": [
+   "L95",
+   "S57"
+  ],
+  "file": "l_east_sarhal.txt"
+ },
+ {
+  "name": "£bookmark_spawnables£",
+  "description": "Spawnables\\n\\n    £bookmark_separator£\\nIndependent ventures often shaped history, be they headed by adventurers like Corin or visionaries like Castan the Progenitor. Between rumors that the famed elven homeland of Aelantir may be within reach after all, or realizations that most orcs leaving the Serpentspine during the Greentide also means an opportunity to reclaim the ancestral dwarven home, many entities are drafting their own plans. Mercenary companies, holy orders, refugees, trade companies and idealistic settlers are planning to head west, while dwarven champions start travelling eastward for the first time in generations...",
+  "countries": [
+   "A37",
+   "Z28",
+   "A98",
+   "U07",
+   "U05",
+   "A20",
+   "F23",
+   "R07"
+  ],
+  "easy_countries": [
+   "A20"
+  ],
+  "file": "m_spawnables.txt"
+ }
+]

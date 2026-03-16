@@ -1,0 +1,2615 @@
+{
+ "regent_court": {
+  "name": "Regent Court",
+  "id": "regent_court",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   182,
+   182,
+   182
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [
+   "corinite",
+   "ravelian"
+  ],
+  "description": ""
+ },
+ "corinite": {
+  "name": "Corinite",
+  "id": "corinite",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   230,
+   65,
+   55
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_morale",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_missionary_strength",
+    "value": 0.02
+   }
+  ],
+  "allowed_conversions": [
+   "regent_court",
+   "Back",
+   "to",
+   "mainline",
+   "ravelian"
+  ],
+  "description": ""
+ },
+ "ravelian": {
+  "name": "Ravelian",
+  "id": "ravelian",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   69,
+   69,
+   69
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   },
+   {
+    "modifier": "global_institution_spread",
+    "value": 0.2
+   }
+  ],
+  "allowed_conversions": [
+   "regent_court",
+   "corinite"
+  ],
+  "description": ""
+ },
+ "dalcabba": {
+  "name": "Dalcabba",
+  "id": "dalcabba",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   192,
+   102,
+   60
+  ],
+  "modifiers": [
+   {
+    "modifier": "legitimacy",
+    "value": 1.0
+   },
+   {
+    "modifier": "republican_tradition",
+    "value": 0.3
+   },
+   {
+    "modifier": "devotion",
+    "value": 1.0
+   },
+   {
+    "modifier": "horde_unity",
+    "value": 1.0
+   },
+   {
+    "modifier": "global_missionary_strength",
+    "value": 0.02
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "uelos_cult": {
+  "name": "Cult of Uelos",
+  "id": "uelos_cult",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   24,
+   47,
+   161
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_sailors_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_monthly_devastation",
+    "value": -0.02
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "infernal_court": {
+  "name": "Infernal Court",
+  "id": "infernal_court",
+  "group": "Cannorian",
+  "group_id": "cannorian",
+  "color": [
+   122,
+   20,
+   20
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "warscore_cost_vs_other_religion",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "the_thought": {
+  "name": "The Thought",
+  "id": "the_thought",
+  "group": "Faithless",
+  "group_id": "faithless",
+  "color": [
+   221,
+   128,
+   212
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   },
+   {
+    "modifier": "adm_tech_cost_modifier",
+    "value": -0.1
+   },
+   {
+    "modifier": "artificers_loyalty_modifier",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "godlost": {
+  "name": "Godlost",
+  "id": "godlost",
+  "group": "Faithless",
+  "group_id": "faithless",
+  "color": [
+   119,
+   0,
+   8
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   },
+   {
+    "modifier": "ae_impact",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kheionism": {
+  "name": "Kheionist",
+  "id": "kheionism",
+  "group": "Faithless",
+  "group_id": "faithless",
+  "color": [
+   99,
+   99,
+   133
+  ],
+  "modifiers": [
+   {
+    "modifier": "republican_tradition",
+    "value": 0.3
+   },
+   {
+    "modifier": "trade_efficiency",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "black_doctrine": {
+  "name": "Black Doctrine",
+  "id": "black_doctrine",
+  "group": "Faithless",
+  "group_id": "faithless",
+  "color": [
+   2,
+   2,
+   2
+  ],
+  "modifiers": [
+   {
+    "modifier": "max_absolutism",
+    "value": 10.0
+   },
+   {
+    "modifier": "mages_loyalty_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "acolytes_loyalty_modifier",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "elikhetist": {
+  "name": "Elikhetist",
+  "id": "elikhetist",
+  "group": "Khetist",
+  "group_id": "khetist",
+  "color": [
+   252,
+   162,
+   100
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.15
+   },
+   {
+    "modifier": "imperial_mandate",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [
+   "nirakhetist",
+   "aakhetist"
+  ],
+  "description": ""
+ },
+ "nirakhetist": {
+  "name": "Nirakhetist",
+  "id": "nirakhetist",
+  "group": "Khetist",
+  "group_id": "khetist",
+  "color": [
+   36,
+   131,
+   194
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "global_missionary_strength",
+    "value": 0.02
+   },
+   {
+    "modifier": "imperial_mandate",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [
+   "elikhetist",
+   "aakhetist"
+  ],
+  "description": ""
+ },
+ "aakhetist": {
+  "name": "Aakhetist",
+  "id": "aakhetist",
+  "group": "Khetist",
+  "group_id": "khetist",
+  "color": [
+   112,
+   74,
+   7
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_morale",
+    "value": 0.1
+   },
+   {
+    "modifier": "reform_progress_growth",
+    "value": 0.15
+   },
+   {
+    "modifier": "imperial_mandate",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [
+   "elikhetist",
+   "nirakhetist"
+  ],
+  "description": ""
+ },
+ "xhazobkult": {
+  "name": "Xhazobkult",
+  "id": "xhazobkult",
+  "group": "Gnollish",
+  "group_id": "gnollish",
+  "color": [
+   181,
+   230,
+   29
+  ],
+  "modifiers": [
+   {
+    "modifier": "leader_land_shock",
+    "value": 1.0
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [
+   "kvangahga"
+  ],
+  "description": ""
+ },
+ "kvangahga": {
+  "name": "Kvangahga",
+  "id": "kvangahga",
+  "group": "Gnollish",
+  "group_id": "gnollish",
+  "color": [
+   80,
+   22,
+   22
+  ],
+  "modifiers": [
+   {
+    "modifier": "innovativeness_gain",
+    "value": 0.5
+   },
+   {
+    "modifier": "global_trade_goods_size_modifier",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [
+   "xhazobkult"
+  ],
+  "description": ""
+ },
+ "ancestor_worship": {
+  "name": "Ancestor Worship",
+  "id": "ancestor_worship",
+  "group": "Dwarven",
+  "group_id": "dwarven",
+  "color": [
+   254,
+   254,
+   254
+  ],
+  "modifiers": [
+   {
+    "modifier": "same_culture_advisor_cost",
+    "value": -0.2
+   },
+   {
+    "modifier": "defensiveness",
+    "value": 0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "dwarven_pantheon": {
+  "name": "Dwarven Pantheon",
+  "id": "dwarven_pantheon",
+  "group": "Dwarven",
+  "group_id": "dwarven",
+  "color": [
+   33,
+   64,
+   96
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "legitimacy",
+    "value": 1.0
+   },
+   {
+    "modifier": "devotion",
+    "value": 1.0
+   },
+   {
+    "modifier": "republican_tradition",
+    "value": 0.3
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "runefather_worship": {
+  "name": "Runefather Worship",
+  "id": "runefather_worship",
+  "group": "Dwarven",
+  "group_id": "dwarven",
+  "color": [
+   50,
+   30,
+   50
+  ],
+  "modifiers": [
+   {
+    "modifier": "discipline",
+    "value": 0.05
+   },
+   {
+    "modifier": "global_autonomy",
+    "value": -0.05
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": -5.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "elven_forebears": {
+  "name": "Elven Forebears",
+  "id": "elven_forebears",
+  "group": "Elven",
+  "group_id": "elven",
+  "color": [
+   186,
+   241,
+   248
+  ],
+  "modifiers": [
+   {
+    "modifier": "prestige_decay",
+    "value": -0.02
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "soise_vio": {
+  "name": "Soise Vio",
+  "id": "soise_vio",
+  "group": "Elven",
+  "group_id": "elven",
+  "color": [
+   200,
+   170,
+   180
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "nur_dahvaraesa": {
+  "name": "Nùr Dahvaraesa",
+  "id": "nur_dahvaraesa",
+  "group": "Elven",
+  "group_id": "elven",
+  "color": [
+   200,
+   170,
+   180
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_missionary_strength",
+    "value": 0.01
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.25
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": -3.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "bulwari_sun_cult": {
+  "name": "New Sun Cult",
+  "id": "bulwari_sun_cult",
+  "group": "Bulwari",
+  "group_id": "bulwari",
+  "color": [
+   255,
+   201,
+   14
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -2.0
+   },
+   {
+    "modifier": "recover_army_morale_speed",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "old_bulwari_sun_cult": {
+  "name": "Old Sun Cult",
+  "id": "old_bulwari_sun_cult",
+  "group": "Bulwari",
+  "group_id": "bulwari",
+  "color": [
+   255,
+   67,
+   24
+  ],
+  "modifiers": [
+   {
+    "modifier": "garrison_size",
+    "value": 0.4
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "the_jadd": {
+  "name": "The Jadd",
+  "id": "the_jadd",
+  "group": "Bulwari",
+  "group_id": "bulwari",
+  "color": [
+   255,
+   138,
+   12
+  ],
+  "modifiers": [
+   {
+    "modifier": "num_accepted_cultures",
+    "value": 1.0
+   },
+   {
+    "modifier": "promote_culture_cost",
+    "value": -0.25
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "skaldhyrric_faith": {
+  "name": "Skaldhyrric Faith",
+  "id": "skaldhyrric_faith",
+  "group": "Gerudian",
+  "group_id": "gerudian",
+  "color": [
+   255,
+   201,
+   201
+  ],
+  "modifiers": [
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.1
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "great_dookan": {
+  "name": "Great Dookan",
+  "id": "great_dookan",
+  "group": "Orcish",
+  "group_id": "orcish",
+  "color": [
+   43,
+   106,
+   62
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_morale",
+    "value": 0.1
+   },
+   {
+    "modifier": "prestige_from_land",
+    "value": 0.25
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": -2.0
+   }
+  ],
+  "allowed_conversions": [
+   "old_dookan"
+  ],
+  "description": ""
+ },
+ "old_dookan": {
+  "name": "Old Dookan",
+  "id": "old_dookan",
+  "group": "Orcish",
+  "group_id": "orcish",
+  "color": [
+   13,
+   56,
+   22
+  ],
+  "modifiers": [
+   {
+    "modifier": "army_tradition",
+    "value": 0.5
+   },
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": -2.0
+   }
+  ],
+  "allowed_conversions": [
+   "great_dookan"
+  ],
+  "description": ""
+ },
+ "bulgu_orazan": {
+  "name": "Bulgu Orazan",
+  "id": "bulgu_orazan",
+  "group": "Orcish",
+  "group_id": "orcish",
+  "color": [
+   8,
+   150,
+   19
+  ],
+  "modifiers": [
+   {
+    "modifier": "institution_spread_from_true_faith",
+    "value": 0.2
+   },
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kobold_dragon_cult": {
+  "name": "Kobold Dragon Cult",
+  "id": "kobold_dragon_cult",
+  "group": "Dragon Cult",
+  "group_id": "dragon_cult",
+  "color": [
+   3,
+   85,
+   124
+  ],
+  "modifiers": [
+   {
+    "modifier": "loot_amount",
+    "value": 0.5
+   },
+   {
+    "modifier": "available_province_loot",
+    "value": 0.5
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "nimrithan": {
+  "name": "Nimrithan",
+  "id": "nimrithan",
+  "group": "Dragon Cult",
+  "group_id": "dragon_cult",
+  "color": [
+   189,
+   8,
+   8
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_tax_modifier",
+    "value": 0.15
+   },
+   {
+    "modifier": "fire_damage",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "goblinic_shamanism": {
+  "name": "Goblinic Shamanism",
+  "id": "goblinic_shamanism",
+  "group": "Goblin",
+  "group_id": "goblin",
+  "color": [
+   127,
+   76,
+   76
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   },
+   {
+    "modifier": "idea_cost",
+    "value": -0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "eagle_worship": {
+  "name": "Banbe Anen",
+  "id": "eagle_worship",
+  "group": "Goblin",
+  "group_id": "goblin",
+  "color": [
+   185,
+   50,
+   110
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_attrition",
+    "value": -0.2
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "the_hunt": {
+  "name": "The Hunt",
+  "id": "the_hunt",
+  "group": "Harpy Cults",
+  "group_id": "harpy_cults",
+  "color": [
+   173,
+   148,
+   124
+  ],
+  "modifiers": [
+   {
+    "modifier": "leader_land_shock",
+    "value": 1.0
+   },
+   {
+    "modifier": "leader_land_manuever",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "weeping_mother": {
+  "name": "Weeping Mother",
+  "id": "weeping_mother",
+  "group": "Aelantiri",
+  "group_id": "aelantiri",
+  "color": [
+   255,
+   120,
+   128
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -2.0
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "dotimism": {
+  "name": "Dobondotist",
+  "id": "dotimism",
+  "group": "Aelantiri",
+  "group_id": "aelantiri",
+  "color": [
+   173,
+   86,
+   69
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 1.0
+   },
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "etchings_of_the_deep": {
+  "name": "Etchings of the Deep",
+  "id": "etchings_of_the_deep",
+  "group": "Aelantiri",
+  "group_id": "aelantiri",
+  "color": [
+   31,
+   96,
+   83
+  ],
+  "modifiers": [
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   },
+   {
+    "modifier": "land_attrition",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "skincarvers": {
+  "name": "Skincarvers",
+  "id": "skincarvers",
+  "group": "Aelantiri",
+  "group_id": "aelantiri",
+  "color": [
+   82,
+   59,
+   135
+  ],
+  "modifiers": [
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   },
+   {
+    "modifier": "all_power_cost",
+    "value": -0.025
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kinbond": {
+  "name": "Kinbond",
+  "id": "kinbond",
+  "group": "Aelantiri",
+  "group_id": "aelantiri",
+  "color": [
+   61,
+   5,
+   63
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "land_forcelimit_modifier",
+    "value": 0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "death_cult_of_cheshosh": {
+  "name": "Death Cult of Cheshosh",
+  "id": "death_cult_of_cheshosh",
+  "group": "Cheshoshi",
+  "group_id": "cheshoshi_religion",
+  "color": [
+   66,
+   66,
+   66
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_morale",
+    "value": 0.1
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kalun_masks": {
+  "name": "Kalun Masks",
+  "id": "kalun_masks",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   210,
+   20,
+   60
+  ],
+  "modifiers": [
+   {
+    "modifier": "infantry_power",
+    "value": 0.1
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "dai_nadeilhil": {
+  "name": "Dai'Nadeilhil",
+  "id": "dai_nadeilhil",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   220,
+   185,
+   140
+  ],
+  "modifiers": [
+   {
+    "modifier": "build_cost",
+    "value": -0.1
+   },
+   {
+    "modifier": "idea_cost",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "jaakaiin": {
+  "name": "Ja'akaiin",
+  "id": "jaakaiin",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   32,
+   178,
+   170
+  ],
+  "modifiers": [
+   {
+    "modifier": "production_efficiency",
+    "value": 0.1
+   },
+   {
+    "modifier": "embracement_cost",
+    "value": -0.25
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "eotomolaque": {
+  "name": "Eotomolaque",
+  "id": "eotomolaque",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   235,
+   180,
+   20
+  ],
+  "modifiers": [
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   },
+   {
+    "modifier": "movement_speed",
+    "value": 0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "great_tceusluhd": {
+  "name": "Great Tceusluhd",
+  "id": "great_tceusluhd",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   128,
+   78,
+   73
+  ],
+  "modifiers": [
+   {
+    "modifier": "mil_advisor_cost",
+    "value": -0.25
+   },
+   {
+    "modifier": "land_attrition",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "raeldaeriach": {
+  "name": "Raeldaeriach",
+  "id": "raeldaeriach",
+  "group": "Harafic",
+  "group_id": "harafic",
+  "color": [
+   32,
+   63,
+   123
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heathen",
+    "value": -1.0
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.2
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "tswohvwohii": {
+  "name": "Tswohvwoh'íi",
+  "id": "tswohvwohii",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   32,
+   86,
+   26
+  ],
+  "modifiers": [
+   {
+    "modifier": "leader_land_shock",
+    "value": 1.0
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [
+   "chahinanito"
+  ],
+  "description": ""
+ },
+ "chahinanito": {
+  "name": "Chahinanito",
+  "id": "chahinanito",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   90,
+   127,
+   20
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_trade_power",
+    "value": 0.1
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [
+   "tswohvwohii"
+  ],
+  "description": ""
+ },
+ "song_servants": {
+  "name": "Song Servants",
+  "id": "song_servants",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   2,
+   51,
+   0
+  ],
+  "modifiers": [
+   {
+    "modifier": "garrison_size",
+    "value": 0.15
+   },
+   {
+    "modifier": "land_attrition",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "senanset": {
+  "name": "Senanset",
+  "id": "senanset",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   112,
+   201,
+   39
+  ],
+  "modifiers": [
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.1
+   },
+   {
+    "modifier": "leader_land_manuever",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "orwaii": {
+  "name": "Orwa'íi",
+  "id": "orwaii",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   206,
+   130,
+   103
+  ],
+  "modifiers": [
+   {
+    "modifier": "discipline",
+    "value": 0.05
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "leechfather": {
+  "name": "Leechfather",
+  "id": "leechfather",
+  "group": "Effelai",
+  "group_id": "effelai",
+  "color": [
+   25,
+   0,
+   51
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_sailors_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "sailors_recovery_speed",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "gods_of_the_taychend": {
+  "name": "Taychendi Hero Cults",
+  "id": "gods_of_the_taychend",
+  "group": "Taychendi",
+  "group_id": "taychendi",
+  "color": [
+   188,
+   181,
+   73
+  ],
+  "modifiers": [
+   {
+    "modifier": "war_exhaustion",
+    "value": -0.03
+   },
+   {
+    "modifier": "prestige_from_land",
+    "value": 0.5
+   }
+  ],
+  "allowed_conversions": [
+   "oren_nayiru"
+  ],
+  "description": ""
+ },
+ "oren_nayiru": {
+  "name": "Oren Nayiru",
+  "id": "oren_nayiru",
+  "group": "Taychendi",
+  "group_id": "taychendi",
+  "color": [
+   227,
+   117,
+   54
+  ],
+  "modifiers": [
+   {
+    "modifier": "war_exhaustion",
+    "value": -0.03
+   },
+   {
+    "modifier": "prestige_from_land",
+    "value": 0.5
+   }
+  ],
+  "allowed_conversions": [
+   "gods_of_the_taychend"
+  ],
+  "description": ""
+ },
+ "oren_nayiru_reformed": {
+  "name": "Oren Nayiru",
+  "id": "oren_nayiru_reformed",
+  "group": "Taychendi",
+  "group_id": "taychendi",
+  "color": [
+   227,
+   117,
+   54
+  ],
+  "modifiers": [
+   {
+    "modifier": "war_exhaustion",
+    "value": -0.03
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "gods_of_the_taychend_reformed": {
+  "name": "Taychendi Hero Worship",
+  "id": "gods_of_the_taychend_reformed",
+  "group": "Taychendi",
+  "group_id": "taychendi",
+  "color": [
+   188,
+   181,
+   73
+  ],
+  "modifiers": [
+   {
+    "modifier": "war_exhaustion",
+    "value": -0.03
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "ynn_river_worship": {
+  "name": "Ynn River Worship",
+  "id": "ynn_river_worship",
+  "group": "Ynnic",
+  "group_id": "ynnic",
+  "color": [
+   139,
+   172,
+   212
+  ],
+  "modifiers": [
+   {
+    "modifier": "liberty_desire",
+    "value": -10.0
+   },
+   {
+    "modifier": "fort_maintenance_modifier",
+    "value": -0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "ynn_river_reformed": {
+  "name": "Ynn River Reformed",
+  "id": "ynn_river_reformed",
+  "group": "Ynnic",
+  "group_id": "ynnic",
+  "color": [
+   139,
+   172,
+   250
+  ],
+  "modifiers": [],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "rune_scribes": {
+  "name": "Rune Scribes",
+  "id": "rune_scribes",
+  "group": "Ynnic",
+  "group_id": "ynnic",
+  "color": [
+   70,
+   66,
+   144
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_heretic",
+    "value": 2.0
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "drozma_tur": {
+  "name": "Drozma Tur",
+  "id": "drozma_tur",
+  "group": "Ynnic",
+  "group_id": "ynnic",
+  "color": [
+   61,
+   179,
+   26
+  ],
+  "modifiers": [
+   {
+    "modifier": "movement_speed",
+    "value": 0.2
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "mazhthramazh": {
+  "name": "Mazhthramazh",
+  "id": "mazhthramazh",
+  "group": "Devandi",
+  "group_id": "devandi",
+  "color": [
+   145,
+   180,
+   146
+  ],
+  "modifiers": [
+   {
+    "modifier": "development_cost",
+    "value": -0.1
+   },
+   {
+    "modifier": "defensiveness",
+    "value": 0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "askaeorg": {
+  "name": "Askaeorg",
+  "id": "askaeorg",
+  "group": "Devandi",
+  "group_id": "devandi",
+  "color": [
+   184,
+   125,
+   65
+  ],
+  "modifiers": [
+   {
+    "modifier": "cavalry_shock",
+    "value": 0.25
+   },
+   {
+    "modifier": "idea_cost",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "fey_court": {
+  "name": "Fey Court",
+  "id": "fey_court",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   0,
+   114,
+   187
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_attrition",
+    "value": -0.1
+   },
+   {
+    "modifier": "hostile_attrition",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "eordellon": {
+  "name": "Eordellon",
+  "id": "eordellon",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   253,
+   232,
+   199
+  ],
+  "modifiers": [
+   {
+    "modifier": "church_power_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_missionary_strength",
+    "value": 0.01
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "spring_court": {
+  "name": "Spring Court",
+  "id": "spring_court",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   184,
+   228,
+   80
+  ],
+  "modifiers": [
+   {
+    "modifier": "idea_cost",
+    "value": -0.05
+   },
+   {
+    "modifier": "manpower_recovery_speed",
+    "value": 0.1
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [
+   "eordellon"
+  ],
+  "description": ""
+ },
+ "summer_court": {
+  "name": "Summer Court",
+  "id": "summer_court",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   245,
+   192,
+   54
+  ],
+  "modifiers": [
+   {
+    "modifier": "naval_forcelimit_modifier",
+    "value": 0.2
+   },
+   {
+    "modifier": "trade_efficiency",
+    "value": 0.1
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [
+   "eordellon"
+  ],
+  "description": ""
+ },
+ "autumn_court": {
+  "name": "Autumn Court",
+  "id": "autumn_court",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   249,
+   121,
+   44
+  ],
+  "modifiers": [
+   {
+    "modifier": "production_efficiency",
+    "value": 0.1
+   },
+   {
+    "modifier": "drill_gain_modifier",
+    "value": 0.5
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [
+   "eordellon"
+  ],
+  "description": ""
+ },
+ "winter_court": {
+  "name": "Winter Court",
+  "id": "winter_court",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   202,
+   244,
+   255
+  ],
+  "modifiers": [
+   {
+    "modifier": "fort_maintenance_modifier",
+    "value": -0.15
+   },
+   {
+    "modifier": "war_exhaustion",
+    "value": -0.03
+   },
+   {
+    "modifier": "female_advisor_chance",
+    "value": 0.4
+   }
+  ],
+  "allowed_conversions": [
+   "eordellon"
+  ],
+  "description": ""
+ },
+ "ashentree_pact": {
+  "name": "Ashentree Pact",
+  "id": "ashentree_pact",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   80,
+   200,
+   160
+  ],
+  "modifiers": [
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   },
+   {
+    "modifier": "manpower_in_own_culture_provinces",
+    "value": 0.15
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": -2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "vechnogejzn": {
+  "name": "Vechnogejzn",
+  "id": "vechnogejzn",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   173,
+   55,
+   26
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_attrition",
+    "value": -0.1
+   },
+   {
+    "modifier": "leader_land_fire",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "pactseeker": {
+  "name": "Pactseeker",
+  "id": "pactseeker",
+  "group": "Fey Religion",
+  "group_id": "fey_religion",
+  "color": [
+   45,
+   157,
+   173
+  ],
+  "modifiers": [
+   {
+    "modifier": "mages_loyalty_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "advisor_cost",
+    "value": -0.2
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "high_philosophy": {
+  "name": "High Philosophy",
+  "id": "high_philosophy",
+  "group": "Raheni",
+  "group_id": "raheni",
+  "color": [
+   73,
+   9,
+   96
+  ],
+  "modifiers": [
+   {
+    "modifier": "advisor_pool",
+    "value": 1.0
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.2
+   }
+  ],
+  "allowed_conversions": [
+   "suhans_praxis"
+  ],
+  "description": ""
+ },
+ "suhans_praxis": {
+  "name": "Suhan's Praxis",
+  "id": "suhans_praxis",
+  "group": "Raheni",
+  "group_id": "raheni",
+  "color": [
+   193,
+   105,
+   228
+  ],
+  "modifiers": [
+   {
+    "modifier": "infantry_power",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_heretic_missionary_strength",
+    "value": 0.02
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "accretive_path": {
+  "name": "Accretive Path",
+  "id": "accretive_path",
+  "group": "Halessi",
+  "group_id": "halessi",
+  "color": [
+   222,
+   222,
+   222
+  ],
+  "modifiers": [
+   {
+    "modifier": "army_tradition",
+    "value": 0.5
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": 3.0
+   },
+   {
+    "modifier": "church_power_modifier",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [
+   "transmutative_path"
+  ],
+  "description": ""
+ },
+ "transmutative_path": {
+  "name": "Transmutative Path",
+  "id": "transmutative_path",
+  "group": "Halessi",
+  "group_id": "halessi",
+  "color": [
+   195,
+   255,
+   197
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -2.0
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": 3.0
+   },
+   {
+    "modifier": "church_power_modifier",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [
+   "accretive_path"
+  ],
+  "description": ""
+ },
+ "devouring_path": {
+  "name": "Devouring Path",
+  "id": "devouring_path",
+  "group": "Halessi",
+  "group_id": "halessi",
+  "color": [
+   57,
+   57,
+   57
+  ],
+  "modifiers": [
+   {
+    "modifier": "religious_unity",
+    "value": 0.33
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   },
+   {
+    "modifier": "church_power_modifier",
+    "value": -1.0
+   },
+   {
+    "modifier": "reverse_relation_with_heretic_religion",
+    "value": -25.0
+   }
+  ],
+  "allowed_conversions": [
+   "righteous_path"
+  ],
+  "description": ""
+ },
+ "mystic_accord": {
+  "name": "Mystic Accord",
+  "id": "mystic_accord",
+  "group": "Halessi",
+  "group_id": "halessi",
+  "color": [
+   124,
+   244,
+   254
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_trade_goods_size_modifier",
+    "value": 0.05
+   },
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [
+   "righteous_path"
+  ],
+  "description": ""
+ },
+ "neokttareum": {
+  "name": "Neokttareum",
+  "id": "neokttareum",
+  "group": "Halessi",
+  "group_id": "halessi",
+  "color": [
+   67,
+   179,
+   105
+  ],
+  "modifiers": [
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.2
+   },
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "umun_omi": {
+  "name": "Umun Omi",
+  "id": "umun_omi",
+  "group": "Supreme Spirit",
+  "group_id": "supreme_spirit",
+  "color": [
+   0,
+   63,
+   63
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_attrition",
+    "value": -0.2
+   },
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [
+   "levaajan"
+  ],
+  "description": ""
+ },
+ "saanorgegh": {
+  "name": "Saanorgegh",
+  "id": "saanorgegh",
+  "group": "Supreme Spirit",
+  "group_id": "supreme_spirit",
+  "color": [
+   95,
+   100,
+   120
+  ],
+  "modifiers": [
+   {
+    "modifier": "cavalry_shock",
+    "value": 0.25
+   },
+   {
+    "modifier": "available_province_loot",
+    "value": 0.5
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "levaajan": {
+  "name": "Levaajan",
+  "id": "levaajan",
+  "group": "Supreme Spirit",
+  "group_id": "supreme_spirit",
+  "color": [
+   116,
+   166,
+   179
+  ],
+  "modifiers": [
+   {
+    "modifier": "stability_cost_modifier",
+    "value": -0.15
+   },
+   {
+    "modifier": "defensiveness",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [
+   "umun_omi"
+  ],
+  "description": ""
+ },
+ "un_khudai": {
+  "name": "Un Khudai",
+  "id": "un_khudai",
+  "group": "Supreme Spirit",
+  "group_id": "supreme_spirit",
+  "color": [
+   80,
+   213,
+   185
+  ],
+  "modifiers": [
+   {
+    "modifier": "cav_to_inf_ratio",
+    "value": 0.15
+   },
+   {
+    "modifier": "global_unrest",
+    "value": -1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kodave_followers": {
+  "name": "Kodave Followers",
+  "id": "kodave_followers",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   235,
+   88,
+   48
+  ],
+  "modifiers": [
+   {
+    "modifier": "infantry_power",
+    "value": 0.1
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": -2.0
+   }
+  ],
+  "allowed_conversions": [
+   "kalyin_worshippers"
+  ],
+  "description": ""
+ },
+ "yukel_followers": {
+  "name": "Yukel Followers",
+  "id": "yukel_followers",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   160,
+   160,
+   160
+  ],
+  "modifiers": [
+   {
+    "modifier": "trade_efficiency",
+    "value": 0.1
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [
+   "kalyin_worshippers"
+  ],
+  "description": ""
+ },
+ "enuuk_followers": {
+  "name": "Enuuk Followers",
+  "id": "enuuk_followers",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   225,
+   181,
+   55
+  ],
+  "modifiers": [
+   {
+    "modifier": "production_efficiency",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [
+   "kalyin_worshippers"
+  ],
+  "description": ""
+ },
+ "kalyin_worshippers": {
+  "name": "Kalyin Worshippers",
+  "id": "kalyin_worshippers",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   100,
+   127,
+   200
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_trade_goods_size_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "diplomatic_reputation",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "kukatodic_religion": {
+  "name": "Möitsäliusko",
+  "id": "kukatodic_religion",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   196,
+   255,
+   222
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -2.0
+   },
+   {
+    "modifier": "tolerance_heathen",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "yudunyovi": {
+  "name": "Yudunyovi",
+  "id": "yudunyovi",
+  "group": "Triunic Lake",
+  "group_id": "triunic_lake",
+  "color": [
+   244,
+   170,
+   13
+  ],
+  "modifiers": [
+   {
+    "modifier": "years_of_nationalism",
+    "value": -5.0
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "feast_of_the_gods": {
+  "name": "Feast of the Gods",
+  "id": "feast_of_the_gods",
+  "group": "Giantkin",
+  "group_id": "giantkin",
+  "color": [
+   120,
+   127,
+   89
+  ],
+  "modifiers": [
+   {
+    "modifier": "morale_damage",
+    "value": 0.1
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "reformed_feast_of_the_gods": {
+  "name": "Feast of the Gods",
+  "id": "reformed_feast_of_the_gods",
+  "group": "Giantkin",
+  "group_id": "giantkin",
+  "color": [
+   120,
+   127,
+   89
+  ],
+  "modifiers": [
+   {
+    "modifier": "morale_damage",
+    "value": 0.1
+   },
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "mountain_watchers": {
+  "name": "Mountain Watchers",
+  "id": "mountain_watchers",
+  "group": "Giantkin",
+  "group_id": "giantkin",
+  "color": [
+   41,
+   41,
+   77
+  ],
+  "modifiers": [
+   {
+    "modifier": "movement_speed",
+    "value": 0.1
+   },
+   {
+    "modifier": "defensiveness",
+    "value": 0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "sudomegi": {
+  "name": "Sudomeg'i",
+  "id": "sudomegi",
+  "group": "Giantkin",
+  "group_id": "giantkin",
+  "color": [
+   50,
+   125,
+   185
+  ],
+  "modifiers": [
+   {
+    "modifier": "infantry_power",
+    "value": 0.1
+   },
+   {
+    "modifier": "shock_damage_received",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "irdaeos_worship": {
+  "name": "Irdaeos Worship",
+  "id": "irdaeos_worship",
+  "group": "Centaur",
+  "group_id": "centaur_religion",
+  "color": [
+   60,
+   40,
+   20
+  ],
+  "modifiers": [
+   {
+    "modifier": "movement_speed",
+    "value": 0.05
+   },
+   {
+    "modifier": "horde_unity",
+    "value": 0.5
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "nakavy_avo": {
+  "name": "Nakavy Avo",
+  "id": "nakavy_avo",
+  "group": "Tanibic Pantheons",
+  "group_id": "tanibic_religion",
+  "color": [
+   183,
+   110,
+   121
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_tax_modifier",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_sailors_modifier",
+    "value": 0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "noukahi_pantheon": {
+  "name": "Noukahi Pantheon",
+  "id": "noukahi_pantheon",
+  "group": "Tanibic Pantheons",
+  "group_id": "tanibic_religion",
+  "color": [
+   198,
+   110,
+   30
+  ],
+  "modifiers": [
+   {
+    "modifier": "idea_cost",
+    "value": -0.1
+   },
+   {
+    "modifier": "leader_cost",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "fangaulan_pantheon": {
+  "name": "Fangaulan Pantheon",
+  "id": "fangaulan_pantheon",
+  "group": "Tanibic Pantheons",
+  "group_id": "tanibic_religion",
+  "color": [
+   79,
+   91,
+   137
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_autonomy",
+    "value": -0.05
+   },
+   {
+    "modifier": "all_estate_loyalty_equilibrium",
+    "value": 0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "mother_akasik": {
+  "name": "Mother Akasik",
+  "id": "mother_akasik",
+  "group": "Tanibic Pantheons",
+  "group_id": "tanibic_religion",
+  "color": [
+   200,
+   162,
+   100
+  ],
+  "modifiers": [
+   {
+    "modifier": "defensiveness",
+    "value": 0.1
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "night_coven": {
+  "name": "Night Coven",
+  "id": "night_coven",
+  "group": "Night Coven",
+  "group_id": "hag_religion",
+  "color": [
+   6,
+   6,
+   6
+  ],
+  "modifiers": [
+   {
+    "modifier": "warscore_cost_vs_other_religion",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "shadow_pact": {
+  "name": "Shadow Pact",
+  "id": "shadow_pact",
+  "group": "Night Coven",
+  "group_id": "hag_religion",
+  "color": [
+   10,
+   4,
+   30
+  ],
+  "modifiers": [
+   {
+    "modifier": "leader_land_shock",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "anzalkatsa": {
+  "name": "Anzalkatsa",
+  "id": "anzalkatsa",
+  "group": "Lizardfolk",
+  "group_id": "lizardfolk_religion",
+  "color": [
+   104,
+   155,
+   55
+  ],
+  "modifiers": [
+   {
+    "modifier": "global_unrest",
+    "value": -2.0
+   },
+   {
+    "modifier": "core_creation",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "zaradyrra": {
+  "name": "Zaradyrra",
+  "id": "zaradyrra",
+  "group": "Lizardfolk",
+  "group_id": "lizardfolk_religion",
+  "color": [
+   137,
+   66,
+   20
+  ],
+  "modifiers": [
+   {
+    "modifier": "land_morale",
+    "value": 0.1
+   },
+   {
+    "modifier": "army_tradition_from_battle",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "gotiriei": {
+  "name": "Gotiriei",
+  "id": "gotiriei",
+  "group": "Eltibhar Religion",
+  "group_id": "eltibhen_religion",
+  "color": [
+   145,
+   144,
+   119
+  ],
+  "modifiers": [
+   {
+    "modifier": "legitimacy",
+    "value": 1.0
+   },
+   {
+    "modifier": "free_policy",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "sky_domain": {
+  "name": "Sky Domain",
+  "id": "sky_domain",
+  "group": "East Sarhaly",
+  "group_id": "east_sarhal_religion",
+  "color": [
+   150,
+   180,
+   250
+  ],
+  "modifiers": [
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   },
+   {
+    "modifier": "core_creation",
+    "value": -0.1
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "beast_memory": {
+  "name": "Beast Memory",
+  "id": "beast_memory",
+  "group": "East Sarhaly",
+  "group_id": "east_sarhal_religion",
+  "color": [
+   222,
+   80,
+   46
+  ],
+  "modifiers": [
+   {
+    "modifier": "shock_damage",
+    "value": 0.1
+   },
+   {
+    "modifier": "global_regiment_cost",
+    "value": -0.05
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "rinta_seekers": {
+  "name": "Rinta Seekers",
+  "id": "rinta_seekers",
+  "group": "East Sarhaly",
+  "group_id": "east_sarhal_religion",
+  "color": [
+   0,
+   99,
+   99
+  ],
+  "modifiers": [
+   {
+    "modifier": "technology_cost",
+    "value": -0.05
+   },
+   {
+    "modifier": "missionaries",
+    "value": 1.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "habab_zar": {
+  "name": "Habab Zar",
+  "id": "habab_zar",
+  "group": "East Sarhaly",
+  "group_id": "east_sarhal_religion",
+  "color": [
+   91,
+   43,
+   85
+  ],
+  "modifiers": [
+   {
+    "modifier": "prestige_decay",
+    "value": -0.01
+   },
+   {
+    "modifier": "army_tradition_decay",
+    "value": -0.01
+   },
+   {
+    "modifier": "tolerance_heretic",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "genie_cult": {
+  "name": "Genie Cult",
+  "id": "genie_cult",
+  "group": "East Sarhaly",
+  "group_id": "east_sarhal_religion",
+  "color": [
+   50,
+   50,
+   200
+  ],
+  "modifiers": [
+   {
+    "modifier": "advisor_cost",
+    "value": -0.1
+   },
+   {
+    "modifier": "tolerance_own",
+    "value": 2.0
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ },
+ "rioqay_diu": {
+  "name": "Rioqay Diú",
+  "id": "rioqay_diu",
+  "group": "Amadian",
+  "group_id": "amadian_religion",
+  "color": [
+   247,
+   214,
+   214
+  ],
+  "modifiers": [
+   {
+    "modifier": "yearly_corruption",
+    "value": -0.1
+   },
+   {
+    "modifier": "land_attrition",
+    "value": -0.15
+   }
+  ],
+  "allowed_conversions": [],
+  "description": ""
+ }
+}

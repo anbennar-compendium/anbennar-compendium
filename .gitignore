@@ -1,0 +1,6 @@
+# Python build scripts (not needed for the deployed site)
+__pycache__/
+*.pyc
+
+# Large source data files not needed for deployment are committed
+# since GitHub Pages serves them as static assets

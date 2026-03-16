@@ -1,0 +1,7628 @@
+{
+  "A01": {
+    "status": "both",
+    "provinces_owned": 25,
+    "formable_from": "LorentishNation.txt",
+    "formable_decision": "lorentish_nation"
+  },
+  "A02": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A03": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A04": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A05": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A06": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A07": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A08": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A09": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A10": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A11": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A12": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A13": {
+    "status": "both",
+    "provinces_owned": 40,
+    "formable_from": "GawediNation.txt",
+    "formable_decision": "gawedi_nation"
+  },
+  "A14": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A15": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A16": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A17": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A18": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A19": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A20": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A21": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A22": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A23": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A24": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A25": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A26": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A27": {
+    "status": "playable",
+    "provinces_owned": 17,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A28": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A29": {
+    "status": "playable",
+    "provinces_owned": 14,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A30": {
+    "status": "playable",
+    "provinces_owned": 16,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A31": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A32": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A33": {
+    "status": "both",
+    "provinces_owned": 11,
+    "formable_from": "VerneNation.txt",
+    "formable_decision": "verne_nation"
+  },
+  "A34": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A35": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A36": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A37": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A38": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A39": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A40": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A41": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A42": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A43": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A44": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A45": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A46": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A47": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A48": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A49": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A50": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A51": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A52": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A53": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A54": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A55": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A56": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A57": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A58": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DamerianNation.txt",
+    "formable_decision": "damerian_nation"
+  },
+  "A59": {
+    "status": "playable",
+    "provinces_owned": 16,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A60": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A61": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A62": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A63": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A64": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A65": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A70": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A71": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A72": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A73": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A74": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A75": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A76": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A77": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A78": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RoilsardNation.txt",
+    "formable_decision": "reform_roilsard_decision"
+  },
+  "A79": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GnomishNation.txt",
+    "formable_decision": "gnomish_nation"
+  },
+  "A80": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GnomishNation.txt",
+    "formable_decision": "iochand_nation"
+  },
+  "A81": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A82": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A83": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A84": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A85": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A86": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A87": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A88": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A89": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A90": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A91": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A92": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A93": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A94": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A95": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A96": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A97": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalflingNation.txt",
+    "formable_decision": "halfling_nation"
+  },
+  "A98": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "A99": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B01": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B02": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B03": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B04": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B05": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B06": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B07": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B08": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B09": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B10": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B11": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B12": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B13": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B14": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B15": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B16": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B17": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B18": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B19": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B20": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B21": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B22": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B23": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B24": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B25": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B26": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B27": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B28": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B29": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B30": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B31": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "castellyr_nation"
+  },
+  "B32": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "castanor_nation"
+  },
+  "B33": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "blademarches_nation"
+  },
+  "B34": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B35": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B36": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B37": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B38": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B39": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B40": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B42": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B43": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B44": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B45": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B46": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B47": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B48": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B49": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B50": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B51": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B52": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B53": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B54": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "B55": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B56": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B57": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B58": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "adenica_nation"
+  },
+  "B59": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "PashaineNation.txt",
+    "formable_decision": "pashaine_nation"
+  },
+  "B60": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "farranean_nation"
+  },
+  "B61": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B62": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B63": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B64": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B65": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B68": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B70": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B71": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B72": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B74": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B75": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B76": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B77": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B78": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CarneterNation.txt",
+    "formable_decision": "carneter_nation"
+  },
+  "B79": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EscanniGoblinFormables.txt",
+    "formable_decision": "jazhkredu_nation"
+  },
+  "B80": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B81": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B82": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B83": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B84": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B85": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B86": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B87": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B88": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B89": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B90": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B95": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "1EscannFormables.txt",
+    "formable_decision": "uanced_nation"
+  },
+  "B96": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "SalceranNation.txt",
+    "formable_decision": "salceran_nation"
+  },
+  "B97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "B98": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GerudianFormables.txt",
+    "formable_decision": "the_reach_nation"
+  },
+  "B99": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F21": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F22": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F23": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F24": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F25": {
+    "status": "playable",
+    "provinces_owned": 13,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F26": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F27": {
+    "status": "playable",
+    "provinces_owned": 14,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F28": {
+    "status": "playable",
+    "provinces_owned": 15,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F29": {
+    "status": "playable",
+    "provinces_owned": 21,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F30": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F31": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F32": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F33": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F34": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F35": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F36": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F37": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F38": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RestorePhoenixEmpire.txt",
+    "formable_decision": "restore_phoenix_empire"
+  },
+  "F39": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F40": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F41": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F42": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F43": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F44": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F45": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F46": {
+    "status": "playable",
+    "provinces_owned": 14,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F47": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F48": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F49": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F50": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F51": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "JaddEmpireNation.txt",
+    "formable_decision": "form_jadd_empire"
+  },
+  "F52": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "Surakes.txt",
+    "formable_decision": "form_surakes"
+  },
+  "F53": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "Musaskalam.txt",
+    "formable_decision": "form_musaskalam"
+  },
+  "F54": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F55": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F56": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F57": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F58": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "unite_the_children"
+  },
+  "F60": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F61": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F62": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F63": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F64": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "prakheta_nation"
+  },
+  "F65": {
+    "status": "playable",
+    "provinces_owned": 18,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F66": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GnollDecisions.txt",
+    "formable_decision": "konolkhatep_nation"
+  },
+  "F67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F69": {
+    "status": "playable",
+    "provinces_owned": 21,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F70": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F71": {
+    "status": "playable",
+    "provinces_owned": 13,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F72": {
+    "status": "playable",
+    "provinces_owned": 23,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F74": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F75": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F76": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F77": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F78": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OverclanNation.txt",
+    "formable_decision": "overclan_nation"
+  },
+  "F79": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F80": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F81": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F82": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F83": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F84": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F85": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F86": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F87": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F88": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F89": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F90": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "F96": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "XhurekalFormable.txt",
+    "formable_decision": "form_xhurekal"
+  },
+  "F97": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RestorePhoenixEmpire.txt",
+    "formable_decision": "restore_phoenix_empire"
+  },
+  "F99": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G00": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G01": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G02": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G03": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G04": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G05": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G06": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G07": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G08": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G09": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G15": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G16": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G17": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G18": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G19": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G20": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G21": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G22": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G23": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G24": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G25": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G26": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G27": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G28": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G29": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G30": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G31": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G32": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G33": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G34": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G35": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G36": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G37": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G38": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G39": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G40": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G42": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G43": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G44": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G45": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G46": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G47": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G48": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G49": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G50": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G51": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G52": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G53": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G54": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G55": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G56": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G57": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G58": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G59": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G60": {
+    "status": "playable",
+    "provinces_owned": 15,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G61": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G62": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G63": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G64": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G65": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G66": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G67": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G68": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G69": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G70": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G71": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G72": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G73": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G74": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G75": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G76": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G77": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G78": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G79": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G80": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G81": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G82": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G83": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G84": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G85": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G86": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G87": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G88": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G89": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G90": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G96": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "G99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "dtc_nation"
+  },
+  "H00": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "SaerraegNation.txt",
+    "formable_decision": "saerraeg_nation"
+  },
+  "H01": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H02": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H03": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H04": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H05": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H06": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H07": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H08": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H09": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H10": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H11": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H12": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H13": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H14": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H15": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H16": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H17": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H18": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H19": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H20": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H21": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H22": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "KheionaiNation.txt",
+    "formable_decision": "kheionai_nation"
+  },
+  "H23": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H24": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "dragon_dominion_nation"
+  },
+  "H25": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H26": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H27": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "ynnic_empire_nation"
+  },
+  "H28": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H29": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H30": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H31": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H32": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H33": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H34": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H35": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H36": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H37": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H38": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H39": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H40": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H41": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H42": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H43": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H44": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H45": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H46": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H47": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H48": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H49": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H50": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H51": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H52": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H53": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H54": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H55": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H56": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H57": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H58": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H59": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H60": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H61": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H62": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H63": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H64": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H65": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H67": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "H68": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H69": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H70": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H71": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H72": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H73": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H74": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H75": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H76": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H77": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H78": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H79": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H80": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H81": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H82": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H83": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H84": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H85": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H86": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H87": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H88": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H89": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H90": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H91": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H92": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H93": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H96": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "H99": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I00": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I01": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I02": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I03": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I04": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I05": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I06": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I07": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I08": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I09": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I10": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I11": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I12": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I13": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I14": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I15": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I16": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I17": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I18": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I19": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I20": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I21": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I22": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I23": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DiggyFormables.txt",
+    "formable_decision": "I23_nation"
+  },
+  "I24": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DiggyFormables.txt",
+    "formable_decision": "I24_nation"
+  },
+  "I25": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I26": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I27": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I28": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I29": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I30": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I31": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I32": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I33": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I34": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I35": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I36": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I37": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I38": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I39": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I40": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I41": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I42": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I43": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I44": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I45": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I46": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DeepwoodsFormables.txt",
+    "formable_decision": "deepwoods_orc_reform_tugund_darakh"
+  },
+  "I47": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I48": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I49": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I50": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I51": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I52": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I53": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I54": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I55": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I56": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I57": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I58": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I59": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I60": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I61": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I62": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I63": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I64": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I65": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I66": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I67": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I69": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I70": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I71": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I72": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I73": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I74": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I75": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I76": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I77": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I78": {
+    "status": "playable",
+    "provinces_owned": 22,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I79": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I80": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I81": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I82": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I83": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I84": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I85": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I86": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I87": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I88": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I89": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CentaurDecisions.txt",
+    "formable_decision": "great_khan_awakening"
+  },
+  "I90": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I96": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "I98": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CaveGoblinDecisions.txt",
+    "formable_decision": "form_udzenklan"
+  },
+  "I99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CaveGoblinDecisions.txt",
+    "formable_decision": "form_underkingdom"
+  },
+  "J01": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J02": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J03": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J04": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J05": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J06": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J07": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J08": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J09": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J10": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J11": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J12": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J13": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J14": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J15": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J16": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J17": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J18": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J19": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J20": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J21": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J22": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J23": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J24": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J25": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J26": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J27": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J28": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J29": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J30": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J31": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J32": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J33": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "LakeFederationDecisions.txt",
+    "formable_decision": "the_lake_federation"
+  },
+  "J34": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "LakeFederationDecisions.txt",
+    "formable_decision": "unite_q_city"
+  },
+  "J35": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J36": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J37": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J38": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J39": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J40": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J42": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J43": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J44": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J45": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J46": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J47": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J48": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J49": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J50": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J51": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J52": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J53": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J54": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CentaurDecisions.txt",
+    "formable_decision": "form_altorzamh"
+  },
+  "J55": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CentaurDecisions.txt",
+    "formable_decision": "form_lejdazamh"
+  },
+  "J56": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CentaurDecisions.txt",
+    "formable_decision": "form_taryeanzamh"
+  },
+  "J68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J70": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J71": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J72": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J73": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J74": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J75": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J76": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J77": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J78": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J79": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J80": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J81": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J82": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J83": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J84": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TaychendDecisions.txt",
+    "formable_decision": "taychend_empire_nation"
+  },
+  "J85": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TaychendDecisions.txt",
+    "formable_decision": "nanru_nakar_nation"
+  },
+  "J86": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J87": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J88": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J89": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J90": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J91": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J92": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J93": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AmadiaDecisions.txt",
+    "formable_decision": "hinediu_yulas_nation"
+  },
+  "J95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J96": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "J99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TaychendDecisions.txt",
+    "formable_decision": "validaunea_nation"
+  },
+  "L01": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L02": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L03": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L04": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L05": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L06": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L07": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L08": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L09": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L10": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L11": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L12": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L13": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L14": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L15": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L16": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L17": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L18": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L19": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L20": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L21": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L22": {
+    "status": "playable",
+    "provinces_owned": 24,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L23": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "fangaula_nation"
+  },
+  "L24": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L25": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L26": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L27": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L28": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L29": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "kartakhet_nation"
+  },
+  "L30": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "vurebindika_nation"
+  },
+  "L31": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "irsukumbha_nation"
+  },
+  "L32": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L33": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L34": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L35": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L36": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L37": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L38": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L39": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L40": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L42": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L43": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L44": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L45": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L46": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L47": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L48": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L49": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "kaino_nation"
+  },
+  "L50": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L51": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L52": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L53": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L54": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L55": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L56": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L57": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L58": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L59": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "form_bwa_tanizu"
+  },
+  "L60": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L61": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L62": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L63": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L64": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L65": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "melakmengi_nation"
+  },
+  "L66": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L67": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L68": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L69": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L70": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L71": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L72": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L74": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L75": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L76": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L77": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L78": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L79": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L80": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L81": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L82": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L83": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L84": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L85": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L86": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L87": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "adzalan_formation"
+  },
+  "L88": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L89": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L90": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L92": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L95": {
+    "status": "playable",
+    "provinces_owned": 24,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L96": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L97": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "L99": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M01": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M02": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M03": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CaveGoblinDecisions.txt",
+    "formable_decision": "form_svaikzenszel"
+  },
+  "M04": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OrcFormables.txt",
+    "formable_decision": "found_tarakar"
+  },
+  "M05": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M50": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M51": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M52": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M53": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M54": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M55": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M56": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M57": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M58": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M59": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M60": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M61": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M62": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M63": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M64": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M65": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M70": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M71": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M72": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M74": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M75": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M76": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M77": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M78": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "M79": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "NPC": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R00": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_lohanparayan"
+  },
+  "R01": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R02": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R03": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R04": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R05": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R06": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R07": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R08": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R09": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R10": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R11": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R12": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R13": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R14": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R15": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R16": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R17": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R18": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R19": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R20": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R21": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R22": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R23": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R24": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R25": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R26": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R27": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R28": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R29": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R30": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R31": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R32": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R33": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R34": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R35": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R36": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R37": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R38": {
+    "status": "playable",
+    "provinces_owned": 18,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R39": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R40": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R41": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R42": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R43": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R44": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R45": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R46": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R47": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R48": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R49": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R50": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R51": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R52": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R53": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R54": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R55": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R56": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R57": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R58": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R59": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R60": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R61": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R62": {
+    "status": "playable",
+    "provinces_owned": 70,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R63": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R64": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R65": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R66": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R70": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_harimraj"
+  },
+  "R71": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_rahenraj"
+  },
+  "R72": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_dhugajir"
+  },
+  "R73": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_nadimraj"
+  },
+  "R74": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_ghankedhen"
+  },
+  "R75": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_dhujat"
+  },
+  "R76": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_sardhasi"
+  },
+  "R77": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_vanrahar"
+  },
+  "R78": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R79": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R80": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R81": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R82": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R83": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R84": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R85": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R86": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YinquanDecisions.txt",
+    "formable_decision": "Y26_form_lingyuk"
+  },
+  "R87": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R88": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R89": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R90": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R96": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R97": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_raghajandi"
+  },
+  "R98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "R99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "RaheniFormables.txt",
+    "formable_decision": "form_suryavar"
+  },
+  "S11": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S12": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S13": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S14": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S15": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S16": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S17": {
+    "status": "playable",
+    "provinces_owned": 14,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S18": {
+    "status": "playable",
+    "provinces_owned": 17,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S19": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S20": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S21": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S22": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S23": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S24": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S25": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S26": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S27": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S28": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S29": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S30": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S31": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S32": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S33": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S34": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S35": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S36": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S37": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S38": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S39": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S40": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S42": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S43": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S44": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S45": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S46": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S47": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S48": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S49": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S50": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S51": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S52": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S53": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S54": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S55": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S56": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S57": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S58": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S59": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S60": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S61": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S62": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S63": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S64": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S65": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S66": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S67": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S70": {
+    "status": "playable",
+    "provinces_owned": 39,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S71": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "FahvanosyDecisions.txt",
+    "formable_decision": "fahvanosy_nation"
+  },
+  "S72": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S74": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S75": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S76": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S77": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "FahvanosyDecisions.txt",
+    "formable_decision": "amiratsamo_nation"
+  },
+  "S78": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S79": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "form_umoji_baashidi"
+  },
+  "S81": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "lizard_empire_nation"
+  },
+  "S82": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S83": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S84": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "end_the_warlord_era"
+  },
+  "S85": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S86": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S87": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S88": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S89": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "yehatirha_nation"
+  },
+  "S90": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "umbral_covenant_formation"
+  },
+  "S92": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "JinnakahNation.txt",
+    "formable_decision": "jinnakah_nation"
+  },
+  "S93": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S94": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S95": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S96": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S97": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S98": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "S99": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS0": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS1": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS2": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS3": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS4": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS5": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS6": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "SS7": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U01": {
+    "status": "both",
+    "provinces_owned": 18,
+    "formable_from": "WestSarhalFormables.txt",
+    "formable_decision": "kheterata_nation"
+  },
+  "U02": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U04": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U05": {
+    "status": "playable",
+    "provinces_owned": 24,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U06": {
+    "status": "playable",
+    "provinces_owned": 10,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U07": {
+    "status": "playable",
+    "provinces_owned": 15,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U08": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U09": {
+    "status": "playable",
+    "provinces_owned": 27,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U10": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U11": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U12": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U13": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U14": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U15": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U16": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U17": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U18": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U19": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U20": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U21": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U22": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "veykodirzag_nation"
+  },
+  "U23": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U24": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U25": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U26": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U27": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TheinosNation.txt",
+    "formable_decision": "theinos_nation"
+  },
+  "U28": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "KooyaahseNation.txt",
+    "formable_decision": "kooyaahse_nation"
+  },
+  "U29": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U30": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U31": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TriarchyNation.txt",
+    "formable_decision": "triarchy_nation"
+  },
+  "U32": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U33": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U34": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U35": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U36": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U37": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U38": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U39": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "TaychendDecisions.txt",
+    "formable_decision": "orenvalyam_nation"
+  },
+  "U40": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U41": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U42": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U43": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U44": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U45": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U46": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U47": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EastSarhalFormables.txt",
+    "formable_decision": "shyarayan_formation"
+  },
+  "U48": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "CataboekDecision.txt",
+    "formable_decision": "cataboek_nation"
+  },
+  "U52": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "endralliande_nation"
+  },
+  "U55": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "trollsbay_nation"
+  },
+  "U56": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "bloodgroves_nation"
+  },
+  "U57": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "cheshoshmar_nation"
+  },
+  "U60": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "soruin_nation"
+  },
+  "U66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "U68": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_aelantir_nation"
+  },
+  "U69": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "sarda_nation"
+  },
+  "U70": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "dolindha_nation"
+  },
+  "U71": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "YnnDecisions.txt",
+    "formable_decision": "rzenta_nation"
+  },
+  "U72": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "VrendzanNation.txt",
+    "formable_decision": "vrendzan_nation"
+  },
+  "U76": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ColonialFormables.txt",
+    "formable_decision": "horizona_nation"
+  },
+  "V01": {
+    "status": "playable",
+    "provinces_owned": 29,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V02": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V03": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V04": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V05": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V06": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V07": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V08": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V09": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V10": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V11": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V12": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V13": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V14": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V15": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V16": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V17": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_nirenun_syul"
+  },
+  "V18": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_samthalsu"
+  },
+  "V19": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_yanszin"
+  },
+  "V20": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V21": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V22": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V23": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V24": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V25": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V26": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V27": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V28": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_baztungh_khayus"
+  },
+  "V98": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "V99": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y00": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_sunrise_empire"
+  },
+  "Y01": {
+    "status": "playable",
+    "provinces_owned": 16,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y02": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y03": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y04": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y05": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y06": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y07": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y08": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y09": {
+    "status": "playable",
+    "provinces_owned": 19,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y10": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y11": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y12": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y13": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y14": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y15": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y16": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y17": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y18": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y19": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y20": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y21": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y22": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y23": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y24": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y25": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y26": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y27": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y28": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y29": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y30": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y31": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y32": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y33": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y34": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y35": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y36": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y37": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y38": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y39": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y40": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y41": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y42": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y43": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y44": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y45": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y46": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y47": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y48": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y49": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y50": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y51": {
+    "status": "both",
+    "provinces_owned": 13,
+    "formable_from": "BimLauNation.txt",
+    "formable_decision": "bim_lau_nation"
+  },
+  "Y52": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y53": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y54": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y55": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y56": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y57": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y58": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y59": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y60": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y61": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y62": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y63": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y64": {
+    "status": "playable",
+    "provinces_owned": 13,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y65": {
+    "status": "playable",
+    "provinces_owned": 15,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y66": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y67": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y68": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y69": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y70": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y71": {
+    "status": "playable",
+    "provinces_owned": 12,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y72": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y73": {
+    "status": "playable",
+    "provinces_owned": 8,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y74": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y75": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y76": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y77": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y78": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y79": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y80": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y81": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y82": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y83": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y84": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y85": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y86": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y87": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y88": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y89": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y90": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y91": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y92": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y93": {
+    "status": "playable",
+    "provinces_owned": 37,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y94": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y95": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Y96": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "heirs_of_bhengudak"
+  },
+  "Y97": {
+    "status": "both",
+    "provinces_owned": 18,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_baihon_xinh"
+  },
+  "Y98": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "the_great_empire"
+  },
+  "Y99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OneXia.txt",
+    "formable_decision": "form_one_xia"
+  },
+  "Z01": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z02": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z03": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z04": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z05": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z06": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z07": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DostanorNation.txt",
+    "formable_decision": "dostanorian_nation"
+  },
+  "Z08": {
+    "status": "playable",
+    "provinces_owned": 16,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z09": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z10": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z11": {
+    "status": "playable",
+    "provinces_owned": 7,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z12": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z13": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z14": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z15": {
+    "status": "playable",
+    "provinces_owned": 5,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z16": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GerudianFormables.txt",
+    "formable_decision": "olavlund_nation"
+  },
+  "Z17": {
+    "status": "playable",
+    "provinces_owned": 9,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z18": {
+    "status": "playable",
+    "provinces_owned": 11,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z19": {
+    "status": "playable",
+    "provinces_owned": 6,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z20": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z21": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z22": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z23": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z24": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z25": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z26": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z27": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z28": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z29": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z30": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z31": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z32": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z33": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z34": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "BlackCastanorNation.txt",
+    "formable_decision": "black_castanor_nation"
+  },
+  "Z35": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "Z36": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "Z37": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AdventurerFormables.txt",
+    "formable_decision": "universal_escann_nation"
+  },
+  "Z38": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "Kobold_Decisions.txt",
+    "formable_decision": "kobold_nation"
+  },
+  "Z39": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "ViswallNation.txt",
+    "formable_decision": "viswall_nation"
+  },
+  "Z40": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z41": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z42": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z43": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "AelnarNation.txt",
+    "formable_decision": "aelnar_nation"
+  },
+  "Z44": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z45": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GerudianFormables.txt",
+    "formable_decision": "vrorenmarch_nation"
+  },
+  "Z46": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "EsmariNation.txt",
+    "formable_decision": "esmarian_nation"
+  },
+  "Z47": {
+    "status": "playable",
+    "provinces_owned": 4,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z48": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z49": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z50": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "GerudianFormables.txt",
+    "formable_decision": "grombar_nation"
+  },
+  "Z51": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OrcFormables.txt",
+    "formable_decision": "khozrugan_nation"
+  },
+  "Z52": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OrcFormables.txt",
+    "formable_decision": "unguldavor_nation"
+  },
+  "Z53": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OrcFormables.txt",
+    "formable_decision": "barumand_nation"
+  },
+  "Z54": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DeepwoodsFormables.txt",
+    "formable_decision": "deepwoods_orc_reform_karakhanbar"
+  },
+  "Z55": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z56": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "Kobold_Decisions.txt",
+    "formable_decision": "kuxhezte_nation"
+  },
+  "Z57": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "OrcFormables.txt",
+    "formable_decision": "found_karashar"
+  },
+  "Z58": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z59": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z60": {
+    "status": "playable",
+    "provinces_owned": 2,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z61": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z62": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z63": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "unite_thidinkai"
+  },
+  "Z64": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "king_of_kings_form"
+  },
+  "Z65": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_yanshen"
+  },
+  "Z66": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_liang"
+  },
+  "Z67": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "HalessiFormables.txt",
+    "formable_decision": "form_di_yichan"
+  },
+  "Z68": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z69": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z70": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z71": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z72": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z73": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z74": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z75": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z76": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z77": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z78": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z79": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z80": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z81": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z82": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z83": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z84": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z85": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z86": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DeepwoodsFormables.txt",
+    "formable_decision": "forest_goblin_cartel_nation"
+  },
+  "Z87": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "DeepwoodsFormables.txt",
+    "formable_decision": "forest_goblin_pactseeker_nation"
+  },
+  "Z88": {
+    "status": "playable",
+    "provinces_owned": 3,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z89": {
+    "status": "playable",
+    "provinces_owned": 1,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z90": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z91": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z92": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z97": {
+    "status": "other",
+    "provinces_owned": 0,
+    "formable_from": null,
+    "formable_decision": null
+  },
+  "Z99": {
+    "status": "formable",
+    "provinces_owned": 0,
+    "formable_from": "BlackDemenseNation.txt",
+    "formable_decision": "walk_the_stellar_path"
+  }
+}
