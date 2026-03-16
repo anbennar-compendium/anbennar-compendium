@@ -1653,11 +1653,15 @@ function parseTriggerToReadable(raw) {
   }
   processed = collapseBlock(processed, 'num_of_owned_provinces_with');
   processed = collapseBlock(processed, 'calc_true_if');
+  processed = collapseBlock(processed, 'unlock_merc_company');
+  processed = collapseBlock(processed, 'add_trade_modifier');
+  processed = collapseBlock(processed, 'define_ruler');
+  // ROOT/FROM/PREV as scope openers are handled by depth traversal (depth limit = 5)
   const lines = processed.split('\n');
   const results = [];
   let depth = 0;
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
-  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'hidden_trigger', 'hidden_effect', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target']);
+  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'hidden_trigger', 'hidden_effect', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
   // Track current scope (area/region/province) for context-aware claim handling
   const scopeStack = []; // [{name, type, depth}]
 
@@ -1679,7 +1683,7 @@ function parseTriggerToReadable(raw) {
 
     if (trimmed.startsWith('#')) { depth = Math.max(0, newDepth); continue; }
 
-    if (depth <= 3) {
+    if (depth <= 5) {
       let m;
       if ((m = trimmed.match(/^(\w+)\s*=\s*(.+)$/))) {
         const key = m[1];
@@ -1766,7 +1770,7 @@ function parseTriggerToReadable(raw) {
 
     depth = Math.max(0, newDepth);
   }
-  return results.slice(0, 15);
+  return results.slice(0, 30);
 }
 
 function negateCondition(text) {
@@ -2183,7 +2187,7 @@ function triggerToText(key, val) {
     'adm': null,
     'dip': null,
     'mil': null,
-    'culture': null, // too many contexts
+    'culture': isScopeVar(val) ? 'Change culture to ours' : `Culture: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'sign': null,
     'var': null,
     'effect': null, // nested
@@ -2238,6 +2242,52 @@ function triggerToText(key, val) {
     'religious_unity': `Religious unity at least <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span>`,
     'add_building_construction': (() => { const bm = val.match(/building\s*=\s*(\w+)/); return bm ? `Begin constructing <span class="tag">${bm[1].replace(/_/g, ' ')}</span>` : 'Begin building construction'; })(),
     'add_siberian_construction': `Add <span class="val">${val}</span> colonist progress`,
+    // Effects identified by audit
+    'add_stability_or_adm_power': 'Add <span class="val">1</span> stability (or <span class="val">100</span> admin power if at 3)',
+    'set_estate_privilege': `Grant estate privilege: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'remove_estate_privilege': `Remove estate privilege: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'discover_country': isScopeVar(val) ? null : `Discover country: <span class="tag">${tagName(val)}</span>`,
+    'add_trade_modifier': (() => { const wm = val.match(/who\s*=\s*(\w+)/); const pm = val.match(/power\s*=\s*(-?[\d.]+)/); const km = val.match(/key\s*=\s*(\w+)/); if (km) return `Add trade modifier: <span class="tag">${km[1].replace(/_/g, ' ')}</span>${pm ? ' (' + pm[1] + ' power)' : ''}`; return 'Add trade modifier'; })(),
+    'unlock_merc_company': (() => { const nm = val.match(/merc_company\s*=\s*(\w+)/); return nm ? `Unlock mercenary company: <span class="tag">${nm[1].replace(/_/g, ' ')}</span>` : 'Unlock a mercenary company'; })(),
+    'rename_capital': `Rename capital to: <span class="tag">${val.replace(/"/g, '')}</span>`,
+    'change_province_name': `Rename province to: <span class="tag">${val.replace(/"/g, '')}</span>`,
+    'change_innovativeness': `Add <span class="val">${val}</span> innovativeness`,
+    'add_estate_loyalty': (() => { const em = val.match(/estate\s*=\s*estate_(\w+)/); const lm = val.match(/loyalty\s*=\s*(-?[\d.]+)/); if (em && lm) return `Add <span class="val">${lm[1]}</span> ${em[1].replace(/_/g, ' ')} loyalty`; return null; })(),
+    'declare_war_with_cb': (() => { const wm = val.match(/who\s*=\s*(\w+)/); const cm = val.match(/casus_belli\s*=\s*(\w+)/); const tgt = wm ? (isScopeVar(wm[1]) ? 'target' : tagName(wm[1])) : 'target'; return `Declare war on <span class="tag">${tgt}</span>${cm ? ' (CB: ' + cm[1].replace(/_/g, ' ') + ')' : ''}`; })(),
+    'create_alliance': isScopeVar(val) ? null : `Create alliance with <span class="tag">${tagName(val)}</span>`,
+    'change_estate_land_share': (() => { const em = val.match(/estate\s*=\s*estate_(\w+)/); const sm = val.match(/share\s*=\s*(-?[\d.]+)/); if (em && sm) return `Change ${em[1].replace(/_/g, ' ')} land share by <span class="val">${sm[1]}</span>`; return null; })(),
+    'add_government_power': (() => { const mm = val.match(/mechanic_type\s*=\s*(\w+)/); const pm = val.match(/power_type\s*=\s*(\w+)/); const vm = val.match(/amount\s*=\s*(-?\d+)/); if (pm && vm) return `Add <span class="val">${vm[1]}</span> ${pm[1].replace(/_/g, ' ')}`; return mm ? `Add government power (${mm[1].replace(/_/g, ' ')})` : null; })(),
+    'unlock_estate_privilege': `Unlock estate privilege: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'kill_units': (() => { const wm = val.match(/who\s*=\s*(\w+)/); return wm ? `Kill units belonging to <span class="tag">${isScopeVar(wm[1]) ? 'us' : tagName(wm[1])}</span>` : 'Kill units in province'; })(),
+    'define_ruler': (() => { const nm = val.match(/name\s*=\s*"?([^"}\n]+)"?/); return nm ? `Gain a new ruler: <span class="tag">${nm[1].trim()}</span>` : 'Gain a new ruler'; })(),
+    'add_truce_with': isScopeVar(val) ? null : `Add truce with <span class="tag">${tagName(val)}</span>`,
+    'add_spy_network_in': null,
+    'add_spy_network_from': null,
+    'change_trade_goods': `Change trade goods to: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'add_adm_tech': `Add <span class="val">${val}</span> admin tech levels`,
+    'add_dip_tech': `Add <span class="val">${val}</span> diplo tech levels`,
+    'add_mil_tech': `Add <span class="val">${val}</span> military tech levels`,
+    'add_piety': `Add <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span> piety`,
+    'add_mandate': `Add <span class="val">${val}</span> mandate`,
+    'add_tribal_allegiance': `Add <span class="val">${val}</span> tribal allegiance`,
+    'add_reform_desire': `Add <span class="val">${val}</span> reform desire`,
+    'create_colony': `Create colony (size <span class="val">${val}</span>)`,
+    'change_government_to_republic': 'Change government to republic',
+    'change_government_to_monarchy': 'Change government to monarchy',
+    'change_government_to_theocracy': 'Change government to theocracy',
+    'change_government_to_tribal': 'Change government to tribal',
+    'set_capital': `Move capital to <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'move_capital': `Move capital to <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'add_next_institution_embracement': `Add <span class="val">${val}</span> institution progress`,
+    'add_institution_embracement': (() => { const wm = val.match(/which\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(-?[\d.]+)/); if (wm && vm) return `Add <span class="val">${vm[1]}</span> ${wm[1].replace(/_/g, ' ')} progress`; return 'Add institution progress'; })(),
+    'every_province': 'Every province in scope:',
+    'random_province': 'A random province:',
+    'every_core_province': 'Every core province:',
+    'random_core_province': 'A random core province:',
+    'every_neighbor_province': 'Every neighboring province:',
+    'any_core_country': 'Any core country:',
+    'any_province': 'Any province:',
+    'any_owned_province': 'Any owned province:',
     // Suppress Paradox scope variables
     'ROOT': null,
     'FROM': null,
