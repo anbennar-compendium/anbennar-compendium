@@ -1318,7 +1318,9 @@ function modChip(name, value) {
   const num = parseFloat(value);
   let cls = 'neutral';
   if (!isNaN(num)) {
-    const negIsGood = /cost|unrest|corruption|inflation|decay|attrition(?!.*hostile)|impact|demand|liberty_desire|aggressive_expansion|build_time|interest|ae_impact|core_creation|harsh|stab_hit|power_cost|regiment_cost|ship_cost|maintenance|war_exhaustion|damage_received|morale_damage_received|landing_penalty|uprising_chance|cooldown|governing_cost|transport_cost|overextension|years_of_nationalism|envoy_travel_time/.test(name) && !/hostile_attrition|^reduced_/.test(name);
+    const lname = name.toLowerCase();
+    // "Less is better" modifiers: negative value = green, positive value = red
+    const negIsGood = /cost|unrest|corruption|inflation(?!_reduction)|decay(?!.*_reduction)|attrition(?!.*hostile)|impact|demand|liberty_desire|aggressive_expansion|build_time|interest|ae_impact|core_creation|harsh|stab_hit|power_cost|regiment_cost|ship_cost|maintenance|war_exhaustion|damage_received|morale_damage_received|morale_hit_recieved|landing_penalty|uprising_chance|cooldown|governing_cost|transport_cost|overextension|years_of_nationalism|envoy_travel_time|global_autonomy|min_autonomy|recruit_speed|culture_conversion_time|autonomy_change_time|national_focus_years|global_monthly_devastation|devastation/.test(lname) && !/hostile_attrition|^reduced_|_reduction|karma_decay/.test(lname);
     if (negIsGood) {
       cls = num <= 0 ? 'positive' : 'negative';
     } else {
@@ -1828,6 +1830,9 @@ function triggerToText(key, val) {
     'culture_group_claim': `Culture group claim on: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'has_discovered': isScopeVar(val) ? 'Has been discovered' : `Has discovered <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
     'capital_scope': 'In capital province:',
+    // Date & time
+    'is_year': `Year is at least <span class="val">${val}</span>`,
+    'is_month': `Month is at least <span class="val">${val}</span>`,
     // Country state
     'is_emperor': val === 'yes' ? 'Be the Emperor of the HRE' : 'Not be the Emperor',
     'is_elector': val === 'yes' ? 'Be an HRE Elector' : 'Not be an Elector',
@@ -1838,6 +1843,25 @@ function triggerToText(key, val) {
     'is_tribal': val === 'yes' ? 'Be tribal' : 'Not be tribal',
     'is_nomad': val === 'yes' ? 'Be nomadic' : 'Not be nomadic',
     'is_free_or_tributary_trigger': val === 'yes' ? 'Be independent or tributary' : '',
+    'is_in_deficit': val === 'no' ? 'Not be running a deficit' : 'Be running a deficit',
+    'is_rival': isScopeVar(val) ? null : `Be rivaled with <span class="tag">${tagName(val)}</span>`,
+    'is_neighbor_of': isScopeVar(val) ? null : `Be a neighbor of <span class="tag">${tagName(val)}</span>`,
+    'is_strongest_trade_power': isScopeVar(val) ? null : `Be the strongest trade power in <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'is_prosperous': val === 'yes' ? 'Province is prosperous' : 'Province is not prosperous',
+    'is_state_core': isScopeVar(val) ? null : `Is a state core`,
+    'is_state': val === 'yes' ? 'Is a full state' : null,
+    'is_capital': val === 'yes' ? 'Is the capital' : null,
+    'is_empty': val === 'yes' ? 'Province is empty/uncolonized' : 'Province is colonized',
+    'is_city': val === 'yes' ? 'Is a city (colonized)' : null,
+    'is_colony': val === 'yes' ? 'Is a colony' : null,
+    'is_revolutionary': val === 'yes' ? 'Be revolutionary' : 'Not be revolutionary',
+    'is_hegemon': val === 'yes' ? 'Be a hegemon' : null,
+    'is_emperor_of_china': val === 'yes' ? 'Be the Emperor of China' : null,
+    'is_ahead_of_time_in_technology': val === 'yes' ? 'Be ahead of time in technology' : null,
+    'is_institution_enabled': `Institution <span class="tag">${val.replace(/_/g, ' ')}</span> is enabled`,
+    'is_religion_enabled': `Religion <span class="tag">${val.replace(/_/g, ' ')}</span> is enabled`,
+    'is_colonial_nation_of': isScopeVar(val) ? null : `Be a colonial nation of <span class="tag">${tagName(val)}</span>`,
+    'is_the_raja': val === 'yes' ? 'Be the Raja' : null,
     'government': `Have government type: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'technology_group': `Technology group: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'exists': val === 'yes' ? 'Country exists' : val === 'no' ? null : `<span class="tag">${tagName(val)}</span> exists`,
@@ -1861,6 +1885,26 @@ function triggerToText(key, val) {
     'any_ally': 'Any ally:',
     'any_neighbor_country': 'Any neighbor:',
     'any_subject_country': 'Any subject:',
+    'has_disaster': `Has active disaster: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_institution': `Has embraced institution: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_great_project': (() => { const pm = val.match(/type\s*=\s*(\w+)/); const tm = val.match(/tier\s*=\s*(\d+)/); if (pm) { const name = pm[1].replace(/_/g, ' '); return `Has great project <span class="tag">${name}</span>${tm ? ' (tier ' + tm[1] + '+)' : ''}`; } return `Has a great project: <span class="tag">${val.replace(/_/g, ' ')}</span>`; })(),
+    'has_manufactory_trigger': val === 'yes' ? 'Has a manufactory' : 'No manufactory',
+    'has_courthouse_building_trigger': val === 'yes' ? 'Has a courthouse or town hall' : 'No courthouse',
+    'has_forcelimit_building_trigger': val === 'yes' ? 'Has a forcelimit building' : 'No forcelimit building',
+    'has_production_or_gold_building_trigger': val === 'yes' ? 'Has a production or gold building' : null,
+    'has_terrain': `Terrain is: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_province_modifier': `Has province modifier: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_spy_network_from': null, // complex scope
+    'has_spy_network_in': null, // complex scope
+    'has_any_ongoing_construction': val === 'yes' ? 'Has ongoing construction' : null,
+    'has_state_edict': `Has state edict: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_personal_deity': `Worships: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'has_seat_in_parliament': val === 'yes' ? 'Has a seat in parliament' : null,
+    'has_government_power': (() => { const mm = val.match(/mechanic_type\s*=\s*(\w+)/); const vm = val.match(/power_type\s*=\s*(\w+)/); return mm ? `Has government mechanic power` : null; })(),
+    'has_dwarven_hold_4': val === 'yes' ? 'Has a level 4 dwarven hold' : null,
+    'army_professionalism': `Army professionalism at least <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span>`,
+    'max_years_since': (() => { const ym = val.match(/years\s*=\s*(\d+)/); return ym ? `Within the last <span class="val">${ym[1]}</span> years` : null; })(),
+    'all_known_country': 'All known countries:',
     'has_dlc': null, // hide DLC checks
     'normal_or_historical_nations': null,
     'controls': isScopeVar(val) ? null : `Control <span class="val" title="ID: ${val}">${resolveRef(val)}</span>`,

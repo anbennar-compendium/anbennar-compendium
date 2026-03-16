@@ -129,13 +129,17 @@ def parse_top_level_blocks(text):
                 blocks.append((name, content))
                 i = end
             else:
-                i += 1
+                # Skip the entire value token (not just one char)
+                while i < length and text[i] not in ' \t\r\n':
+                    i += 1
         elif text[i] == '{':
             content, end = extract_brace_block(text, i)
             blocks.append((name, content))
             i = end
         else:
-            i += 1
+            # Skip unknown token
+            while i < length and text[i] not in ' \t\r\n':
+                i += 1
     return blocks
 
 
