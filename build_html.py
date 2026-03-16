@@ -966,17 +966,18 @@ async function loadData() {
   const el = document.getElementById('country-list');
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
+    const v = '2';
     const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11] = await Promise.all([
-      fetch('anbennar_data.json').then(r => r.json()),
-      fetch('religions_data.json').then(r => r.json()),
-      fetch('wiki_data.json').then(r => r.json()),
-      fetch('regions_data.json').then(r => r.json()),
-      fetch('mission_triggers.json').then(r => r.json()),
-      fetch('country_status.json').then(r => r.json()).catch(() => ({})),
-      fetch('mission_icon_map.json').then(r => r.json()).catch(() => ({})),
-      fetch('province_names.json').then(r => r.json()).catch(() => ({})),
-      fetch('modifiers_data.json').then(r => r.json()).catch(() => ({})),
-      fetch('startup_lore.json').then(r => r.json()).catch(() => ({})),
+      fetch('anbennar_data.json?v='+v).then(r => r.json()),
+      fetch('religions_data.json?v='+v).then(r => r.json()),
+      fetch('wiki_data.json?v='+v).then(r => r.json()),
+      fetch('regions_data.json?v='+v).then(r => r.json()),
+      fetch('mission_triggers.json?v='+v).then(r => r.json()),
+      fetch('country_status.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('mission_icon_map.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('province_names.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('modifiers_data.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('startup_lore.json?v='+v).then(r => r.json()).catch(() => ({})),
     ]);
     DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {};
 
@@ -1947,7 +1948,7 @@ function triggerToText(key, val) {
     'remove_country_modifier': (() => { const mk = val.trim(); return `Remove modifier: ${modRef(mk)}`; })(),
     'owns_or_non_sovereign_subject_of': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
     'owns_or_subject_of': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
-    'war_with': null, // internal scope, not useful standalone
+    'war_with': isScopeVar(val) ? null : `At war with <span class="tag">${tagName(val)}</span>`,
     'owner': null, // internal scope
     'trade_share': `Trade share at least <span class="val">${val}</span>`,
     'share': null, // nested value inside trade_share
@@ -2154,7 +2155,7 @@ function triggerToText(key, val) {
   }
 
   if (key === 'custom_trigger_tooltip' || key === 'custom_tooltip' || key === 'tooltip') return null;
-  if (key === 'if' || key === 'else' || key === 'else_if') return null;
+  if (key === 'if' || key === 'else' || key === 'else_if') return null; // transparent — depth tracker parses contents
   // Suppress has_XX_opinion_* triggers (complex nested with target = ROOT)
   if (/^has_\d+_opinion_/.test(key) || /^has_any_opinion_/.test(key)) return null;
 
