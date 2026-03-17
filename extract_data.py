@@ -559,6 +559,33 @@ def parse_events_for_tag(tag, loc):
 
     return tag_events
 
+
+def extract_all_event_names(loc):
+    """Build global event_id -> localized title mapping from ALL event files."""
+    events_dir = os.path.join(MOD, "events")
+    event_names = {}
+    for fname in os.listdir(events_dir):
+        if not fname.endswith('.txt'):
+            continue
+        content = read_file(os.path.join(events_dir, fname))
+        if not content:
+            continue
+        blocks = find_top_level_blocks(content)
+        for block_name, block_content in blocks:
+            if block_name not in ('country_event', 'province_event'):
+                continue
+            id_m = re.search(r'id\s*=\s*([\w.]+)', block_content)
+            if not id_m:
+                continue
+            event_id = id_m.group(1)
+            title_m = re.search(r'title\s*=\s*([\w.]+)', block_content)
+            if title_m:
+                title_key = title_m.group(1)
+                title = loc.get(title_key, title_key)
+                event_names[event_id] = title
+    return event_names
+
+
 # ---- Culture groups ----
 
 def parse_culture_groups():
@@ -785,6 +812,15 @@ def main():
     with open(bm_path, 'w', encoding='utf-8') as f:
         json.dump(bookmarks, f, ensure_ascii=False, indent=1)
     print(f"Bookmark data saved to {bm_path}")
+
+    # Extract and save global event names
+    print("Extracting all event names...")
+    event_names = extract_all_event_names(loc)
+    print(f"  Found {len(event_names)} events with titles")
+    en_path = os.path.join(os.path.dirname(__file__), 'event_names.json')
+    with open(en_path, 'w', encoding='utf-8') as f:
+        json.dump(event_names, f, ensure_ascii=False, separators=(',', ':'))
+    print(f"Event names saved to {en_path}")
 
 if __name__ == '__main__':
     main()

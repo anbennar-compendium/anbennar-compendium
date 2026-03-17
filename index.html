@@ -255,6 +255,28 @@ body {
   font-family: monospace;
   flex-shrink: 0;
 }
+.played-toggle {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: transparent;
+  background: transparent;
+  transition: all 0.15s;
+  margin-right: 2px;
+}
+.played-toggle:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.08); }
+.played-toggle.played {
+  color: var(--green);
+  border-color: rgba(74,186,106,0.4);
+  background: rgba(74,186,106,0.1);
+}
+.country-item.is-played .name { color: var(--text-secondary); }
 #country-count {
   padding: 6px 12px;
   font-size: 11px;
@@ -371,6 +393,28 @@ body {
   transition: all 0.2s;
 }
 .wiki-btn:hover { background: #2a2518; border-color: var(--gold); }
+.played-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 8px;
+  transition: all 0.2s;
+}
+.played-btn:hover { border-color: var(--green); color: var(--green); }
+.played-btn.active {
+  border-color: rgba(74,186,106,0.4);
+  color: var(--green);
+  background: rgba(74,186,106,0.1);
+}
 
 /* LORE BOX */
 .lore-box {
@@ -1015,6 +1059,8 @@ body {
       <button class="filter-btn" data-filter="playable">Playable 1444</button>
       <button class="filter-btn" data-filter="formable">Formable</button>
       <button class="filter-btn" data-filter="missions">Has Missions</button>
+      <button class="filter-btn" data-filter="played">Played</button>
+      <button class="filter-btn" data-filter="unplayed">Unplayed</button>
     </div>
     <div id="region-filter">
       <select id="region-select" class="filter-select"><option value="">All Regions</option></select>
@@ -1045,7 +1091,7 @@ body {
 
 <script>
 // --- DATA ---
-let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {}, AREA_DATA = {};
+let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {}, AREA_DATA = {}, EVENT_NAMES = {};
 // Map state
 let mapBaseImg = null, mapIdImg = null, mapIdData = null, mapBounds = null;
 let mapScale = 1, mapOffX = 0, mapOffY = 0, mapCurrentTag = null;
@@ -1056,13 +1102,34 @@ let filteredCountries = [];
 let selectedTag = null;
 let renderLimit = 200;
 let activeFilters = new Set();
+// Played countries — persisted in localStorage
+let PLAYED = new Set(JSON.parse(localStorage.getItem('anbennar_played') || '[]'));
+function savePlayed() { localStorage.setItem('anbennar_played', JSON.stringify([...PLAYED])); }
+function togglePlayed(tag, e) {
+  if (e) e.stopPropagation();
+  if (PLAYED.has(tag)) PLAYED.delete(tag); else PLAYED.add(tag);
+  savePlayed();
+  renderCountryList();
+  updatePlayedCount();
+}
+function updatePlayedCount() {
+  const el = document.getElementById('played-count');
+  if (el) el.textContent = PLAYED.size > 0 ? `(${PLAYED.size} played)` : '';
+}
+function togglePlayedDetail(tag, btn) {
+  if (PLAYED.has(tag)) { PLAYED.delete(tag); btn.classList.remove('active'); btn.innerHTML = 'Mark as Played'; }
+  else { PLAYED.add(tag); btn.classList.add('active'); btn.innerHTML = '&#10003; Played'; }
+  savePlayed();
+  renderCountryList();
+  updatePlayedCount();
+}
 
 async function loadData() {
   const el = document.getElementById('country-list');
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
     const v = '3';
-    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15] = await Promise.all([
+    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16] = await Promise.all([
       fetch('anbennar_data.json?v='+v).then(r => r.json()),
       fetch('religions_data.json?v='+v).then(r => r.json()),
       fetch('wiki_data.json?v='+v).then(r => r.json()),
@@ -1077,8 +1144,9 @@ async function loadData() {
       fetch('diplomacy_data.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('province_details.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('area_data.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('event_names.json?v='+v).then(r => r.json()).catch(() => ({})),
     ]);
-    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {}; AREA_DATA = d15 || {};
+    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {}; AREA_DATA = d15 || {}; EVENT_NAMES = d16 || {};
 
     countries = Object.values(DATA);
     countries.sort(countrySorter);
@@ -1153,19 +1221,40 @@ function fuzzyScore(query, text) {
 
 function populateRegions() {
   const sel = document.getElementById('region-select');
-  const srs = new Set();
+  // Collect both superregions and regions
+  const srs = new Map(); // superregion_name -> Set of region_names
   for (const r of Object.values(REGIONS)) {
-    if (r.superregion_name) srs.add(r.superregion_name);
+    if (r.superregion_name) {
+      if (!srs.has(r.superregion_name)) srs.set(r.superregion_name, new Set());
+      if (r.region_name) srs.get(r.superregion_name).add(r.region_name);
+    }
   }
-  [...srs].sort().forEach(sr => {
-    const opt = document.createElement('option');
-    opt.value = sr; opt.textContent = sr;
-    sel.appendChild(opt);
+  [...srs.keys()].sort().forEach(sr => {
+    const grp = document.createElement('optgroup');
+    grp.label = sr;
+    const srOpt = document.createElement('option');
+    srOpt.value = 'sr:' + sr; srOpt.textContent = '\u25B8 ' + sr + ' (all)';
+    grp.appendChild(srOpt);
+    [...srs.get(sr)].sort().forEach(rn => {
+      const opt = document.createElement('option');
+      opt.value = 'rg:' + rn; opt.textContent = rn;
+      grp.appendChild(opt);
+    });
+    sel.appendChild(grp);
   });
 }
 
 function populateFilterDropdowns() {
   updateFilterDropdowns();
+}
+
+function matchesRegionFilter(c, regionVal) {
+  if (!regionVal) return true;
+  const reg = REGIONS[c.tag];
+  if (!reg) return false;
+  if (regionVal.startsWith('sr:')) return reg.superregion_name === regionVal.slice(3);
+  if (regionVal.startsWith('rg:')) return reg.region_name === regionVal.slice(3);
+  return reg.superregion_name === regionVal || reg.region_name === regionVal;
 }
 
 function updateFilterDropdowns() {
@@ -1187,10 +1276,7 @@ function updateFilterDropdowns() {
 
   // For each dropdown, compute valid options based on all OTHER active filters
   function matchesOtherFilters(c, skipFilter) {
-    if (skipFilter !== 'region' && region) {
-      const reg = REGIONS[c.tag];
-      if (!reg || reg.superregion_name !== region) return false;
-    }
+    if (skipFilter !== 'region' && region && !matchesRegionFilter(c, region)) return false;
     if (skipFilter !== 'culture' && culture && c.culture_group !== culture) return false;
     if (skipFilter !== 'religion' && religion && c.religion !== religion) return false;
     if (skipFilter !== 'tech' && tech && c.technology_group !== tech) return false;
@@ -1205,7 +1291,10 @@ function updateFilterDropdowns() {
     if (matchesOtherFilters(c, 'religion') && c.religion) validReligions.add(c.religion);
     if (matchesOtherFilters(c, 'tech') && c.technology_group) validTechs.add(c.technology_group);
     if (matchesOtherFilters(c, 'gov') && c.government) validGovs.add(c.government);
-    if (matchesOtherFilters(c, 'region') && reg && reg.superregion_name) validRegions.add(reg.superregion_name);
+    if (matchesOtherFilters(c, 'region') && reg) {
+      if (reg.superregion_name) validRegions.add('sr:' + reg.superregion_name);
+      if (reg.region_name) validRegions.add('rg:' + reg.region_name);
+    }
   });
 
   const repopulate = (id, values, currentVal) => {
@@ -1227,7 +1316,43 @@ function updateFilterDropdowns() {
   repopulate('religion-select', validReligions, religion);
   repopulate('tech-select', validTechs, tech);
   repopulate('gov-select', validGovs, gov);
-  repopulate('region-select', validRegions, region);
+  // Region select: grouped by superregion with sub-regions
+  const rSel = document.getElementById('region-select');
+  rSel.innerHTML = '';
+  const rDef = document.createElement('option');
+  rDef.value = ''; rDef.textContent = 'All Regions';
+  rSel.appendChild(rDef);
+  const srMap = new Map();
+  validRegions.forEach(v => {
+    if (v.startsWith('sr:')) {
+      const sr = v.slice(3);
+      if (!srMap.has(sr)) srMap.set(sr, []);
+    } else if (v.startsWith('rg:')) {
+      const rn = v.slice(3);
+      // Find parent superregion
+      for (const r of Object.values(REGIONS)) {
+        if (r.region_name === rn && r.superregion_name) {
+          if (!srMap.has(r.superregion_name)) srMap.set(r.superregion_name, []);
+          if (!srMap.get(r.superregion_name).includes(rn)) srMap.get(r.superregion_name).push(rn);
+          break;
+        }
+      }
+    }
+  });
+  [...srMap.keys()].sort().forEach(sr => {
+    const grp = document.createElement('optgroup');
+    grp.label = sr;
+    const srOpt = document.createElement('option');
+    srOpt.value = 'sr:' + sr; srOpt.textContent = '\u25B8 ' + sr + ' (all)';
+    grp.appendChild(srOpt);
+    srMap.get(sr).sort().forEach(rn => {
+      const opt = document.createElement('option');
+      opt.value = 'rg:' + rn; opt.textContent = rn;
+      grp.appendChild(opt);
+    });
+    rSel.appendChild(grp);
+  });
+  rSel.value = validRegions.has(region) ? region : '';
 }
 
 function passesFilter(c) {
@@ -1236,6 +1361,8 @@ function passesFilter(c) {
   if (activeFilters.has('playable') && !(s.status === 'playable' || s.status === 'both')) return false;
   if (activeFilters.has('formable') && !(s.status === 'formable' || s.status === 'both')) return false;
   if (activeFilters.has('missions') && !(c.missions && c.missions.length > 0)) return false;
+  if (activeFilters.has('played') && !PLAYED.has(c.tag)) return false;
+  if (activeFilters.has('unplayed') && PLAYED.has(c.tag)) return false;
   return true;
 }
 
@@ -1263,10 +1390,7 @@ function applyFilters() {
     if (religion && c.religion !== religion) return;
     if (tech && c.technology_group !== tech) return;
     if (gov && c.government !== gov) return;
-    if (region) {
-      const reg = REGIONS[c.tag];
-      if (!reg || reg.superregion_name !== region) return;
-    }
+    if (region && !matchesRegionFilter(c, region)) return;
 
     // Text search with fuzzy matching
     let score = 0;
@@ -1314,7 +1438,10 @@ function renderActiveFilters() {
   ];
   selectors.forEach(s => {
     const val = document.getElementById(s.id).value;
-    if (val) chips.push({ label: s.label + ': ' + titleCase(val), clear: () => { document.getElementById(s.id).value = ''; } });
+    if (val) {
+      let displayVal = val.replace(/^sr:|^rg:/, '');
+      chips.push({ label: s.label + ': ' + titleCase(displayVal), clear: () => { document.getElementById(s.id).value = ''; } });
+    }
   });
   activeFilters.forEach(f => {
     chips.push({ label: titleCase(f), clear: () => { activeFilters.delete(f); document.querySelector(`.filter-btn[data-filter="${f}"]`).classList.remove('active'); } });
@@ -1359,7 +1486,9 @@ function renderCountryList() {
     if (hasIdeas) badges += '<span class="badge-dot ideas" title="Has ideas"></span>';
     let statusBadge = isFormable ? '<span class="status-badge formable">Formable</span>' : '';
 
-    return `<div class="country-item${selectedTag === c.tag ? ' selected' : ''}" data-tag="${c.tag}">
+    const isPlayed = PLAYED.has(c.tag);
+    return `<div class="country-item${selectedTag === c.tag ? ' selected' : ''}${isPlayed ? ' is-played' : ''}" data-tag="${c.tag}">
+      <span class="played-toggle${isPlayed ? ' played' : ''}" onclick="togglePlayed('${c.tag}', event)" title="${isPlayed ? 'Mark as unplayed' : 'Mark as played'}">&#10003;</span>
       <img class="flag" src="flags/${c.tag}.png" onerror="this.style.display='none'" loading="lazy">
       <span class="name">${esc(c.name)}</span>
       ${statusBadge}
@@ -1368,7 +1497,7 @@ function renderCountryList() {
     </div>`;
   }).join('');
 
-  count.textContent = `${filteredCountries.length} countries`;
+  count.innerHTML = `${filteredCountries.length} countries <span id="played-count" style="color:var(--green)">${PLAYED.size > 0 ? '(' + PLAYED.size + ' played)' : ''}</span>`;
 
   list.querySelectorAll('.country-item').forEach(el => {
     el.addEventListener('click', () => selectCountry(el.dataset.tag));
@@ -1458,8 +1587,15 @@ function modChip(name, value) {
   }
   let display = value;
   if (!isNaN(num)) {
-    if (Math.abs(num) < 1 && Math.abs(num) > 0 && !/max_|num_|amount/.test(name)) {
+    const ln = name.toLowerCase();
+    // Modifiers where small decimals are literal values, NOT fractions to multiply
+    const noMultiply = /^yearly_|^monthly_|republican_tradition|legitimacy|^stability$|horde_unity|devotion|meritocracy|^corruption$|inflation_reduction|interest$|liberty_desire|war_exhaustion_cost/.test(ln);
+    // Modifiers where values are already in percentage form (show with %)
+    const alreadyPercent = /liberty_desire/.test(ln);
+    if (Math.abs(num) < 1 && Math.abs(num) > 0 && !/max_|num_|amount/.test(ln) && !noMultiply) {
       display = (num >= 0 ? '+' : '') + (num * 100).toFixed(1).replace(/\.0$/, '') + '%';
+    } else if (alreadyPercent) {
+      display = (num >= 0 ? '+' : '') + num + '%';
     } else {
       display = (num >= 0 ? '+' : '') + num;
     }
@@ -1666,6 +1802,8 @@ function parseTriggerToReadable(raw) {
   processed = collapseBlock(processed, 'destroy_great_project');
   processed = collapseBlock(processed, 'move_great_project');
   processed = collapseBlock(processed, 'war_score_against');
+  processed = collapseBlock(processed, 'country_event');
+  processed = collapseBlock(processed, 'province_event');
   // ROOT/FROM/PREV as scope openers are handled by depth traversal (depth limit = 5)
   const lines = processed.split('\n');
   const results = [];
@@ -2199,8 +2337,8 @@ function triggerToText(key, val) {
     'remove_province_modifier': (() => { const mk = val.trim(); return `Remove province modifier: ${modRef(mk)}`; })(),
     'add_disaster_progress': `Add disaster progress: <span class="tag">${val.replace(/[{}]/g, '').replace(/_/g, ' ').trim()}</span>`,
     'add_permanent_province_modifier': (() => { const mk = extractModKey(val); return `Add permanent province modifier: ${modRef(mk)}`; })(),
-    'country_event': 'Triggers an event',
-    'province_event': 'Triggers a province event',
+    'country_event': (() => { const idM = val.match(/id\s*=\s*([\w.]+)/); if (idM) { const eName = EVENT_NAMES[idM[1]]; return eName ? `Triggers event: <span class="val">${esc(eName)}</span>` : `Triggers event: <span class="tag">${esc(idM[1])}</span>`; } return 'Triggers an event'; })(),
+    'province_event': (() => { const idM = val.match(/id\s*=\s*([\w.]+)/); if (idM) { const eName = EVENT_NAMES[idM[1]]; return eName ? `Triggers province event: <span class="val">${esc(eName)}</span>` : `Triggers province event: <span class="tag">${esc(idM[1])}</span>`; } return 'Triggers a province event'; })(),
     'every_owned_province': 'Every owned province:',
     'random_owned_province': 'Random owned province:',
     'capital_scope': 'In capital:',
@@ -2938,10 +3076,11 @@ function selectCountry(tag) {
         <span class="pill pill-culture clickable" onclick="setCultureSearch('${esc(c.culture_group || '')}')">${esc(c.culture_group || '')}</span>
         <span class="pill pill-culture clickable" onclick="setCultureSearch('${esc(c.culture_group || '')}')">${esc(c.primary_culture || '')}</span>
         <span class="pill clickable" onclick="setTechFilter('${esc(c.technology_group || '')}')">${esc(c.technology_group || '')}</span>
-        ${reg.region_name ? `<span class="pill pill-region clickable" onclick="setRegionFilter('${esc(reg.superregion_name || '')}')">${esc(reg.region_name)}</span>` : ''}
-        ${reg.superregion_name ? `<span class="pill pill-region clickable" onclick="setRegionFilter('${esc(reg.superregion_name)}')">${esc(reg.superregion_name)}</span>` : ''}
+        ${reg.region_name ? `<span class="pill pill-region clickable" onclick="setRegionFilter('rg:${esc(reg.region_name)}')">${esc(reg.region_name)}</span>` : ''}
+        ${reg.superregion_name ? `<span class="pill pill-region clickable" onclick="setRegionFilter('sr:${esc(reg.superregion_name)}')">${esc(reg.superregion_name)}</span>` : ''}
       </div>
       ${w.found ? `<a href="${esc(wikiLink)}" target="_blank" rel="noopener" class="wiki-btn">&#128214; View on Wiki</a>` : ''}
+      <span class="played-btn${PLAYED.has(tag) ? ' active' : ''}" onclick="togglePlayedDetail('${tag}', this)">${PLAYED.has(tag) ? '&#10003; Played' : 'Mark as Played'}</span>
     </div>
   </div>`;
 
