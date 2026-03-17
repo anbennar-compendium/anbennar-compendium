@@ -2053,6 +2053,25 @@ function triggerToText(key, val) {
     'continent': `On continent: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'loyalty': null, // nested inside estate block
     'estate': null, // nested
+    // Audit Round 3 additions - province triggers
+    'fort_level': `Fort level at least <span class="val">${val}</span>`,
+    'accepted_culture': `Have accepted culture: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'num_of_times_expanded_infrastructure': `Infrastructure expanded at least <span class="val">${val}</span> times`,
+    'province_group': `In province group: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'mission_completed': `Completed mission: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'crown_land_share': `Crown land at least <span class="val">${val}%</span>`,
+    'infantry_in_province': `At least <span class="val">${val}</span> infantry in province`,
+    'unrest': `Province unrest below <span class="val">${val}</span>`,
+    'devastation': `Province devastation below <span class="val">${val}</span>`,
+    'num_of_buildings_in_province': `Province has at least <span class="val">${val}</span> buildings`,
+    'province_has_current_tech_fort_trigger': val === 'yes' ? 'Has a current-tech fort' : 'No current-tech fort',
+    'has_owner_religion': val === 'yes' ? "Province follows owner's religion" : "Province does not follow owner's religion",
+    'num_of_times_improved': `Province improved at least <span class="val">${val}</span> times`,
+    'num_of_times_improved_by_owner': `Province improved by owner at least <span class="val">${val}</span> times`,
+    'faction_in_power': `Faction in power: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'num_of_marines': `Have at least <span class="val">${val}</span> marines`,
+    'war_score_against': (() => { const wm = val.match(/who\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(-?\d+)/); if (wm && vm) return `War score against <span class="tag">${isScopeVar(wm[1]) ? 'target' : tagName(wm[1])}</span> at least <span class="val">${vm[1]}</span>`; return null; })(),
+    'num_of_subjects_of_type': (() => { const tm = val.match(/type\s*=\s*(\w+)/); const vm = val.match(/amount\s*=\s*(\d+)/); if (tm && vm) return `Have at least <span class="val">${vm[1]}</span> ${tm[1].replace(/_/g, ' ')} subjects`; return null; })(),
     // Common EFFECTS
     'add_legitimacy_or_monarch_power': `Add <span class="val">${val.replace(/VAL\s*=\s*/i, '').replace(/[{}]/g, '').trim()}</span> legitimacy (or republican tradition / devotion / horde unity)`,
     'add_stability': `Add <span class="val">${val}</span> stability`,

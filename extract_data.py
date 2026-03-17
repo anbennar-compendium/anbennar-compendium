@@ -214,20 +214,9 @@ def parse_modifiers(block):
 
 # ---- Ideas ----
 
-def extract_trigger_tags(block):
-    """Extract country tags from trigger block, excluding NOT blocks.
-
-    Handles patterns like:
-      trigger = { tag = Z55 }                -> ['Z55']
-      trigger = { OR = { tag = A tag = B } } -> ['A', 'B']
-      trigger = { NOT = { tag = Z55 } }      -> [] (excluded)
-    """
-    trigger_block = extract_block(block, 'trigger')
-    if not trigger_block:
-        return []
-
-    # Remove NOT blocks and their contents
-    cleaned = trigger_block
+def remove_not_blocks(text):
+    """Remove NOT = { ... } blocks from text."""
+    cleaned = text
     while True:
         not_match = re.search(r'NOT\s*=\s*\{', cleaned)
         if not not_match:
@@ -238,15 +227,51 @@ def extract_trigger_tags(block):
             cleaned = cleaned[:not_match.start()] + cleaned[brace_end+1:]
         else:
             break
+    return cleaned
 
-    # Now find all tag = X patterns in the remaining trigger content
-    return re.findall(r'\btag\s*=\s*([A-Z][A-Z0-9]{2})', cleaned)
+
+def extract_trigger_info(block):
+    """Extract trigger matching info from an idea group's trigger block.
+
+    Returns dict with:
+      'tags': list of country tags (e.g. ['Z55'])
+      'culture_groups': list of culture group matches (e.g. ['hobgoblin'])
+      'reforms': list of government reform matches
+      'excluded_tags': tags in NOT blocks (to exclude from group matching)
+    """
+    trigger_block = extract_block(block, 'trigger')
+    if not trigger_block:
+        return {'tags': [], 'culture_groups': [], 'reforms': [], 'excluded_tags': []}
+
+    # Extract excluded tags from NOT blocks before removing them
+    excluded = []
+    for nm in re.finditer(r'NOT\s*=\s*\{([^}]+)\}', trigger_block):
+        excluded.extend(re.findall(r'\btag\s*=\s*([A-Z][A-Z0-9]{2})', nm.group(1)))
+
+    cleaned = remove_not_blocks(trigger_block)
+
+    tags = re.findall(r'\btag\s*=\s*([A-Z][A-Z0-9]{2})', cleaned)
+    culture_groups = re.findall(r'\bculture_group\s*=\s*(\w+)', cleaned)
+    reforms = re.findall(r'\bhas_reform\s*=\s*(\w+)', cleaned)
+
+    return {
+        'tags': tags,
+        'culture_groups': culture_groups,
+        'reforms': reforms,
+        'excluded_tags': excluded,
+    }
 
 
 def parse_ideas():
-    """Parse all national idea groups."""
+    """Parse all national idea groups.
+
+    Returns (tag_ideas, group_ideas) where:
+      tag_ideas: dict tag -> idea_data (direct tag matches)
+      group_ideas: list of (idea_data, trigger_info) for culture/reform groups
+    """
     ideas_dir = os.path.join(MOD, "common", "ideas")
-    all_ideas = {}
+    tag_ideas = {}
+    group_ideas = []
 
     for fname in os.listdir(ideas_dir):
         if not fname.endswith('.txt'):
@@ -261,9 +286,11 @@ def parse_ideas():
             if '_ideas' not in name:
                 continue
 
-            # Only extract tags from trigger blocks, not ai_will_do
-            tags = extract_trigger_tags(block)
-            if not tags:
+            trigger_info = extract_trigger_info(block)
+            has_tags = bool(trigger_info['tags'])
+            has_groups = bool(trigger_info['culture_groups'] or trigger_info['reforms'])
+
+            if not has_tags and not has_groups:
                 continue
 
             start_block = extract_block(block, 'start')
@@ -285,14 +312,17 @@ def parse_ideas():
                 'ideas': ideas_list
             }
 
-            for tag in tags:
-                # Country-specific ideas (e.g. Z55_ideas) take priority
-                # over group ideas (e.g. warband_ideas)
+            # Assign directly for tag-based triggers
+            for tag in trigger_info['tags']:
                 is_country_specific = name.startswith(tag)
-                if tag not in all_ideas or is_country_specific:
-                    all_ideas[tag] = idea_data
+                if tag not in tag_ideas or is_country_specific:
+                    tag_ideas[tag] = idea_data
 
-    return all_ideas
+            # Store group-based triggers for later resolution
+            if has_groups:
+                group_ideas.append((idea_data, trigger_info))
+
+    return tag_ideas, group_ideas
 
 def get_idea_lore(tag, idea_group, loc):
     """Get localized names and descriptions for ideas."""
@@ -608,8 +638,8 @@ def main():
     print(f"  Found {len(culture_groups)} culture mappings")
 
     print("Parsing national ideas...")
-    all_ideas = parse_ideas()
-    print(f"  Found {len(all_ideas)} idea groups")
+    all_ideas, group_ideas = parse_ideas()
+    print(f"  Found {len(all_ideas)} tag-specific idea groups, {len(group_ideas)} group idea sets")
 
     print("Parsing religions...")
     religions = parse_religions(loc)
@@ -655,8 +685,26 @@ def main():
         rivals = history.get('historical_rivals', [])
         friends = history.get('historical_friends', [])
 
-        # Ideas
+        # Ideas — first check tag-specific, then fall back to group ideas
         ideas = all_ideas.get(tag, None)
+        if not ideas:
+            # Try matching group ideas by culture_group or government reform
+            for gi_data, gi_trigger in group_ideas:
+                # Check excluded tags
+                if tag in gi_trigger.get('excluded_tags', []):
+                    continue
+                # Check culture group match
+                if culture_group and culture_group in gi_trigger.get('culture_groups', []):
+                    ideas = gi_data
+                    break
+                # Check reform match
+                if reforms:
+                    for r in reforms:
+                        if r in gi_trigger.get('reforms', []):
+                            ideas = gi_data
+                            break
+                    if ideas:
+                        break
         if ideas:
             ideas = get_idea_lore(tag, ideas, loc)
 
