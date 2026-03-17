@@ -1820,6 +1820,9 @@ function parseTriggerToReadable(raw) {
     return text;
   }
   processed = collapseBlock(processed, 'num_of_owned_provinces_with');
+  processed = collapseBlock(processed, 'num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with');
+  processed = collapseBlock(processed, 'num_of_provinces_owned_or_owned_by_subjects_with');
+  processed = collapseBlock(processed, 'development_in_provinces');
   // Don't collapse calc_true_if — let it parse children line-by-line
   processed = collapseBlock(processed, 'unlock_merc_company');
   processed = collapseBlock(processed, 'add_trade_modifier');
@@ -1838,7 +1841,7 @@ function parseTriggerToReadable(raw) {
   // Proxy results.push to auto-attach depth
   const results = { push(item) { if (item) { item.depth = item.depth ?? depth; _results.push(item); } }, get length() { return _results.length; } };
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
-  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
+  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type', 'province_id', 'country', 'tier', 'node', 'policy', 'template', 'faction']);
   // Track current scope (area/region/province) for context-aware claim handling
   const scopeStack = []; // [{name, type, depth}]
 
@@ -2004,6 +2007,53 @@ function resolveProvOrTag(v) {
   if (/^\d+$/.test(t)) return provName(t);
   return t.replace(/_/g, ' ');
 }
+// Shared helper: extract province qualifiers from a num_of_*_provinces_with block
+function extractProvConditions(val) {
+  const conditions = [];
+  const tgMatches = val.matchAll(/trade_goods\s*=\s*(\w+)/g);
+  const goods = new Set();
+  for (const tg of tgMatches) goods.add(tg[1].replace(/_/g, ' '));
+  if (goods.size) conditions.push('produces ' + [...goods].join(' or '));
+  if (/has_building\s*=\s*(\w+)/.test(val)) conditions.push('has ' + val.match(/has_building\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+  if (/culture\s*=\s*(\w+)/.test(val) && !/culture_group/.test(val)) { const cv = val.match(/culture\s*=\s*(\w+)/)[1]; conditions.push(cv === 'ROOT' ? 'our culture' : 'culture: ' + cv.replace(/_/g, ' ')); }
+  if (/culture_group\s*=\s*(\w+)/.test(val)) { const cv = val.match(/culture_group\s*=\s*(\w+)/)[1]; conditions.push(cv === 'ROOT' ? 'our culture group' : 'culture group: ' + cv.replace(/_/g, ' ')); }
+  if (/religion\s*=\s*(\w+)/.test(val)) { const rv = val.match(/religion\s*=\s*(\w+)/)[1]; conditions.push(rv === 'ROOT' ? 'our religion' : 'religion: ' + rv.replace(/_/g, ' ')); }
+  if (/has_\w+_minority_trigger/.test(val)) { const mm = val.match(/has_(\w+)_minority_trigger/); if (mm) conditions.push('has ' + mm[1].replace(/_/g, ' ') + ' minority'); }
+  if (/development\s*=\s*(\d+)/.test(val)) conditions.push('at least ' + val.match(/development\s*=\s*(\d+)/)[1] + ' dev');
+  if (/base_production\s*=\s*(\d+)/.test(val)) conditions.push('base production ≥ ' + val.match(/base_production\s*=\s*(\d+)/)[1]);
+  if (/base_tax\s*=\s*(\d+)/.test(val)) conditions.push('base tax ≥ ' + val.match(/base_tax\s*=\s*(\d+)/)[1]);
+  if (/base_manpower\s*=\s*(\d+)/.test(val)) conditions.push('base manpower ≥ ' + val.match(/base_manpower\s*=\s*(\d+)/)[1]);
+  if (/has_port\s*=\s*yes/.test(val)) conditions.push('has a port');
+  if (/is_city\s*=\s*yes/.test(val)) conditions.push('is a city');
+  // Geographic
+  const regions = [...val.matchAll(/region\s*=\s*(\w+)/g)].map(m => m[1].replace(/_/g, ' '));
+  if (regions.length) conditions.push('in ' + regions.join(' or '));
+  if (/area\s*=\s*(\w+)/.test(val)) conditions.push('in ' + val.match(/area\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+  if (/superregion\s*=\s*(\w+)/.test(val)) conditions.push('in ' + val.match(/superregion\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+  if (/continent\s*=\s*(\w+)/.test(val)) conditions.push('on ' + val.match(/continent\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+  if (/province_group\s*=\s*(\w+)/.test(val)) conditions.push('in ' + val.match(/province_group\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+  if (/has_terrain\s*=\s*(\w+)/.test(val)) conditions.push(val.match(/has_terrain\s*=\s*(\w+)/)[1].replace(/_/g, ' ') + ' terrain');
+  // Buildings
+  if (/has_supply_depot/.test(val)) conditions.push('has supply depot');
+  if (/has_manpower_building_trigger/.test(val)) conditions.push('has manpower building');
+  if (/has_production_building_trigger/.test(val)) conditions.push('has production building');
+  if (/has_tax_building_trigger/.test(val)) conditions.push('has tax building');
+  if (/has_trade_building_trigger/.test(val)) conditions.push('has trade building');
+  if (/has_forcelimit_building_trigger/.test(val)) conditions.push('has forcelimit building');
+  if (/has_manufactory_trigger/.test(val)) conditions.push('has a manufactory');
+  if (/has_fort_building_trigger/.test(val)) conditions.push('has a fort');
+  if (/has_courthouse_building_trigger/.test(val)) conditions.push('has courthouse');
+  if (/has_shipyard_building_trigger/.test(val)) conditions.push('has shipyard');
+  if (/has_dock_building_trigger/.test(val)) conditions.push('has dock');
+  // Modifiers
+  if (/has_province_modifier\s*=\s*(\w+)/g.test(val)) { const mods = [...val.matchAll(/has_province_modifier\s*=\s*(\w+)/g)].map(m => modRef(m[1])); conditions.push('has modifier: ' + mods.join(' or ')); }
+  if (/province_has_center_of_trade_of_level\s*=\s*(\d+)/.test(val)) conditions.push('center of trade ≥ ' + val.match(/province_has_center_of_trade_of_level\s*=\s*(\d+)/)[1]);
+  if (/fort_level\s*=\s*(\d+)/.test(val)) conditions.push('fort level ≥ ' + val.match(/fort_level\s*=\s*(\d+)/)[1]);
+  if (/is_core\s*=\s*ROOT/.test(val)) conditions.push('is our core');
+  if (/holy_order\s*=\s*(\w+)/.test(val)) conditions.push('has holy order');
+  return conditions.length ? ' (' + conditions.join(', ') + ')' : '';
+}
+
 function triggerToText(key, val) {
   const map = {
     'army_size': isScopeVar(val) ? null : (/^[A-Z][A-Z0-9]{1,2}$/.test(val) ? `Army size at least equal to <span class="tag">${tagName(val)}</span>` : `Have at least <span class="val">${val}</span> regiments`),
@@ -2020,6 +2070,14 @@ function triggerToText(key, val) {
     'stability': `Have at least <span class="val">${val}</span> stability`,
     'prestige': `Have at least <span class="val">${val}</span> prestige`,
     'legitimacy': `Have at least <span class="val">${val}</span> legitimacy`,
+    'republican_tradition': `Have at least <span class="val">${val}</span> republican tradition`,
+    'legitimacy_equivalent': `Have at least <span class="val">${val}</span> legitimacy (or equivalent)`,
+    'religion_group': `Religion group: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'num_free_building_slots': `Have at least <span class="val">${val}</span> free building slots`,
+    'ruler_has_mage_personality': val === 'yes' ? 'Ruler is a mage' : null,
+    'owned_by_subject_of': isScopeVar(val) ? 'Owned by a subject' : `Owned by subject of <span class="tag">${tagName(val)}</span>`,
+    'overlord_of': `Be overlord of <span class="tag">${tagName(val)}</span>`,
+    'always': null,
     'total_development': `Have at least <span class="val">${val}</span> total development`,
     'development': `Province has <span class="val">${val}</span> development`,
     'num_of_cities': isScopeVar(val) ? null : `Own at least <span class="val">${val}</span> provinces`,
@@ -2033,8 +2091,8 @@ function triggerToText(key, val) {
     'num_of_allies': `Have at least <span class="val">${val}</span> allies`,
     'num_of_subjects': `Have at least <span class="val">${val}</span> subjects`,
     'num_of_provinces_in_states': `Have <span class="val">${val}</span> stated provinces`,
-    'num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with': null, // complex nested, handled by tooltip
-    'num_of_provinces_owned_or_owned_by_subjects_with': null, // complex nested
+    'num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with': (() => { const vm = val.match(/value\s*=\s*(\d+)/); const count = vm ? vm[1] : '?'; return `You or subjects own at least <span class="val">${count}</span> provinces${extractProvConditions(val)}`; })(),
+    'num_of_provinces_owned_or_owned_by_subjects_with': (() => { const vm = val.match(/value\s*=\s*(\d+)/); const count = vm ? vm[1] : '?'; return `You or subjects own at least <span class="val">${count}</span> provinces${extractProvConditions(val)}`; })(),
     'has_estate': null, // complex nested
     'is_at_war': val === 'no' ? 'Be at peace' : 'Be at war',
     'is_subject': val === 'no' ? 'Be independent (not a subject)' : 'Be a subject nation',
@@ -2113,41 +2171,7 @@ function triggerToText(key, val) {
     'has_shipyard_building_trigger': val === 'yes' ? 'Has a shipyard building' : 'No shipyard building',
     'has_port': val === 'yes' ? 'Has a port' : 'Has no port',
     'light_ships_in_province': `Has at least <span class="val">${val}</span> light ships in province`,
-    'num_of_owned_provinces_with': (() => {
-      const vm = val.match(/value\s*=\s*(\d+)/);
-      const count = vm ? vm[1] : '?';
-      // Extract meaningful conditions from the block
-      const conditions = [];
-      const tgMatches = val.matchAll(/trade_goods\s*=\s*(\w+)/g);
-      const goods = new Set();
-      for (const tg of tgMatches) goods.add(tg[1].replace(/_/g, ' '));
-      if (goods.size) conditions.push('produces ' + [...goods].join(' or '));
-      if (/has_building\s*=\s*(\w+)/.test(val)) conditions.push('has ' + val.match(/has_building\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
-      if (/culture\s*=\s*(\w+)/.test(val) && !/culture_group/.test(val)) { const cv = val.match(/culture\s*=\s*(\w+)/)[1]; if (cv === 'ROOT') conditions.push('our culture'); else conditions.push('culture: ' + cv.replace(/_/g, ' ')); }
-      if (/culture_group\s*=\s*(\w+)/.test(val)) { const cv = val.match(/culture_group\s*=\s*(\w+)/)[1]; if (cv === 'ROOT') conditions.push('our culture group'); else conditions.push('culture group: ' + cv.replace(/_/g, ' ')); }
-      if (/religion\s*=\s*(\w+)/.test(val)) { const rv = val.match(/religion\s*=\s*(\w+)/)[1]; if (rv === 'ROOT') conditions.push('our religion'); else conditions.push('religion: ' + rv.replace(/_/g, ' ')); }
-      if (/has_\w+_minority_trigger/.test(val)) { const mm = val.match(/has_(\w+)_minority_trigger/); if (mm) conditions.push('has ' + mm[1].replace(/_/g, ' ') + ' minority'); }
-      if (/development\s*=\s*(\d+)/.test(val)) conditions.push('at least ' + val.match(/development\s*=\s*(\d+)/)[1] + ' development');
-      if (/base_production\s*=\s*(\d+)/.test(val)) conditions.push('base production ≥ ' + val.match(/base_production\s*=\s*(\d+)/)[1]);
-      if (/has_port\s*=\s*yes/.test(val)) conditions.push('has a port');
-      if (/is_city\s*=\s*yes/.test(val)) conditions.push('is a city');
-      if (/region\s*=\s*(\w+)/.test(val)) { const rm = val.match(/region\s*=\s*(\w+)/); conditions.push('in ' + rm[1].replace(/_/g, ' ')); }
-      if (/area\s*=\s*(\w+)/.test(val)) { const am = val.match(/area\s*=\s*(\w+)/); conditions.push('in ' + am[1].replace(/_/g, ' ')); }
-      if (/has_supply_depot\s*=\s*(\w+)/.test(val)) conditions.push('has supply depot');
-      if (/has_manpower_building_trigger/.test(val)) conditions.push('has manpower building');
-      if (/has_production_building_trigger/.test(val)) conditions.push('has production building');
-      if (/has_tax_building_trigger/.test(val)) conditions.push('has tax building');
-      if (/has_trade_building_trigger/.test(val)) conditions.push('has trade building');
-      if (/has_forcelimit_building_trigger/.test(val)) conditions.push('has forcelimit building');
-      if (/province_has_center_of_trade_of_level\s*=\s*(\d+)/.test(val)) conditions.push('center of trade level ≥ ' + val.match(/province_has_center_of_trade_of_level\s*=\s*(\d+)/)[1]);
-      if (/fort_level\s*=\s*(\d+)/.test(val)) conditions.push('fort level ≥ ' + val.match(/fort_level\s*=\s*(\d+)/)[1]);
-      if (/has_province_modifier\s*=\s*(\w+)/g.test(val)) { const mods = [...val.matchAll(/has_province_modifier\s*=\s*(\w+)/g)].map(m => modRef(m[1])); conditions.push('has modifier: ' + mods.join(' or ')); }
-      if (/has_country_modifier\s*=\s*(\w+)/.test(val)) { const cm = val.match(/has_country_modifier\s*=\s*(\w+)/); conditions.push('has modifier: ' + modRef(cm[1])); }
-      if (/continent\s*=\s*(\w+)/.test(val)) conditions.push('on ' + val.match(/continent\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
-      if (/superregion\s*=\s*(\w+)/.test(val)) conditions.push('in ' + val.match(/superregion\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
-      const condStr = conditions.length ? ' (' + conditions.join(', ') + ')' : '';
-      return `Own at least <span class="val">${count}</span> provinces${condStr}`;
-    })(),
+    'num_of_owned_provinces_with': (() => { const vm = val.match(/value\s*=\s*(\d+)/); const count = vm ? vm[1] : '?'; return `Own at least <span class="val">${count}</span> provinces${extractProvConditions(val)}`; })(),
     'num_of_estate_agendas_completed': (() => { const em = val.match(/estate\s*=\s*estate_(\w+)/); const vm = val.match(/value\s*=\s*(\d+)/); return (em && vm) ? `Have completed <span class="val">${vm[1]}</span> ${em[1].replace(/_/g, ' ')} estate agendas` : null; })(),
     'num_of_estate_privileges': (() => { const em = val.match(/estate\s*=\s*estate_(\w+)/); const vm = val.match(/value\s*=\s*(\d+)/); return (em && vm) ? `Have at least <span class="val">${vm[1]}</span> ${em[1].replace(/_/g, ' ')} estate privileges` : null; })(),
     // Province conditions
@@ -2230,6 +2254,8 @@ function triggerToText(key, val) {
     'army_professionalism': `Army professionalism at least <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span>`,
     'max_years_since': (() => { const ym = val.match(/years\s*=\s*(\d+)/); return ym ? `Within the last <span class="val">${ym[1]}</span> years` : null; })(),
     'all_known_country': 'All known countries:',
+    'all_country': 'All countries:',
+    'all_province': 'All provinces:',
     'has_dlc': null, // hide DLC checks
     'normal_or_historical_nations': null,
     'controls': isScopeVar(val) ? null : `Control ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
@@ -2467,7 +2493,7 @@ function triggerToText(key, val) {
     'num_of_galley': /^\d+$/.test(val) ? `Have at least <span class="val">${val}</span> galleys` : null,
     'num_of_transport': /^\d+$/.test(val) ? `Have at least <span class="val">${val}</span> transports` : null,
     'has_global_modifier_value': (() => { const wm = val.match(/which\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*([\d.]+)/); if (wm && vm) return `${wm[1].replace(/_/g, ' ')} at least <span class="val">${vm[1]}</span>`; return null; })(),
-    'development_in_provinces': (() => { const vm = val.match(/value\s*=\s*(\d+)/); if (vm) return `Development in provinces at least <span class="val">${vm[1]}</span>`; return null; })(),
+    'development_in_provinces': (() => { const vm = val.match(/value\s*=\s*(\d+)/); if (vm) return `Development in provinces at least <span class="val">${vm[1]}</span>${extractProvConditions(val)}`; return null; })(),
     'birth_date': null,
     'monarch_name': null,
     'kill_ruler': null,
@@ -2646,6 +2672,10 @@ function triggerToText(key, val) {
   if (key === 'if' || key === 'else' || key === 'else_if') return null; // transparent — depth tracker parses contents
   // Suppress has_XX_opinion_* triggers (complex nested with target = ROOT)
   if (/^has_\d+_opinion_/.test(key) || /^has_any_opinion_/.test(key)) return null;
+  // Anbennar race tolerance triggers
+  if (/^(high|medium|low)_tolerance_(\w+)_race_trigger$/.test(key)) { const rm = key.match(/^(high|medium|low)_tolerance_(\w+)_race_trigger$/); if (rm) return { text: `Have ${rm[1]} tolerance of <span class="tag">${rm[2].replace(/_/g, ' ')}</span> race`, type: 'condition' }; }
+  // Idea group progress checks (e.g. exploration_ideas = 1)
+  if (/_ideas$/.test(key) && /^\d+$/.test(val)) { return { text: `Have <span class="val">${val}</span> ideas in <span class="tag">${key.replace(/_ideas$/, '').replace(/_/g, ' ')}</span>`, type: 'condition' }; }
 
   // EU4 advisor type checks (e.g. trader = 3, natural_scientist = 5)
   const ADVISOR_TYPES = new Set(['trader','natural_scientist','fortification_expert','artist','army_organiser','army_reformer','commandant','diplomat','colonial_governor','grand_captain','inquisitor','master_of_mint','master_recruiter','naval_reformer','navigator','philosopher','spymaster','statesman','theologian','treasurer']);
