@@ -100,6 +100,32 @@ body {
   margin-top: 2px;
   letter-spacing: 1px;
 }
+#header-content { flex: 1; }
+.kofi-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  color: var(--gold);
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-right: 12px;
+}
+.kofi-btn:hover {
+  background: rgba(201,168,76,0.18);
+  border-color: var(--gold);
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(201,168,76,0.3);
+}
 
 /* LAYOUT */
 #layout {
@@ -1063,6 +1089,7 @@ body {
     <h1>ANBENNAR COMPENDIUM</h1>
     <div class="subtitle">An Interactive Guide to the World of Halcann &mdash; by Ijkee</div>
   </div>
+  <a href="https://ko-fi.com/ijkee" target="_blank" rel="noopener" class="kofi-btn" title="Support Ijkee on Ko-fi">&#9749; Support</a>
   <button id="mobile-toggle">&#9776;</button>
 </div>
 
