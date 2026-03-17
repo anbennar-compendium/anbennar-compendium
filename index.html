@@ -987,9 +987,16 @@ body {
 }
 .map-legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
 .map-legend-swatch { width: 12px; height: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2); }
+/* Mini-map tooltip for province/area/region references */
+.geo-ref { text-decoration: underline dotted rgba(212,175,55,0.5); text-underline-offset: 2px; cursor: pointer; }
+.geo-ref:hover { text-decoration-color: var(--gold); color: var(--gold); }
+#geo-tooltip { position: fixed; z-index: 9999; pointer-events: none; display: none; background: rgba(10,10,20,0.97); border: 1px solid var(--gold); border-radius: 6px; padding: 0; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+#geo-tooltip canvas { display: block; border-radius: 5px; }
+#geo-tooltip .geo-label { padding: 4px 8px; font-size: 11px; color: var(--text-secondary); text-align: center; border-top: 1px solid rgba(212,175,55,0.2); white-space: nowrap; }
 </style>
 </head>
 <body>
+<div id="geo-tooltip"><canvas id="geo-canvas"></canvas><div class="geo-label"></div></div>
 
 <div id="header">
   <div id="header-content">
@@ -1038,7 +1045,7 @@ body {
 
 <script>
 // --- DATA ---
-let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {};
+let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {}, AREA_DATA = {};
 // Map state
 let mapBaseImg = null, mapIdImg = null, mapIdData = null, mapBounds = null;
 let mapScale = 1, mapOffX = 0, mapOffY = 0, mapCurrentTag = null;
@@ -1055,7 +1062,7 @@ async function loadData() {
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
     const v = '3';
-    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14] = await Promise.all([
+    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15] = await Promise.all([
       fetch('anbennar_data.json?v='+v).then(r => r.json()),
       fetch('religions_data.json?v='+v).then(r => r.json()),
       fetch('wiki_data.json?v='+v).then(r => r.json()),
@@ -1069,8 +1076,9 @@ async function loadData() {
       fetch('province_owners.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('diplomacy_data.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('province_details.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('area_data.json?v='+v).then(r => r.json()).catch(() => ({})),
     ]);
-    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {};
+    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {}; AREA_DATA = d15 || {};
 
     countries = Object.values(DATA);
     countries.sort(countrySorter);
@@ -1410,6 +1418,19 @@ function provName(id) {
   const n = PROVINCES[String(id)];
   return n ? n : 'Province ' + id;
 }
+// Create a span with geographic reference data for mini-map tooltip
+function provSpan(id, label) {
+  if (!label) label = provName(id);
+  return `<span class="val geo-ref" data-provs="${id}" title="ID: ${id}">${label}</span>`;
+}
+function areaSpan(areaKey, label) {
+  if (!label) label = areaKey.replace(/_area$/, '').replace(/_/g, ' ');
+  return `<span class="tag geo-ref" data-area="${areaKey}">${label}</span>`;
+}
+function regionSpan(regionKey, label) {
+  if (!label) label = regionKey.replace(/_region$/, '').replace(/_/g, ' ');
+  return `<span class="tag geo-ref" data-region="${regionKey}">${label}</span>`;
+}
 
 function esc(s) {
   if (!s) return '';
@@ -1710,36 +1731,43 @@ function parseTriggerToReadable(raw) {
           if ((key.endsWith('_area') || key.endsWith('_region') || key.endsWith('_superregion')) && opens > closes) {
             const sName = key.replace(/_area$|_region$|_superregion$/, '').replace(/_/g, ' ');
             const sType = key.endsWith('_area') ? 'area' : key.endsWith('_region') ? 'region' : 'superregion';
-            scopeStack.push({name: sName, type: sType, depth: depth});
+            scopeStack.push({name: sName, type: sType, depth: depth, key: key});
           } else if (/^\d+$/.test(key) && opens > closes) {
             scopeStack.push({name: provName(key), type: 'province', depth: depth, id: key});
           }
-          // Handle add_permanent_claim = ROOT inside a scope
           // Handle scope-aware effects: when ROOT is used inside a province/area scope
           if (isScopeVar(val) && scopeStack.length) {
             const scope = scopeStack[scopeStack.length - 1];
+            // Build geo-ref span based on scope type
+            const geoTag = scope.type === 'province' && scope.id
+              ? provSpan(scope.id, esc(scope.name))
+              : scope.type === 'area' && scope.key
+              ? areaSpan(scope.key, esc(scope.name))
+              : scope.type === 'region' && scope.key
+              ? regionSpan(scope.key, esc(scope.name))
+              : `<span class="tag">${esc(scope.name)}</span>`;
             if (key === 'add_permanent_claim') {
-              results.push({ text: `Gain permanent claims on <span class="tag">${esc(scope.name)}</span> (${scope.type})`, type: 'condition' });
+              results.push({ text: `Gain permanent claims on ${geoTag} (${scope.type})`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
             if (key === 'add_core') {
-              results.push({ text: `Gain cores on <span class="tag">${esc(scope.name)}</span> (${scope.type})`, type: 'condition' });
+              results.push({ text: `Gain cores on ${geoTag} (${scope.type})`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
             if (key === 'add_claim') {
-              results.push({ text: `Gain claims on <span class="tag">${esc(scope.name)}</span> (${scope.type})`, type: 'condition' });
+              results.push({ text: `Gain claims on ${geoTag} (${scope.type})`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
             if (key === 'country_or_subject_holds' || key === 'country_or_non_sovereign_subject_holds') {
-              results.push({ text: `You or subject own <span class="tag">${esc(scope.name)}</span>`, type: 'condition' });
+              results.push({ text: `You or subject own ${geoTag}`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
             if (key === 'owned_by') {
-              results.push({ text: `Own <span class="tag">${esc(scope.name)}</span>`, type: 'condition' });
+              results.push({ text: `Own ${geoTag}`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
             if (key === 'is_core') {
-              results.push({ text: `<span class="tag">${esc(scope.name)}</span> is a core`, type: 'condition' });
+              results.push({ text: `${geoTag} is a core`, type: 'condition' });
               depth = Math.max(0, newDepth); continue;
             }
           }
@@ -1833,8 +1861,8 @@ function triggerToText(key, val) {
     'has_reform': `Have government reform: <span class="tag">${val}</span>`,
     'religion': isScopeVar(val) ? 'Follow our religion' : `Follow religion: <span class="tag">${val}</span>`,
     'tag': isScopeVar(val) ? null : `Be country: <span class="tag">${tagName(val)}</span>`,
-    'owns': `Own province <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
-    'owns_core_province': `Own and core province <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'owns': `Own province ${/^\d+$/.test(val) ? provSpan(val) : val}`,
+    'owns_core_province': `Own and core province ${/^\d+$/.test(val) ? provSpan(val) : val}`,
     'num_of_merchants': `Have <span class="val">${val}</span> merchants`,
     'num_of_colonists': `Have <span class="val">${val}</span> colonists`,
     'num_of_missionaries': `Have <span class="val">${val}</span> missionaries`,
@@ -1885,8 +1913,8 @@ function triggerToText(key, val) {
     // Subjects & diplomacy
     'num_of_non_tributary_subjects': `Have at least <span class="val">${val}</span> non-tributary subjects`,
     'num_of_royal_marriages': `Have at least <span class="val">${val}</span> royal marriages`,
-    'country_or_non_sovereign_subject_holds': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
-    'country_or_subject_holds': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : tagName(val)}</span>`,
+    'country_or_non_sovereign_subject_holds': isScopeVar(val) ? null : `You or subject own ${/^\d+$/.test(val) ? provSpan(val) : val}`,
+    'country_or_subject_holds': isScopeVar(val) ? null : `You or subject own ${/^\d+$/.test(val) ? provSpan(val) : tagName(val)}`,
     'share_of_starting_income': `Income at <span class="val">${(parseFloat(val)*100)}%</span> of starting income`,
     // Estate & privileges
     'estate_loyalty': (() => { const em = val.match(/estate\s*=\s*estate_(\w+)/); const lm = val.match(/loyalty\s*=\s*(\d+)/); return (em && lm) ? `${em[1].replace(/_/g, ' ')} loyalty at least <span class="val">${lm[1]}</span>` : null; })(),
@@ -1940,7 +1968,7 @@ function triggerToText(key, val) {
     // Province conditions
     'culture': `Culture is: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'culture_group_claim': `Culture group claim on: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
-    'has_discovered': isScopeVar(val) ? 'Has been discovered' : `Has discovered <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'has_discovered': isScopeVar(val) ? 'Has been discovered' : `Has discovered ${/^\d+$/.test(val) ? provSpan(val) : val}`,
     'capital_scope': 'In capital province:',
     // Date & time
     'is_year': `Year is at least <span class="val">${val}</span>`,
@@ -2019,7 +2047,7 @@ function triggerToText(key, val) {
     'all_known_country': 'All known countries:',
     'has_dlc': null, // hide DLC checks
     'normal_or_historical_nations': null,
-    'controls': isScopeVar(val) ? null : `Control <span class="val" title="ID: ${val}">${resolveRef(val)}</span>`,
+    'controls': isScopeVar(val) ? null : `Control ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
     'is_subject_of': isScopeVar(val) ? null : `Be subject of <span class="tag">${tagName(val)}</span>`,
     'is_subject_of_type': `Be subject of type: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'liberty_desire': `Liberty desire at least <span class="val">${val}</span>`,
@@ -2041,14 +2069,14 @@ function triggerToText(key, val) {
     'factor': null, // nested weight
     'ai_will_do': null, // internal AI logic
     'remove_country_modifier': (() => { const mk = val.trim(); return `Remove modifier: ${modRef(mk)}`; })(),
-    'owns_or_non_sovereign_subject_of': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
-    'owns_or_subject_of': isScopeVar(val) ? null : `You or subject own <span class="val" title="ID: ${val}">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'owns_or_non_sovereign_subject_of': isScopeVar(val) ? null : `You or subject own ${/^\d+$/.test(val) ? provSpan(val) : val}`,
+    'owns_or_subject_of': isScopeVar(val) ? null : `You or subject own ${/^\d+$/.test(val) ? provSpan(val) : val}`,
     'war_with': isScopeVar(val) ? null : `At war with <span class="tag">${tagName(val)}</span>`,
     'owner': null, // internal scope
     'trade_share': `Trade share at least <span class="val">${val}</span>`,
     'share': null, // nested value inside trade_share
-    'region': `In region: <span class="tag">${val.replace(/_/g, ' ').replace(/ region$/, '')}</span>`,
-    'area': `In area: <span class="tag">${val.replace(/_/g, ' ').replace(/ area$/, '')}</span>`,
+    'region': `In region: ${regionSpan(val)}`,
+    'area': `In area: ${areaSpan(val)}`,
     'superregion': `In superregion: <span class="tag">${val.replace(/_/g, ' ').replace(/ superregion$/, '')}</span>`,
     'continent': `On continent: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'loyalty': null, // nested inside estate block
@@ -2102,9 +2130,9 @@ function triggerToText(key, val) {
     'change_government_reform_progress': `Change government reform progress: <span class="val">${val}</span>`,
     'add_government_reform_progress': `Add <span class="val">${val}</span> government reform progress`,
     'add_country_modifier': (() => { const mk = extractModKey(val); return `Add modifier: ${modRef(mk)}`; })(),
-    'add_permanent_claim': isScopeVar(val) ? null : `Add permanent claim on <span class="val" title="ID: ${val}">${resolveRef(val)}</span>`,
-    'add_claim': isScopeVar(val) ? null : `Add claim on <span class="val" title="ID: ${val}">${resolveRef(val)}</span>`,
-    'add_core': isScopeVar(val) ? null : `Add core on <span class="val" title="ID: ${val}">${resolveRef(val)}</span>`,
+    'add_permanent_claim': isScopeVar(val) ? null : `Add permanent claim on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
+    'add_claim': isScopeVar(val) ? null : `Add claim on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
+    'add_core': isScopeVar(val) ? null : `Add core on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
     'add_base_tax': `Add <span class="val">${val}</span> base tax`,
     'add_base_production': `Add <span class="val">${val}</span> base production`,
     'add_base_manpower': `Add <span class="val">${val}</span> base manpower`,
@@ -2279,8 +2307,8 @@ function triggerToText(key, val) {
     'change_government_to_monarchy': 'Change government to monarchy',
     'change_government_to_theocracy': 'Change government to theocracy',
     'change_government_to_tribal': 'Change government to tribal',
-    'set_capital': `Move capital to <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
-    'move_capital': `Move capital to <span class="val">${/^\d+$/.test(val) ? provName(val) : val}</span>`,
+    'set_capital': `Move capital to ${/^\d+$/.test(val) ? provSpan(val) : '<span class="val">' + val + '</span>'}`,
+    'move_capital': `Move capital to ${/^\d+$/.test(val) ? provSpan(val) : '<span class="val">' + val + '</span>'}`,
     'add_next_institution_embracement': `Add <span class="val">${val}</span> institution progress`,
     'add_institution_embracement': (() => { const wm = val.match(/which\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(-?[\d.]+)/); if (wm && vm) return `Add <span class="val">${vm[1]}</span> ${wm[1].replace(/_/g, ' ')} progress`; return 'Add institution progress'; })(),
     'every_province': 'Every province in scope:',
@@ -3689,6 +3717,169 @@ document.addEventListener('click', (e) => {
     if (tag) setTimeout(() => renderMap(tag), 50);
   }
 });
+
+// === GEO-REF MINI-MAP TOOLTIP ===
+const geoTT = document.getElementById('geo-tooltip');
+const geoCanvas = document.getElementById('geo-canvas');
+const geoLabel = geoTT.querySelector('.geo-label');
+let geoBaseCanvas = null; // cached offscreen base map
+
+async function ensureGeoBase() {
+  if (geoBaseCanvas) return;
+  await loadMapAssets();
+  geoBaseCanvas = document.createElement('canvas');
+  geoBaseCanvas.width = MAP_W;
+  geoBaseCanvas.height = MAP_H;
+  geoBaseCanvas.getContext('2d').drawImage(mapBaseImg, 0, 0);
+}
+
+function getGeoProvIds(el) {
+  // Single province
+  if (el.dataset.provs) return el.dataset.provs.split(',').map(Number).filter(Boolean);
+  // Area
+  if (el.dataset.area) {
+    const areas = AREA_DATA.areas || {};
+    return areas[el.dataset.area] || [];
+  }
+  // Region
+  if (el.dataset.region) {
+    const regions = AREA_DATA.regions || {};
+    return regions[el.dataset.region] || [];
+  }
+  return [];
+}
+
+function renderGeoTooltip(provIds, mouseX, mouseY) {
+  if (!provIds.length || !mapBounds || !mapIdData) { geoTT.style.display = 'none'; return; }
+
+  // Compute bounding box of all provinces
+  let minX = MAP_W, minY = MAP_H, maxX = 0, maxY = 0;
+  const validIds = [];
+  for (const pid of provIds) {
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    validIds.push(pid);
+    minX = Math.min(minX, b[0]);
+    minY = Math.min(minY, b[1]);
+    maxX = Math.max(maxX, b[2]);
+    maxY = Math.max(maxY, b[3]);
+  }
+  if (!validIds.length) { geoTT.style.display = 'none'; return; }
+
+  // Add padding around the bounding box
+  const pad = 60;
+  const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+  const spanX = maxX - minX + pad * 2, spanY = maxY - minY + pad * 2;
+  // Choose crop size — at least 200px, at most 600px of map space
+  const cropSize = Math.max(200, Math.min(600, Math.max(spanX, spanY)));
+  const cropX = Math.max(0, Math.min(MAP_W - cropSize, cx - cropSize / 2));
+  const cropY = Math.max(0, Math.min(MAP_H - cropSize, cy - cropSize / 2));
+
+  // Canvas display size
+  const DISPLAY = 280;
+  geoCanvas.width = DISPLAY;
+  geoCanvas.height = DISPLAY;
+  const gctx = geoCanvas.getContext('2d');
+
+  // Draw cropped base map
+  gctx.drawImage(geoBaseCanvas, cropX, cropY, cropSize, cropSize, 0, 0, DISPLAY, DISPLAY);
+
+  // Dim everything slightly
+  gctx.fillStyle = 'rgba(0,0,0,0.35)';
+  gctx.fillRect(0, 0, DISPLAY, DISPLAY);
+
+  // Highlight target provinces
+  const scale = DISPLAY / cropSize;
+  const baseData = geoBaseCanvas.getContext('2d').getImageData(cropX, cropY, Math.ceil(cropSize), Math.ceil(cropSize));
+  const imgData = gctx.getImageData(0, 0, DISPLAY, DISPLAY);
+  const pidSet = new Set(validIds);
+
+  for (const pid of validIds) {
+    const b = mapBounds[String(pid)];
+    if (!b) continue;
+    // Map bounds to crop coordinates
+    const bx1 = Math.max(0, b[0] - cropX), by1 = Math.max(0, b[1] - cropY);
+    const bx2 = Math.min(cropSize - 1, b[2] - cropX), by2 = Math.min(cropSize - 1, b[3] - cropY);
+
+    for (let y = by1; y <= by2; y++) {
+      for (let x = bx1; x <= bx2; x++) {
+        // Check province ID at this pixel
+        const mapX = Math.floor(cropX + x), mapY = Math.floor(cropY + y);
+        if (mapX < 0 || mapX >= MAP_W || mapY < 0 || mapY >= MAP_H) continue;
+        const midx = (mapY * MAP_W + mapX) * 4;
+        const pixPid = (mapIdData[midx] << 8) | mapIdData[midx + 1];
+        if (!pidSet.has(pixPid)) continue;
+
+        // Map to display coordinates
+        const dx = Math.floor(x * scale), dy = Math.floor(y * scale);
+        if (dx >= DISPLAY || dy >= DISPLAY) continue;
+        const didx = (dy * DISPLAY + dx) * 4;
+
+        // Brighten the original color
+        const sx = Math.floor(x), sy = Math.floor(y);
+        if (sx >= 0 && sx < baseData.width && sy >= 0 && sy < baseData.height) {
+          const sidx = (sy * baseData.width + sx) * 4;
+          imgData.data[didx] = Math.min(255, baseData.data[sidx] + 80);
+          imgData.data[didx + 1] = Math.min(255, baseData.data[sidx + 1] + 60);
+          imgData.data[didx + 2] = Math.min(255, baseData.data[sidx + 2]);
+          imgData.data[didx + 3] = 255;
+        }
+      }
+    }
+  }
+  gctx.putImageData(imgData, 0, 0);
+
+  // Draw a gold border around the highlighted area
+  gctx.strokeStyle = 'rgba(212,175,55,0.7)';
+  gctx.lineWidth = 2;
+  const hlX = (minX - pad/2 - cropX) * scale, hlY = (minY - pad/2 - cropY) * scale;
+  const hlW = (maxX - minX + pad) * scale, hlH = (maxY - minY + pad) * scale;
+  gctx.strokeRect(hlX, hlY, hlW, hlH);
+
+  // Position tooltip near mouse
+  const ttW = DISPLAY + 2, ttH = DISPLAY + 28;
+  let tx = mouseX + 16, ty = mouseY - ttH / 2;
+  if (tx + ttW > window.innerWidth - 10) tx = mouseX - ttW - 16;
+  if (ty < 10) ty = 10;
+  if (ty + ttH > window.innerHeight - 10) ty = window.innerHeight - ttH - 10;
+  geoTT.style.left = tx + 'px';
+  geoTT.style.top = ty + 'px';
+  geoTT.style.display = 'block';
+}
+
+let geoHoverEl = null;
+let geoLoadingTimer = null;
+
+document.addEventListener('mouseenter', async (e) => {
+  const ref = e.target.closest('.geo-ref');
+  if (!ref) return;
+  geoHoverEl = ref;
+  // Small delay to avoid flashing on quick mouse pass
+  clearTimeout(geoLoadingTimer);
+  geoLoadingTimer = setTimeout(async () => {
+    if (geoHoverEl !== ref) return;
+    await ensureGeoBase();
+    const provIds = getGeoProvIds(ref);
+    if (!provIds.length) return;
+    // Build label
+    let label = '';
+    if (ref.dataset.provs && provIds.length === 1) label = provName(provIds[0]) + ' (Province ' + provIds[0] + ')';
+    else if (ref.dataset.area) label = ref.dataset.area.replace(/_area$/, '').replace(/_/g, ' ') + ' (' + provIds.length + ' provinces)';
+    else if (ref.dataset.region) label = ref.dataset.region.replace(/_region$/, '').replace(/_/g, ' ') + ' (' + provIds.length + ' provinces)';
+    geoLabel.textContent = label;
+    const rect = ref.getBoundingClientRect();
+    renderGeoTooltip(provIds, rect.right, rect.top);
+  }, 150);
+}, true);
+
+document.addEventListener('mouseleave', (e) => {
+  const ref = e.target.closest('.geo-ref');
+  if (ref) {
+    geoHoverEl = null;
+    clearTimeout(geoLoadingTimer);
+    geoTT.style.display = 'none';
+  }
+}, true);
 
 // Init
 document.addEventListener('DOMContentLoaded', loadData);
