@@ -1171,7 +1171,7 @@ async function loadData() {
   const el = document.getElementById('country-list');
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
-    const v = '3';
+    const v = '4';
     const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16] = await Promise.all([
       fetch('anbennar_data.json?v='+v).then(r => r.json()),
       fetch('religions_data.json?v='+v).then(r => r.json()),
@@ -2701,6 +2701,15 @@ function triggerToText(key, val) {
     provCondition = provCondition.replace(/country or non sovereign subject holds\s*=\s*\S+/i, 'Owned by you or subject');
     provCondition = provCondition.replace(/country or subject holds\s*=\s*(\S+)/i, (m, t) => 'Owned by ' + (DATA[t] ? DATA[t].name : 'you') + ' or subject');
     provCondition = provCondition.replace(/owns or non sovereign subject of\s*=\s*\S+/i, 'Owned by you or subject');
+    provCondition = provCondition.replace(/base production\s*=\s*/i, 'Base production at least ');
+    provCondition = provCondition.replace(/base tax\s*=\s*/i, 'Base tax at least ');
+    provCondition = provCondition.replace(/base manpower\s*=\s*/i, 'Base manpower at least ');
+    provCondition = provCondition.replace(/development\s*=\s*/i, 'Development at least ');
+    provCondition = provCondition.replace(/trade goods\s*=\s*/i, 'Produces ');
+    provCondition = provCondition.replace(/num of times improved\s*=\s*/i, 'Improved at least ');
+    provCondition = provCondition.replace(/num of buildings in province\s*=\s*/i, 'Buildings at least ');
+    provCondition = provCondition.replace(/is city\s*=\s*yes/i, 'Is a city');
+    provCondition = provCondition.replace(/is capital\s*=\s*yes/i, 'Is the capital');
     if (!provCondition.trim()) return null;
     return { text: `<span class="tag" title="Province ID: ${key}">${esc(pn)}</span> — ${provCondition}`, type: 'scope' };
   }
@@ -3767,7 +3776,7 @@ function mapReset() {
   if (mapCurrentTag) renderMap(mapCurrentTag);
 }
 
-let _mapHandlersSet = false;
+let _mapHandlersContainer = null;
 function getMapProvAtCoord(mx, my) {
   const fitScale = document.getElementById('map-container').clientWidth / MAP_W;
   const mapX = Math.floor((mx - mapOffX) / (mapScale * fitScale));
@@ -3848,8 +3857,9 @@ function showProvincePanel(pid) {
 }
 
 function setupMapInteraction(container, canvas) {
-  if (_mapHandlersSet) return;
-  _mapHandlersSet = true;
+  // If handlers are on the same DOM element, skip
+  if (_mapHandlersContainer === container) return;
+  _mapHandlersContainer = container;
   let dragging = false, lastX, lastY, didDrag = false;
 
   container.addEventListener('mousedown', (e) => {
@@ -3857,23 +3867,38 @@ function setupMapInteraction(container, canvas) {
     lastX = e.clientX; lastY = e.clientY;
     container.style.cursor = 'grabbing';
   });
-  window.addEventListener('mousemove', (e) => {
+  container.addEventListener('mousemove', (e) => {
     if (dragging) {
       const dx = e.clientX - lastX, dy = e.clientY - lastY;
       if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
       mapOffX += dx; mapOffY += dy;
       lastX = e.clientX; lastY = e.clientY;
       applyMapTransform();
+    } else if (mapIdData) {
+      const rect = container.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      const pid = getMapProvAtCoord(mx, my);
+      const tt = document.getElementById('map-tooltip');
+      if (pid > 0 && PROVINCES[String(pid)]) {
+        const d = PROV_DETAILS[String(pid)];
+        const dev = d ? `${(d.t||0)+(d.p||0)+(d.m||0)} dev` : '';
+        tt.textContent = PROVINCES[String(pid)] + (dev ? ' \u2022 ' + dev : '');
+        tt.style.display = 'block';
+        tt.style.left = (mx + 12) + 'px';
+        tt.style.top = (my - 8) + 'px';
+      } else {
+        tt.style.display = 'none';
+      }
     }
   });
-  window.addEventListener('mouseup', () => {
+  container.addEventListener('mouseup', () => {
     dragging = false;
-    if (container) container.style.cursor = 'grab';
+    container.style.cursor = 'grab';
   });
 
   // Province click
   container.addEventListener('click', (e) => {
-    if (didDrag) return; // don't trigger on drag
+    if (didDrag) return;
     const rect = container.getBoundingClientRect();
     const mx = e.clientX - rect.left, my = e.clientY - rect.top;
     const pid = getMapProvAtCoord(mx, my);
@@ -3881,11 +3906,11 @@ function setupMapInteraction(container, canvas) {
       highlightProvince(pid);
       showProvincePanel(pid);
     } else {
-      // Click on empty area — hide panel, restore base render
       const panel = document.getElementById('map-province-panel');
       if (panel) panel.style.display = 'none';
       if (mapRenderedData) {
-        const ctx = canvas.getContext('2d');
+        const c = document.getElementById('map-canvas');
+        const ctx = c.getContext('2d');
         const imgData = ctx.createImageData(MAP_W, MAP_H);
         imgData.data.set(mapRenderedData);
         ctx.putImageData(imgData, 0, 0);
@@ -3905,24 +3930,6 @@ function setupMapInteraction(container, canvas) {
     applyMapTransform();
   }, { passive: false });
 
-  // Province hover tooltip
-  container.addEventListener('mousemove', (e) => {
-    if (dragging || !mapIdData) return;
-    const rect = container.getBoundingClientRect();
-    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    const pid = getMapProvAtCoord(mx, my);
-    const tt = document.getElementById('map-tooltip');
-    if (pid > 0 && PROVINCES[String(pid)]) {
-      const d = PROV_DETAILS[String(pid)];
-      const dev = d ? `${(d.t||0)+(d.p||0)+(d.m||0)} dev` : '';
-      tt.textContent = PROVINCES[String(pid)] + (dev ? ' \u2022 ' + dev : '');
-      tt.style.display = 'block';
-      tt.style.left = (mx + 12) + 'px';
-      tt.style.top = (my - 8) + 'px';
-    } else {
-      tt.style.display = 'none';
-    }
-  });
   container.addEventListener('mouseleave', () => {
     document.getElementById('map-tooltip').style.display = 'none';
   });
