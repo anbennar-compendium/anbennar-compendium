@@ -1616,7 +1616,7 @@ function modChip(name, value) {
   if (!isNaN(num)) {
     const ln = name.toLowerCase();
     // Modifiers where small decimals are literal values, NOT fractions to multiply
-    const noMultiply = /^yearly_|^monthly_|republican_tradition|legitimacy|^stability$|horde_unity|devotion|meritocracy|^corruption$|inflation_reduction|interest$|liberty_desire|war_exhaustion_cost/.test(ln);
+    const noMultiply = /^yearly_|^monthly_|republican_tradition|legitimacy|^stability$|horde_unity|devotion|meritocracy|^corruption$|inflation_reduction|interest$|liberty_desire|war_exhaustion_cost|colonial_growth|global_manpower$|^land_forcelimit$|^naval_forcelimit$|^colonists$|^diplomats$|^missionaries$|^merchants$/.test(ln);
     // Modifiers where values are already in percentage form (show with %)
     const alreadyPercent = /liberty_desire/.test(ln);
     if (Math.abs(num) < 1 && Math.abs(num) > 0 && !/max_|num_|amount/.test(ln) && !noMultiply) {
@@ -1820,7 +1820,7 @@ function parseTriggerToReadable(raw) {
     return text;
   }
   processed = collapseBlock(processed, 'num_of_owned_provinces_with');
-  processed = collapseBlock(processed, 'calc_true_if');
+  // Don't collapse calc_true_if — let it parse children line-by-line
   processed = collapseBlock(processed, 'unlock_merc_company');
   processed = collapseBlock(processed, 'add_trade_modifier');
   processed = collapseBlock(processed, 'define_ruler');
@@ -1833,8 +1833,10 @@ function parseTriggerToReadable(raw) {
   processed = collapseBlock(processed, 'province_event');
   // ROOT/FROM/PREV as scope openers are handled by depth traversal (depth limit = 5)
   const lines = processed.split('\n');
-  const results = [];
+  const _results = [];
   let depth = 0;
+  // Proxy results.push to auto-attach depth
+  const results = { push(item) { if (item) { item.depth = item.depth ?? depth; _results.push(item); } }, get length() { return _results.length; } };
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
   const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
   // Track current scope (area/region/province) for context-aware claim handling
@@ -1866,6 +1868,15 @@ function parseTriggerToReadable(raw) {
         // Skip known nested/internal keys and their entire block
         if (SKIP_KEYS.has(key)) {
           if (opens > closes) { skipDepth = depth; }
+          depth = Math.max(0, newDepth);
+          continue;
+        }
+        // Handle calc_true_if as a scope label with amount
+        if (key === 'calc_true_if') {
+          // Find the amount in the remaining text
+          const amountMatch = processed.match(/calc_true_if\s*=\s*\{[\s\S]*?amount\s*=\s*(\d+)/);
+          const amt = amountMatch ? amountMatch[1] : '?';
+          results.push({ text: `At least <span class="val">${amt}</span> of the following:`, type: 'logic', depth: depth });
           depth = Math.max(0, newDepth);
           continue;
         }
@@ -1952,7 +1963,7 @@ function parseTriggerToReadable(raw) {
 
     depth = Math.max(0, newDepth);
   }
-  return results.slice(0, 50);
+  return _results.slice(0, 50);
 }
 
 function negateCondition(text) {
@@ -2331,7 +2342,7 @@ function triggerToText(key, val) {
     'add_reform_progress_big_effect': 'Add large reform progress',
     'change_government_reform_progress': `Change government reform progress: <span class="val">${val}</span>`,
     'add_government_reform_progress': `Add <span class="val">${val}</span> government reform progress`,
-    'add_country_modifier': (() => { const mk = extractModKey(val); return `Add modifier: ${modRef(mk)}`; })(),
+    'add_country_modifier': (() => { const mk = extractModKey(val); return `Add modifier: ${modRef(mk)}${extractDuration(val)}`; })(),
     'add_permanent_claim': isScopeVar(val) ? null : `Add permanent claim on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
     'add_claim': isScopeVar(val) ? null : `Add claim on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
     'add_core': isScopeVar(val) ? null : `Add core on ${/^\d+$/.test(val.trim()) ? provSpan(val.trim()) : '<span class="val">' + resolveRef(val) + '</span>'}`,
@@ -2359,8 +2370,8 @@ function triggerToText(key, val) {
     'create_general': 'Gain a new general',
     'create_admiral': 'Gain a new admiral',
     'add_patriarch_authority': `Add <span class="val">${(parseFloat(val)*100).toFixed(0)}%</span> patriarch authority`,
-    'add_ruler_modifier': (() => { const mk = extractModKey(val); return `Add ruler modifier: ${modRef(mk)}`; })(),
-    'add_province_modifier': (() => { const mk = extractModKey(val); return `Add province modifier: ${modRef(mk)}`; })(),
+    'add_ruler_modifier': (() => { const mk = extractModKey(val); return `Add ruler modifier: ${modRef(mk)}${extractDuration(val)}`; })(),
+    'add_province_modifier': (() => { const mk = extractModKey(val); return `Add province modifier: ${modRef(mk)}${extractDuration(val)}`; })(),
     'remove_province_modifier': (() => { const mk = val.trim(); return `Remove province modifier: ${modRef(mk)}`; })(),
     'add_disaster_progress': `Add disaster progress: <span class="tag">${val.replace(/[{}]/g, '').replace(/_/g, ' ').trim()}</span>`,
     'add_permanent_province_modifier': (() => { const mk = extractModKey(val); return `Add permanent province modifier: ${modRef(mk)}`; })(),
@@ -2378,7 +2389,7 @@ function triggerToText(key, val) {
     'release': isScopeVar(val) ? null : `Release: <span class="tag">${tagName(val)}</span>`,
     'white_peace': isScopeVar(val) ? null : `White peace with <span class="tag">${tagName(val)}</span>`,
     'add_opinion': null, // complex nested, skip
-    'has_opinion': null, // complex nested, skip
+    'has_opinion': (() => { const vm = val.match(/value\s*=\s*(-?\d+)/); const v = vm ? vm[1] : '?'; return `Has opinion of us at least <span class="val">${v}</span>`; })(),
     'has_opinion_modifier': null,
     'reverse_add_opinion': null,
     'add_devastation': `Add <span class="val">${val}</span> devastation`,
@@ -2575,7 +2586,7 @@ function triggerToText(key, val) {
     'remove_ruler_personality': `Remove ruler personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'add_heir_personality': `Add heir personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'add_consort_personality': `Add consort personality: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
-    'add_ruler_modifier': (() => { const mk = extractModKey(val); return `Add ruler modifier: ${modRef(mk)}`; })(),
+    'add_ruler_modifier': (() => { const mk = extractModKey(val); return `Add ruler modifier: ${modRef(mk)}${extractDuration(val)}`; })(),
     'change_ruler_stat': (() => { const tm = val.match(/type\s*=\s*(\w+)/); const am = val.match(/amount\s*=\s*(-?\d+)/); if (tm && am) return `Change ruler ${tm[1].replace(/_/g, ' ')} by <span class="val">${am[1]}</span>`; return null; })(),
     'set_ruler_flag': null, // internal
     'clr_ruler_flag': null, // internal
@@ -2922,11 +2933,15 @@ function renderRequirements(trigger) {
     if (hasTooltips && mechanical.length > 0) {
       html += '<li style="color:var(--text-muted);font-size:11px;list-style:none;padding-left:0;margin-top:4px;">Additional conditions:</li>';
     }
+    // Normalize depths: find minimum depth to use as baseline
+    const minDepth = Math.min(...mechanical.map(p => p.depth || 0));
     mechanical.forEach(p => {
+      const indent = Math.max(0, (p.depth || 0) - minDepth);
+      const pad = indent * 16;
       if (p.type === 'logic') {
-        html += `<li style="color:var(--purple);padding-left:0">${p.text}</li>`;
+        html += `<li style="color:var(--purple);padding-left:${pad}px;list-style:none;margin-top:4px;font-style:italic;">${p.text}</li>`;
       } else {
-        html += `<li>${p.text}</li>`;
+        html += `<li style="${pad ? 'padding-left:' + (pad + 14) + 'px' : ''}">${p.text}</li>`;
       }
     });
   }
@@ -2949,6 +2964,17 @@ function modRef(modKey, displayName) {
 function extractModKey(val) {
   const nameMatch = val.match(/name\s*=\s*"?(\w+)"?/i);
   return nameMatch ? nameMatch[1] : val.replace(/duration\s*=\s*-?\d+/gi, '').replace(/[{}\s"]/g, '').trim();
+}
+function extractDuration(val) {
+  const dm = val.match(/duration\s*=\s*(-?\d+)/);
+  if (!dm) return '';
+  const days = parseInt(dm[1]);
+  if (days === -1) return ' <span class="val">(permanent)</span>';
+  const years = Math.round(days / 365);
+  if (years > 0) return ` <span class="val">(${years} year${years !== 1 ? 's' : ''})</span>`;
+  const months = Math.round(days / 30);
+  if (months > 0) return ` <span class="val">(${months} month${months !== 1 ? 's' : ''})</span>`;
+  return ` <span class="val">(${days} days)</span>`;
 }
 
 function extractTooltipRaw(raw, tooltipKey) {
