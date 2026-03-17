@@ -209,7 +209,7 @@ def parse_modifiers(block):
     if not block:
         return mods
     for m in re.finditer(r'(\w+)\s*=\s*(-?[\d.]+)', block):
-        mods.append({'modifier': m.group(1), 'value': float(m.group(2))})
+        mods.append({'modifier': m.group(1).lower(), 'value': float(m.group(2))})
     return mods
 
 # ---- Ideas ----
