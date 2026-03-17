@@ -1061,7 +1061,7 @@ body {
 <div id="header">
   <div id="header-content">
     <h1>ANBENNAR COMPENDIUM</h1>
-    <div class="subtitle">An Interactive Guide to the World of Halcann</div>
+    <div class="subtitle">An Interactive Guide to the World of Halcann &mdash; by Ijkee</div>
   </div>
   <button id="mobile-toggle">&#9776;</button>
 </div>
