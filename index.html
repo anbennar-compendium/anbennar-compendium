@@ -2141,6 +2141,10 @@ function triggerToText(key, val) {
       if (/has_forcelimit_building_trigger/.test(val)) conditions.push('has forcelimit building');
       if (/province_has_center_of_trade_of_level\s*=\s*(\d+)/.test(val)) conditions.push('center of trade level ≥ ' + val.match(/province_has_center_of_trade_of_level\s*=\s*(\d+)/)[1]);
       if (/fort_level\s*=\s*(\d+)/.test(val)) conditions.push('fort level ≥ ' + val.match(/fort_level\s*=\s*(\d+)/)[1]);
+      if (/has_province_modifier\s*=\s*(\w+)/g.test(val)) { const mods = [...val.matchAll(/has_province_modifier\s*=\s*(\w+)/g)].map(m => modRef(m[1])); conditions.push('has modifier: ' + mods.join(' or ')); }
+      if (/has_country_modifier\s*=\s*(\w+)/.test(val)) { const cm = val.match(/has_country_modifier\s*=\s*(\w+)/); conditions.push('has modifier: ' + modRef(cm[1])); }
+      if (/continent\s*=\s*(\w+)/.test(val)) conditions.push('on ' + val.match(/continent\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
+      if (/superregion\s*=\s*(\w+)/.test(val)) conditions.push('in ' + val.match(/superregion\s*=\s*(\w+)/)[1].replace(/_/g, ' '));
       const condStr = conditions.length ? ' (' + conditions.join(', ') + ')' : '';
       return `Own at least <span class="val">${count}</span> provinces${condStr}`;
     })(),
@@ -2953,7 +2957,8 @@ function renderRequirements(trigger) {
 // Create a modifier reference span with data attribute for tooltip lookup
 function modRef(modKey, displayName) {
   const mod = MODIFIERS[modKey];
-  const name = mod ? mod.name : (displayName || modKey.replace(/_/g, ' '));
+  const rawName = mod ? mod.name : (displayName || modKey.replace(/_/g, ' '));
+  const name = rawName.replace(/§[A-Za-z!]/g, ''); // Strip EU4 color codes
   if (mod) {
     return `<span class="mod-ref" data-mod="${modKey}">${esc(name)}</span>`;
   }
