@@ -214,6 +214,35 @@ def parse_modifiers(block):
 
 # ---- Ideas ----
 
+def extract_trigger_tags(block):
+    """Extract country tags from trigger block, excluding NOT blocks.
+
+    Handles patterns like:
+      trigger = { tag = Z55 }                -> ['Z55']
+      trigger = { OR = { tag = A tag = B } } -> ['A', 'B']
+      trigger = { NOT = { tag = Z55 } }      -> [] (excluded)
+    """
+    trigger_block = extract_block(block, 'trigger')
+    if not trigger_block:
+        return []
+
+    # Remove NOT blocks and their contents
+    cleaned = trigger_block
+    while True:
+        not_match = re.search(r'NOT\s*=\s*\{', cleaned)
+        if not not_match:
+            break
+        brace_start = cleaned.index('{', not_match.start())
+        brace_end = find_matching_brace(cleaned, brace_start)
+        if brace_end > brace_start:
+            cleaned = cleaned[:not_match.start()] + cleaned[brace_end+1:]
+        else:
+            break
+
+    # Now find all tag = X patterns in the remaining trigger content
+    return re.findall(r'\btag\s*=\s*([A-Z][A-Z0-9]{2})', cleaned)
+
+
 def parse_ideas():
     """Parse all national idea groups."""
     ideas_dir = os.path.join(MOD, "common", "ideas")
@@ -231,10 +260,11 @@ def parse_ideas():
         for name, block in idea_blocks:
             if '_ideas' not in name:
                 continue
-            tag_match = re.search(r'tag\s*=\s*(\w+)', block)
-            if not tag_match:
+
+            # Only extract tags from trigger blocks, not ai_will_do
+            tags = extract_trigger_tags(block)
+            if not tags:
                 continue
-            tag = tag_match.group(1)
 
             start_block = extract_block(block, 'start')
             start_bonuses = parse_modifiers(start_block) if start_block else []
@@ -248,12 +278,19 @@ def parse_ideas():
                 mods = parse_modifiers(idea_block)
                 ideas_list.append({'name': idea_name, 'effects': mods})
 
-            all_ideas[tag] = {
+            idea_data = {
                 'group_name': name,
                 'traditions': start_bonuses,
                 'ambition': completion_bonus,
                 'ideas': ideas_list
             }
+
+            for tag in tags:
+                # Country-specific ideas (e.g. Z55_ideas) take priority
+                # over group ideas (e.g. warband_ideas)
+                is_country_specific = name.startswith(tag)
+                if tag not in all_ideas or is_country_specific:
+                    all_ideas[tag] = idea_data
 
     return all_ideas
 
