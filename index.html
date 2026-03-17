@@ -1661,12 +1661,17 @@ function parseTriggerToReadable(raw) {
   processed = collapseBlock(processed, 'unlock_merc_company');
   processed = collapseBlock(processed, 'add_trade_modifier');
   processed = collapseBlock(processed, 'define_ruler');
+  processed = collapseBlock(processed, 'add_faction_influence');
+  processed = collapseBlock(processed, 'add_great_project');
+  processed = collapseBlock(processed, 'destroy_great_project');
+  processed = collapseBlock(processed, 'move_great_project');
+  processed = collapseBlock(processed, 'war_score_against');
   // ROOT/FROM/PREV as scope openers are handled by depth traversal (depth limit = 5)
   const lines = processed.split('\n');
   const results = [];
   let depth = 0;
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
-  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'hidden_trigger', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
+  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type']);
   // Track current scope (area/region/province) for context-aware claim handling
   const scopeStack = []; // [{name, type, depth}]
 
@@ -2101,8 +2106,32 @@ function triggerToText(key, val) {
     'war_score_against': (() => { const wm = val.match(/who\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(-?\d+)/); if (wm && vm) return `War score against <span class="tag">${isScopeVar(wm[1]) ? 'target' : tagName(wm[1])}</span> at least <span class="val">${vm[1]}</span>`; return null; })(),
     'num_of_subjects_of_type': (() => { const tm = val.match(/type\s*=\s*(\w+)/); const vm = val.match(/amount\s*=\s*(\d+)/); if (tm && vm) return `Have at least <span class="val">${vm[1]}</span> ${tm[1].replace(/_/g, ' ')} subjects`; return null; })(),
     'has_ruler_leader_from': isScopeVar(val) ? 'Ruler is leading troops in province' : null,
+    'capital': isScopeVar(val) ? null : (/^\d+$/.test(val) ? `Capital is ${provSpan(val)}` : `Capital: <span class="tag">${val.replace(/_/g, ' ')}</span>`),
+    'local_autonomy': `Local autonomy below <span class="val">${val}</span>`,
+    'higher_development_than': isScopeVar(val) ? null : `Higher development than <span class="tag">${tagName(val)}</span>`,
+    'all_neighbor_province': 'All neighboring provinces:',
+    'owes_favors': isScopeVar(val) ? null : `Owes favors to <span class="tag">${tagName(val)}</span>`,
+    'hidden_trigger': null, // transparent wrapper, parser descends into it
+    'monthly_adm': `Monthly admin power at least <span class="val">${val}</span>`,
+    'monthly_dip': `Monthly diplo power at least <span class="val">${val}</span>`,
+    'monthly_mil': `Monthly military power at least <span class="val">${val}</span>`,
+    'church_power': `Church power at least <span class="val">${val}</span>`,
+    'absolutism': `Absolutism at least <span class="val">${val}</span>`,
+    'senior_union_with': isScopeVar(val) ? null : `Senior partner in union with <span class="tag">${tagName(val)}</span>`,
+    'hre_leagues_enabled': val === 'yes' ? 'HRE leagues are enabled' : 'HRE leagues are not enabled',
+    'at_war_with_religious_enemy': val === 'yes' ? 'At war with a religious enemy' : null,
+    'current_income_balance': `Monthly income balance at least <span class="val">${val}</span>`,
+    'current_size_of_parliament': `Parliament has at least <span class="val">${val}</span> seats`,
     // Common EFFECTS
     'random_list': 'Random one of the following:',
+    'complete_mission': `Auto-complete mission: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'remove_core': isScopeVar(val) ? null : `Remove core of <span class="tag">${tagName(val)}</span>`,
+    'add_faction_influence': (() => { const fm = val.match(/faction\s*=\s*(\w+)/); const im = val.match(/influence\s*=\s*(-?[\d.]+)/); if (fm && im) return `Add <span class="val">${im[1]}</span> ${fm[1].replace(/_/g, ' ')} faction influence`; return null; })(),
+    'create_union': isScopeVar(val) ? null : `Create personal union with <span class="tag">${tagName(val)}</span>`,
+    'add_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Add great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Add a great project'; })(),
+    'destroy_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Destroy great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Destroy a great project'; })(),
+    'move_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Move great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Move a great project'; })(),
+    'override_country_name': `Change country name to: <span class="tag">${val.replace(/"/g, '').replace(/_/g, ' ')}</span>`,
     'increase_ruler_adm_effect': 'Increase ruler admin skill',
     'increase_ruler_dip_effect': 'Increase ruler diplo skill',
     'increase_ruler_mil_effect': 'Increase ruler military skill',
