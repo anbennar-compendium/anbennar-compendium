@@ -923,16 +923,64 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  :root { --header-h: auto; }
+  #header {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 4px;
+  }
+  #header h1 { font-size: 20px; letter-spacing: 2px; }
+  #header .subtitle { font-size: 10px; }
+  .kofi-btn { padding: 4px 10px; font-size: 11px; margin-right: 6px; }
   #sidebar { display: none; }
-  #sidebar.mobile-open { display: flex; position: fixed; z-index: 200; top: var(--header-h); left: 0; bottom: 0; }
+  #sidebar.mobile-open {
+    display: flex;
+    position: fixed; z-index: 200; top: 0; left: 0; bottom: 0;
+    width: 85vw; max-width: 340px;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+  }
   #mobile-toggle {
     display: block !important;
-    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
     background: none; border: 1px solid var(--gold-dim); border-radius: 4px;
     color: var(--gold); padding: 6px 10px; cursor: pointer; font-size: 18px;
-    z-index: 1;
+    z-index: 1; position: relative;
   }
-  #main { padding: 16px; }
+  #main { padding: 12px; }
+  /* Detail header: stack vertically */
+  .detail-header { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+  .detail-header img.flag { width: 64px; height: 64px; }
+  .detail-header .info h2 { font-size: 20px; }
+  .detail-header .info { width: 100%; }
+  .pills { justify-content: center; }
+  /* Tabs: smaller text, wrap if needed */
+  .tab-nav { flex-wrap: wrap; gap: 0; }
+  .tab-btn { font-size: 12px; padding: 8px 10px; }
+  /* Info table: let labels wrap */
+  .lore-table .lore-label { white-space: normal; width: 120px; }
+  .lore-table td { padding: 5px 8px; font-size: 12px; }
+  /* Mission grid: let it scroll horizontally with smaller nodes */
+  .mission-node { min-width: 100px; font-size: 10px; padding: 6px 6px; }
+  .mission-node .mission-icon { width: 32px; height: 32px; }
+  .mission-grid { gap: 6px; }
+  /* Mission modal: full-width on mobile */
+  #mission-modal {
+    width: 95%;
+    max-width: none;
+    max-height: 85vh;
+    padding: 16px;
+    top: 50%;
+  }
+  #mission-modal h3 { font-size: 15px; }
+  #mission-modal h3 img { width: 36px; height: 36px; }
+  /* Requirements/effects boxes: tighter */
+  .requirements-box, .effects-box { padding: 8px 10px; font-size: 11px; }
+  /* Lore text */
+  .lore-text-full { padding: 12px 14px; font-size: 13px; }
+  /* Played button and other action buttons */
+  .played-btn { padding: 4px 10px; font-size: 12px; }
+  /* Map container */
+  .map-container { height: 300px !important; }
 }
 
 #mobile-toggle { display: none; }
