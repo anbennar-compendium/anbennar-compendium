@@ -1830,6 +1830,9 @@ function parseTriggerToReadable(raw) {
   // Don't collapse calc_true_if — let it parse children line-by-line
   processed = collapseBlock(processed, 'unlock_merc_company');
   processed = collapseBlock(processed, 'add_trade_modifier');
+  processed = collapseBlock(processed, 'trading_policy_in_node');
+  processed = collapseBlock(processed, 'mission_faction_trigger');
+  processed = collapseBlock(processed, 'taychend_hero_cult_has_passed_reform');
   processed = collapseBlock(processed, 'define_ruler');
   processed = collapseBlock(processed, 'add_faction_influence');
   processed = collapseBlock(processed, 'add_great_project');
@@ -2593,6 +2596,8 @@ function triggerToText(key, val) {
     'reverse_has_opinion': null, // complex nested diplomacy check
     'faction_influence': (() => { const fm = val.match(/faction\s*=\s*(\w+)/); const vm = val.match(/influence\s*=\s*(\d+)/); if (fm && vm) return `${fm[1].replace(/_/g, ' ')} faction influence at least <span class="val">${vm[1]}</span>`; return null; })(),
     'trading_bonus': `Has trading bonus in: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'trading_policy_in_node': (() => { const pm = val.match(/policy\s*=\s*(\w+)/); return pm ? `Have trading policy: <span class="tag">${pm[1].replace(/_/g, ' ')}</span>` : 'Have a trading policy'; })(),
+    'mission_faction_trigger': (() => { const fm = val.match(/faction\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(\d+)/); const tm = val.match(/type\s*=\s*(\w+)/); if (fm) { let name = fm[1].replace(/^mr_/, '').replace(/_/g, ' '); const typeName = tm ? tm[1].replace(/_/g, ' ') : ''; const req = vm ? ` at least <span class="val">${vm[1]}</span>` : ''; return `${name} faction${typeName ? ' (' + typeName + ')' : ''}${req}`; } return null; })(),
     'any_hired_mercenary_company': 'Has hired mercenary company:',
     'army_strength': (() => { if (isScopeVar(val)) return null; return /^\d+$/.test(val) ? `Army strength at least <span class="val">${val}</span>` : `Army strength at least equal to <span class="tag">${tagName(val)}</span>`; })(),
     'subsidised_percent_amount': null, // internal subsidy check
@@ -2680,6 +2685,16 @@ function triggerToText(key, val) {
   if (/^(high|medium|low)_tolerance_(\w+)_race_trigger$/.test(key)) { const rm = key.match(/^(high|medium|low)_tolerance_(\w+)_race_trigger$/); if (rm) return { text: `Have ${rm[1]} tolerance of <span class="tag">${rm[2].replace(/_/g, ' ')}</span> race`, type: 'condition' }; }
   // Idea group progress checks (e.g. exploration_ideas = 1)
   if (/_ideas$/.test(key) && /^\d+$/.test(val)) { return { text: `Have <span class="val">${val}</span> ideas in <span class="tag">${key.replace(/_ideas$/, '').replace(/_/g, ' ')}</span>`, type: 'condition' }; }
+  // Anbennar custom triggers
+  if (/^taychend_hero_cult_has_passed_reform/.test(key)) return { text: 'Has passed Taychend hero cult reform', type: 'condition' };
+  if (key === 'have_cast_magnificent_feast') return val === 'yes' ? { text: 'Have cast Magnificent Feast', type: 'condition' } : null;
+  // Continent scopes (europe = { type = all ... })
+  if (/^(europe|asia|africa|north_america|south_america|oceania|serpentspine)$/.test(key)) {
+    const cName = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    if (/type\s*=\s*all/.test(val) && /owned_by|country_or/.test(val)) return { text: `Own all of <span class="tag">${cName}</span>`, type: 'condition' };
+    if (/type\s*=\s*all/.test(val)) return { text: `All provinces in <span class="tag">${cName}</span>:`, type: 'scope' };
+    return { text: `In <span class="tag">${cName}</span>:`, type: 'scope' };
+  }
 
   // EU4 advisor type checks (e.g. trader = 3, natural_scientist = 5)
   const ADVISOR_TYPES = new Set(['trader','natural_scientist','fortification_expert','artist','army_organiser','army_reformer','commandant','diplomat','colonial_governor','grand_captain','inquisitor','master_of_mint','master_recruiter','naval_reformer','navigator','philosopher','spymaster','statesman','theologian','treasurer']);
@@ -2771,8 +2786,19 @@ function triggerToText(key, val) {
     if (/war_with\s*=\s*ROOT/.test(val)) return { text: `At war with <span class="tag">${esc(cName)}</span>`, type: 'condition' };
     if (/has_opinion\s*=.*ROOT/.test(val)) { const om = val.match(/value\s*=\s*(-?\d+)/); return { text: `<span class="tag">${esc(cName)}</span> has opinion of us at least <span class="val">${om?om[1]:'?'}</span>`, type: 'condition' }; }
     if (/is_subject\s*=\s*yes/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> is a subject nation`, type: 'condition' };
+    if (/is_subject\s*=\s*no/.test(val) && !/is_subject_of/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> is independent`, type: 'condition' };
     if (/exists\s*=\s*yes/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> exists`, type: 'condition' };
     if (/exists\s*=\s*no/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> does not exist`, type: 'condition' };
+    if (/is_at_war\s*=\s*no/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> is at peace`, type: 'condition' };
+    if (/is_at_war\s*=\s*yes/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> is at war`, type: 'condition' };
+    if (/is_subject_of_type\s*=\s*(\w+)/.test(val)) { const stm = val.match(/is_subject_of_type\s*=\s*(\w+)/); return { text: `<span class="tag">${esc(cName)}</span> is ${stm[1].replace(/_/g, ' ')}`, type: 'condition' }; }
+    if (/NOT\s*=.*is_subject_of_type\s*=\s*(\w+)/.test(val)) { const stm = val.match(/is_subject_of_type\s*=\s*(\w+)/); return { text: `<span class="tag">${esc(cName)}</span> is not ${stm[1].replace(/_/g, ' ')}`, type: 'condition' }; }
+    if (/total_development\s*=\s*(\d+)/.test(val)) { const dm = val.match(/total_development\s*=\s*(\d+)/); return { text: `<span class="tag">${esc(cName)}</span> has at least <span class="val">${dm[1]}</span> total development`, type: 'condition' }; }
+    if (/religion\s*=\s*(\w+)/.test(val) && !/religion_group/.test(val)) { const rm = val.match(/religion\s*=\s*(\w+)/); return { text: `<span class="tag">${esc(cName)}</span> follows <span class="tag">${rm[1].replace(/_/g, ' ')}</span>`, type: 'condition' }; }
+    if (/government\s*=\s*(\w+)/.test(val)) { const gm = val.match(/government\s*=\s*(\w+)/); return { text: `<span class="tag">${esc(cName)}</span> has <span class="tag">${gm[1].replace(/_/g, ' ')}</span> government`, type: 'condition' }; }
+    if (/has_reform\s*=\s*(\w+)/.test(val)) { const rm = val.match(/has_reform\s*=\s*(\w+)/); return { text: `<span class="tag">${esc(cName)}</span> has reform: <span class="tag">${rm[1].replace(/_/g, ' ')}</span>`, type: 'condition' }; }
+    if (/num_of_cities\s*=\s*(\d+)/.test(val)) { const nm = val.match(/num_of_cities\s*=\s*(\d+)/); return { text: `<span class="tag">${esc(cName)}</span> owns at least <span class="val">${nm[1]}</span> provinces`, type: 'condition' }; }
+    if (/is_enemy\s*=\s*ROOT/.test(val)) return { text: `<span class="tag">${esc(cName)}</span> is our rival`, type: 'condition' };
     // Multi-line scope opener (val is empty or just braces) — show as scope label
     if (!val || val.length < 3) return { text: `<span class="tag">${esc(cName)}</span>:`, type: 'scope' };
     // Generic: show country name + simplified inner conditions
