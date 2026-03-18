@@ -1914,12 +1914,12 @@ function parseTriggerToReadable(raw) {
   // Proxy results.push to auto-attach depth
   const results = { push(item) { if (item) { item.depth = item.depth ?? depth; _results.push(item); } }, get length() { return _results.length; } };
   let skipDepth = -1; // when >= 0, skip all lines until depth returns to this level
-  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type', 'province_id', 'country', 'tier', 'node', 'policy', 'template', 'faction']);
+  const SKIP_KEYS = new Set(['who', 'value', 'which', 'type', 'duration', 'name', 'amount', 'limit', 'ai', 'category', 'id', 'days', 'hidden', 'skill', 'discount', 'female', 'fixed', 'advisor', 'max_random_dip', 'max_random_adm', 'max_random_mil', 'desc', 'influence', 'loyalty', 'fire', 'shock', 'manuever', 'siege', 'months', 'target', 'cost', 'cost_multiplier', 'speed', 'building', 'merc_company', 'for', 'power', 'modifier', 'key', 'power_type', 'mechanic_type', 'province_id', 'country', 'tier', 'node', 'policy', 'template', 'faction', 'area_for_scope_province', 'cavalry_in_province', 'infantry_in_province', 'attacker_leader', 'defender_leader', 'share']);
   // Track current scope (area/region/province) for context-aware claim handling
   const scopeStack = []; // [{name, type, depth}]
 
-  for (let line of lines) {
-    let trimmed = line.trim();
+  for (let _li = 0; _li < lines.length; _li++) {
+    let trimmed = lines[_li].trim();
     if (!trimmed) continue;
 
     const opens = (trimmed.match(/\{/g) || []).length;
@@ -1949,9 +1949,15 @@ function parseTriggerToReadable(raw) {
         }
         // Handle calc_true_if as a scope label with amount
         if (key === 'calc_true_if') {
-          // Find the amount in the remaining text
-          const amountMatch = processed.match(/calc_true_if\s*=\s*\{[\s\S]*?amount\s*=\s*(\d+)/);
-          const amt = amountMatch ? amountMatch[1] : '?';
+          // Look ahead from current line to find amount before block closes
+          let amt = '?';
+          let braceCount = opens - closes;
+          for (let j = _li + 1; j < lines.length && braceCount > 0; j++) {
+            const jt = lines[j].trim();
+            const am = jt.match(/^amount\s*=\s*(\d+)/);
+            if (am) { amt = am[1]; break; }
+            braceCount += (jt.match(/\{/g) || []).length - (jt.match(/\}/g) || []).length;
+          }
           results.push({ text: `At least <span class="val">${amt}</span> of the following:`, type: 'logic', depth: depth });
           depth = Math.max(0, newDepth);
           continue;
@@ -2031,7 +2037,7 @@ function parseTriggerToReadable(raw) {
           const readable = triggerToText(key, val);
           if (readable) results.push(readable);
         }
-      } else if (trimmed === 'OR' || trimmed.startsWith('OR ') || trimmed === 'OR={') {
+      } else if (/^OR$/i.test(trimmed) || /^OR\s/i.test(trimmed) || /^OR=\{/i.test(trimmed)) {
         results.push({ text: 'One of the following:', type: 'logic' });
       }
       // Don't add standalone NOT/AND labels — they cause false grouping
@@ -2150,6 +2156,10 @@ function triggerToText(key, val) {
     'ruler_has_mage_personality': val === 'yes' ? 'Ruler is a mage' : null,
     'owned_by_subject_of': isScopeVar(val) ? 'Owned by a subject' : `Owned by subject of <span class="tag">${tagName(val)}</span>`,
     'overlord_of': `Be overlord of <span class="tag">${tagName(val)}</span>`,
+    'vassal_of': isScopeVar(val) ? null : `Be vassal of <span class="tag">${tagName(val)}</span>`,
+    'hre_reform_passed': `HRE reform passed: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
+    'trade_goods_produced_amount': (() => { const vm = val.match(/amount\s*=\s*([\d.]+)/); const tg = val.match(/trade_goods\s*=\s*(\w+)/); if (vm && tg) return `Produce at least <span class="val">${vm[1]}</span> of <span class="tag">${tg[1].replace(/_/g, ' ')}</span>`; return null; })(),
+    'investment': null,
     'always': null,
     'total_development': `Have at least <span class="val">${val}</span> total development`,
     'development': `Province has <span class="val">${val}</span> development`,

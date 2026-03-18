@@ -263,8 +263,7 @@ def format_value_nice(key, val):
             'local_missionary_strength', 'local_hostile_attrition',
             'local_sailors_modifier',
             'monthly_gold_inflation_modifier', 'center_of_trade_upgrade_cost',
-            'envoy_travel_time', 'heir_chance', 'liberty_desire',
-            'reduced_liberty_desire', 'all_power_cost',
+            'envoy_travel_time', 'all_power_cost',
             'local_autonomy',
         }
         if key in percent_keys or (abs(f) < 1 and abs(f) > 0 and key not in {'prestige', 'legitimacy', 'republican_tradition', 'devotion', 'horde_unity', 'meritocracy', 'army_tradition', 'navy_tradition', 'war_exhaustion', 'absolutism', 'monthly_splendor', 'monthly_piety', 'monthly_karma', 'monthly_fervor_increase', 'papal_influence'}):
