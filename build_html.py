@@ -610,7 +610,7 @@ body {
 }
 .mission-grid {
   display: grid;
-  gap: 10px;
+  gap: 24px 16px;
   min-width: max-content;
   position: relative;
   z-index: 2;
@@ -618,56 +618,60 @@ body {
 .mission-node.has-prereq-above::before {
   content: '';
   position: absolute;
-  top: -10px;
+  top: -24px;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
-  height: 10px;
+  height: 24px;
   background: var(--gold);
   opacity: 0.4;
   pointer-events: none;
 }
 .cross-prereq-badge {
   position: absolute;
-  top: -2px;
-  left: 4px;
-  font-size: 9px;
+  top: -13px;
+  font-size: 8px;
   color: var(--text-muted);
-  background: rgba(14,14,18,0.85);
-  padding: 1px 5px;
-  border-radius: 6px;
+  background: rgba(14,14,18,0.92);
+  padding: 1px 6px;
+  border-radius: 4px;
   border: 1px solid var(--border);
-  white-space: nowrap;
+  white-space: pre-line;
   pointer-events: none;
   z-index: 3;
-  line-height: 1.2;
+  line-height: 1.3;
+  max-width: 160px;
+  text-align: center;
 }
+.cross-prereq-badge.left { left: 4px; }
+.cross-prereq-badge.right { right: 4px; }
+.cross-prereq-badge.center { left: 50%; transform: translateX(-50%); }
 .mission-node {
   background: linear-gradient(180deg, #1c1c28 0%, #16161e 100%);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 10px;
+  border-radius: 5px;
+  padding: 6px 8px;
   cursor: pointer;
   text-align: center;
   font-size: 11px;
   transition: all 0.2s;
-  min-width: 140px;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
   position: relative;
 }
 .mission-node:hover { border-color: var(--blue); background: linear-gradient(180deg, #222235 0%, #1c1c28 100%); box-shadow: 0 0 8px rgba(91,155,213,0.2); }
 .mission-node.selected { border-color: var(--gold); background: linear-gradient(180deg, #2a2518 0%, #1e1a14 100%); box-shadow: 0 0 12px rgba(201,168,76,0.3); }
 .mission-node .mission-icon {
-  width: 40px; height: 40px;
+  width: 36px; height: 36px;
   image-rendering: auto;
   border-radius: 2px;
   opacity: 0.9;
 }
 .mission-node .mission-icon-fallback, .mission-icon-fallback {
-  width: 40px; height: 40px;
+  width: 36px; height: 36px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -682,6 +686,25 @@ body {
   font-size: 11px;
   line-height: 1.2;
 }
+.campaign-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.campaign-btn {
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: 'IM Fell English', serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.campaign-btn:hover { border-color: var(--blue); color: var(--blue); }
+.campaign-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
 
 /* MISSION DETAIL MODAL */
 #mission-modal-overlay {
@@ -3448,6 +3471,23 @@ function selectCountry(tag) {
     node.addEventListener('click', () => showMissionDetail(tag, node.dataset.missionId));
   });
 
+  // Campaign tab switching
+  detail.querySelectorAll('.campaign-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const campaign = btn.dataset.campaign;
+      detail.querySelectorAll('.campaign-btn').forEach(b => b.classList.toggle('active', b === btn));
+      detail.querySelectorAll('.campaign-grid').forEach(g => {
+        const isActive = g.dataset.campaign === campaign;
+        g.style.display = isActive ? '' : 'none';
+        if (isActive) g.classList.add('active'); else g.classList.remove('active');
+      });
+      // Re-bind mission node clicks for the newly visible grid
+      detail.querySelectorAll('.campaign-grid.active .mission-node').forEach(node => {
+        node.onclick = () => showMissionDetail(tag, node.dataset.missionId);
+      });
+    });
+  });
+
   document.getElementById('main').scrollTop = 0;
 }
 
@@ -3465,67 +3505,108 @@ function resolveIcon(iconName) {
   return iconName; // return original even if not found
 }
 
-function renderMissions(c) {
-  const missions = c.missions;
+function renderMissionGrid(missions, missionById, tag) {
   let maxSlot = 0, maxPos = 0;
-  missions.forEach(m => {
-    if (m.slot > maxSlot) maxSlot = m.slot;
-    if (m.position > maxPos) maxPos = m.position;
-  });
+  missions.forEach(m => { if (m.slot > maxSlot) maxSlot = m.slot; if (m.position > maxPos) maxPos = m.position; });
   if (maxSlot === 0) maxSlot = 5;
   if (maxPos === 0) maxPos = 1;
 
-  const color = c.color ? `rgb(${c.color[0]},${c.color[1]},${c.color[2]})` : '#666';
-
-  // Build a lookup of mission id -> mission object for prereq checking
-  const missionById = {};
-  missions.forEach(mi => { missionById[mi.id] = mi; });
-
-  let html = `<div class="mission-grid-container" id="mission-grid-container"><div class="mission-grid" id="mission-grid" style="grid-template-columns: repeat(${maxSlot}, 1fr);">`;
+  let html = `<div class="mission-grid" id="mission-grid" style="grid-template-columns: repeat(${maxSlot}, 1fr);">`;
   for (let pos = 1; pos <= maxPos; pos++) {
     for (let slot = 1; slot <= maxSlot; slot++) {
       const m = missions.find(mi => mi.slot === slot && mi.position === pos);
-      if (m) {
-        const trigger = TRIGGERS[m.id] || {};
-        const iconName = resolveIcon(m.icon || trigger.icon || '');
-        const hasIcon = iconName && ICON_MAP[iconName];
-        let iconHtml;
-        if (hasIcon) {
-          iconHtml = `<img class="mission-icon" src="mission_icons/${iconName}.png" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy"><div class="mission-icon-fallback" style="display:none">&#9876;</div>`;
-        } else {
-          iconHtml = `<div class="mission-icon-fallback">&#9876;</div>`;
-        }
+      if (!m) continue;
+      const trigger = TRIGGERS[m.id] || {};
+      const iconName = resolveIcon(m.icon || trigger.icon || '');
+      const hasIcon = iconName && ICON_MAP[iconName];
+      let iconHtml = hasIcon
+        ? `<img class="mission-icon" src="mission_icons/${iconName}.png" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy"><div class="mission-icon-fallback" style="display:none">&#9876;</div>`
+        : `<div class="mission-icon-fallback">&#9876;</div>`;
 
-        // Check prerequisites for CSS connector classes
-        const reqs = m.required_missions || [];
-        let extraClasses = '';
-        let crossBadgeHtml = '';
-        let hasSameCol = false;
-        const crossReqs = [];
-        reqs.forEach(reqId => {
-          const reqM = missionById[reqId];
-          if (reqM) {
-            if (reqM.slot === slot) {
-              hasSameCol = true;
-            } else {
-              crossReqs.push(reqM);
-            }
-          }
-        });
-        if (hasSameCol) extraClasses += ' has-prereq-above';
-        if (crossReqs.length > 0) {
-          const label = crossReqs.map(r => esc(r.title || r.id)).join(', ');
-          crossBadgeHtml = `<div class="cross-prereq-badge">\u2190 ${label}</div>`;
-        }
-
-        html += `<div class="mission-node${extraClasses}" data-mission-id="${esc(m.id)}" data-slot="${slot}" data-pos="${pos}" style="grid-column:${slot};grid-row:${pos};">
-          ${crossBadgeHtml}${iconHtml}
-          <div class="mission-title">${esc(resolveGameText(m.title || m.id))}</div>
-        </div>`;
+      const reqs = m.required_missions || [];
+      let extraClasses = '', crossBadgeHtml = '', hasSameCol = false;
+      const crossReqs = [];
+      reqs.forEach(reqId => {
+        const reqM = missionById[reqId];
+        if (reqM) { if (reqM.slot === slot) hasSameCol = true; else crossReqs.push(reqM); }
+      });
+      if (hasSameCol) extraClasses += ' has-prereq-above';
+      if (crossReqs.length > 0) {
+        const leftReqs = crossReqs.filter(r => r.slot < slot);
+        const rightReqs = crossReqs.filter(r => r.slot > slot);
+        const parts = [];
+        if (leftReqs.length) parts.push(leftReqs.map(r => '\u2190 ' + esc(resolveGameText(r.title || r.id))).join('\n'));
+        if (rightReqs.length) parts.push(rightReqs.map(r => esc(resolveGameText(r.title || r.id)) + ' \u2192').join('\n'));
+        const posClass = (leftReqs.length && rightReqs.length) ? 'center' : leftReqs.length ? 'left' : 'right';
+        crossBadgeHtml = `<div class="cross-prereq-badge ${posClass}">${parts.join('\n')}</div>`;
       }
+
+      // Resolve title — handle dynamic titles
+      let title = resolveGameText(m.title || m.id);
+      if (!title || title.trim() === '') title = m.id.replace(/_/g, ' ');
+
+      html += `<div class="mission-node${extraClasses}" data-mission-id="${esc(m.id)}" data-slot="${slot}" data-pos="${pos}" style="grid-column:${slot};grid-row:${pos};">
+        ${crossBadgeHtml}${iconHtml}
+        <div class="mission-title">${esc(title)}</div>
+      </div>`;
     }
   }
-  html += '</div></div>';
+  html += '</div>';
+  return html;
+}
+
+function renderMissions(c) {
+  const missions = c.missions;
+  const missionById = {};
+  missions.forEach(mi => { missionById[mi.id] = mi; });
+
+  // Detect campaigns: group missions by their potential_raw flags
+  const groupFlags = {};
+  const baseGroups = new Set();
+  missions.forEach(m => {
+    const t = TRIGGERS[m.id] || {};
+    const pot = t.potential_raw || '';
+    const flagMatch = pot.match(/has_country_flag\s*=\s*(\w+)/);
+    const group = m.group || '';
+    if (flagMatch) {
+      const flag = flagMatch[1];
+      if (!groupFlags[flag]) groupFlags[flag] = new Set();
+      groupFlags[flag].add(group);
+    } else {
+      baseGroups.add(group);
+    }
+  });
+
+  // If there are campaign flags, build campaign tabs
+  const campaignNames = Object.keys(groupFlags);
+  const hasMultipleCampaigns = campaignNames.length > 1;
+
+  if (!hasMultipleCampaigns) {
+    // Simple: one grid for all missions
+    return `<div class="mission-grid-container" id="mission-grid-container">${renderMissionGrid(missions, missionById, c.tag)}</div>`;
+  }
+
+  // Build campaign selector + grids
+  let html = '<div class="campaign-selector">';
+  html += `<button class="campaign-btn active" data-campaign="base">Base Missions</button>`;
+  campaignNames.forEach(flag => {
+    const name = flag.replace(/_flag$/, '').replace(/_activated$/, '').replace(/^command_/, '').replace(/_campaign$/, '').replace(/_/g, ' ');
+    html += `<button class="campaign-btn" data-campaign="${esc(flag)}">${esc(name.replace(/\b\w/g, c => c.toUpperCase()))}</button>`;
+  });
+  html += '</div>';
+
+  // Base missions grid (always-visible groups)
+  const baseMissions = missions.filter(m => baseGroups.has(m.group || ''));
+  html += `<div class="mission-grid-container campaign-grid active" data-campaign="base" id="mission-grid-container">${renderMissionGrid(baseMissions, missionById, c.tag)}</div>`;
+
+  // Campaign-specific grids
+  campaignNames.forEach(flag => {
+    const campaignGroupNames = groupFlags[flag];
+    // Include base missions + campaign-specific missions
+    const campMissions = missions.filter(m => baseGroups.has(m.group || '') || campaignGroupNames.has(m.group || ''));
+    html += `<div class="mission-grid-container campaign-grid" data-campaign="${esc(flag)}" style="display:none">${renderMissionGrid(campMissions, missionById, c.tag)}</div>`;
+  });
+
   return html;
 }
 
