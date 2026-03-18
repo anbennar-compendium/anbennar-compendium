@@ -1186,7 +1186,7 @@ body {
 
 <script>
 // --- DATA ---
-let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {}, AREA_DATA = {}, EVENT_NAMES = {};
+let DATA = {}, RELIGIONS = {}, WIKI = {}, REGIONS = {}, TRIGGERS = {}, STATUS = {}, ICON_MAP = {}, PROVINCES = {}, MODIFIERS = {}, STARTUP_LORE = {}, PROVINCE_OWNERS = {}, DIPLOMACY = {}, PROV_DETAILS = {}, AREA_DATA = {}, EVENT_NAMES = {}, GREAT_PROJECTS = {};
 // Map state
 let mapBaseImg = null, mapIdImg = null, mapIdData = null, mapBounds = null;
 let mapScale = 1, mapOffX = 0, mapOffY = 0, mapCurrentTag = null;
@@ -1224,7 +1224,7 @@ async function loadData() {
   el.innerHTML = '<div class="loading">Loading data...</div>';
   try {
     const v = '4';
-    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16] = await Promise.all([
+    const [d1, d2, d3, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17] = await Promise.all([
       fetch('anbennar_data.json?v='+v).then(r => r.json()),
       fetch('religions_data.json?v='+v).then(r => r.json()),
       fetch('wiki_data.json?v='+v).then(r => r.json()),
@@ -1240,8 +1240,9 @@ async function loadData() {
       fetch('province_details.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('area_data.json?v='+v).then(r => r.json()).catch(() => ({})),
       fetch('event_names.json?v='+v).then(r => r.json()).catch(() => ({})),
+      fetch('great_projects.json?v='+v).then(r => r.json()).catch(() => ({})),
     ]);
-    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {}; AREA_DATA = d15 || {}; EVENT_NAMES = d16 || {};
+    DATA = d1; RELIGIONS = d2; WIKI = d3; REGIONS = d5; TRIGGERS = d6; STATUS = d7; ICON_MAP = d8; PROVINCES = d9; MODIFIERS = d10 || {}; STARTUP_LORE = d11 || {}; PROVINCE_OWNERS = d12 || {}; DIPLOMACY = d13 || {}; PROV_DETAILS = d14 || {}; AREA_DATA = d15 || {}; EVENT_NAMES = d16 || {}; GREAT_PROJECTS = d17 || {};
 
     countries = Object.values(DATA);
     countries.sort(countrySorter);
@@ -1902,6 +1903,7 @@ function parseTriggerToReadable(raw) {
   processed = collapseBlock(processed, 'add_great_project');
   processed = collapseBlock(processed, 'destroy_great_project');
   processed = collapseBlock(processed, 'move_great_project');
+  processed = collapseBlock(processed, 'has_great_project');
   processed = collapseBlock(processed, 'war_score_against');
   processed = collapseBlock(processed, 'country_event');
   processed = collapseBlock(processed, 'province_event');
@@ -2307,7 +2309,7 @@ function triggerToText(key, val) {
     'any_subject_country': 'Any subject:',
     'has_disaster': `Has active disaster: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
     'has_institution': `Has embraced institution: <span class="tag">${val.replace(/_/g, ' ')}</span>`,
-    'has_great_project': (() => { const pm = val.match(/type\s*=\s*(\w+)/); const tm = val.match(/tier\s*=\s*(\d+)/); if (pm) { const name = pm[1].replace(/_/g, ' '); return `Has great project <span class="tag">${name}</span>${tm ? ' (tier ' + tm[1] + '+)' : ''}`; } return `Has a great project: <span class="tag">${val.replace(/_/g, ' ')}</span>`; })(),
+    'has_great_project': (() => { const pm = val.match(/type\s*=\s*(\w+)/); const tm = val.match(/tier\s*=\s*(\d+)/); if (pm) { const gpName = GREAT_PROJECTS[pm[1]] || pm[1].replace(/_/g, ' '); return `Has great project: <span class="tag">${esc(gpName)}</span>${tm ? ' (tier ' + tm[1] + '+)' : ''}`; } return null; })(),
     'has_manufactory_trigger': val === 'yes' ? 'Has a manufactory' : 'No manufactory',
     'has_courthouse_building_trigger': val === 'yes' ? 'Has a courthouse or town hall' : 'No courthouse',
     'has_forcelimit_building_trigger': val === 'yes' ? 'Has a forcelimit building' : 'No forcelimit building',
@@ -2405,9 +2407,9 @@ function triggerToText(key, val) {
     'remove_core': isScopeVar(val) ? null : `Remove core of <span class="tag">${tagName(val)}</span>`,
     'add_faction_influence': (() => { const fm = val.match(/faction\s*=\s*(\w+)/); const im = val.match(/influence\s*=\s*(-?[\d.]+)/); if (fm && im) return `Add <span class="val">${im[1]}</span> ${fm[1].replace(/_/g, ' ')} faction influence`; return null; })(),
     'create_union': isScopeVar(val) ? null : `Create personal union with <span class="tag">${tagName(val)}</span>`,
-    'add_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Add great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Add a great project'; })(),
-    'destroy_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Destroy great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Destroy a great project'; })(),
-    'move_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); return tp ? `Move great project: <span class="tag">${tp[1].replace(/_/g, ' ')}</span>` : 'Move a great project'; })(),
+    'add_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); const tm = val.match(/tier\s*=\s*(\d+)/); if (tp) { const n = GREAT_PROJECTS[tp[1]] || tp[1].replace(/_/g, ' '); return `Add great project: <span class="tag">${esc(n)}</span>${tm ? ' (tier ' + tm[1] + ')' : ''}`; } return 'Add a great project'; })(),
+    'destroy_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); if (tp) { const n = GREAT_PROJECTS[tp[1]] || tp[1].replace(/_/g, ' '); return `Destroy great project: <span class="tag">${esc(n)}</span>`; } return 'Destroy a great project'; })(),
+    'move_great_project': (() => { const tp = val.match(/type\s*=\s*(\w+)/); if (tp) { const n = GREAT_PROJECTS[tp[1]] || tp[1].replace(/_/g, ' '); return `Move great project: <span class="tag">${esc(n)}</span>`; } return 'Move a great project'; })(),
     'override_country_name': `Change country name to: <span class="tag">${val.replace(/"/g, '').replace(/_/g, ' ')}</span>`,
     'increase_ruler_adm_effect': 'Increase ruler admin skill',
     'increase_ruler_dip_effect': 'Increase ruler diplo skill',
@@ -2796,6 +2798,12 @@ function triggerToText(key, val) {
       const modMatch = rawVal.match(/name\s*=\s*(\w+)/);
       if (modMatch) return { text: `<span class="tag" title="Province ID: ${key}">${esc(pn)}</span> — Add modifier: ${modRef(modMatch[1])}`, type: 'condition' };
     }
+    // Great project check inside province scope
+    if (/has great project/.test(rawVal.replace(/_/g, ' '))) {
+      const gpm = rawVal.match(/type\s*=\s*(\w+)/);
+      const gtm = rawVal.match(/tier\s*=\s*(\d+)/);
+      if (gpm) { const gpn = GREAT_PROJECTS[gpm[1]] || gpm[1].replace(/_/g, ' '); return { text: `<span class="tag" title="Province ID: ${key}">${esc(pn)}</span> — Has great project: <span class="tag">${esc(gpn)}</span>${gtm ? ' (tier ' + gtm[1] + '+)' : ''}`, type: 'condition' }; }
+    }
     // Parse the province condition value for readability
     let provCondition = val.replace(/_/g, ' ');
     // Suppress most conditions that reference ROOT/FROM/PREV (scope variables)
@@ -2804,7 +2812,7 @@ function triggerToText(key, val) {
     if (/units in province|has siege|controller|set province flag|province event/i.test(provCondition)) return null;
     // Common province conditions
     provCondition = provCondition.replace(/fort level\s*=\s*/i, 'Fort level ');
-    provCondition = provCondition.replace(/has construction\s*=\s*/i, 'Building: ');
+    provCondition = provCondition.replace(/has construction\s*=\s*(\w[\w ]*)/i, (m, b) => { const bk = b.trim().replace(/ /g, '_'); return GREAT_PROJECTS[bk] ? 'Building great project: ' + GREAT_PROJECTS[bk] : 'Building: ' + b; });
     provCondition = provCondition.replace(/has building\s*=\s*/i, 'Has building: ');
     provCondition = provCondition.replace(/culture\s*=\s*/i, 'Culture: ');
     provCondition = provCondition.replace(/religion\s*=\s*/i, 'Religion: ');
