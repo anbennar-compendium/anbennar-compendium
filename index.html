@@ -772,6 +772,8 @@ body {
   position: absolute;
   left: 0;
 }
+.requirements-box li.logic-label::before { content: none; }
+.requirements-box li.logic-label { color: var(--purple); font-style: italic; margin-top: 4px; padding-left: 0; }
 .requirements-box li .kw { color: var(--purple); }
 .requirements-box li .val { color: var(--gold); }
 .requirements-box li .tag { color: var(--blue); }
@@ -810,6 +812,8 @@ body {
   position: absolute;
   left: 0;
 }
+.effects-box li.logic-label::before { content: none; }
+.effects-box li.logic-label { color: var(--purple); font-style: italic; margin-top: 4px; padding-left: 0; }
 .effects-box li .val { color: var(--gold); }
 .effects-box li .tag { color: var(--blue); }
 .requirements-box li .tag { color: var(--blue); }
@@ -2973,7 +2977,7 @@ function renderRequirements(trigger) {
       const indent = Math.max(0, (p.depth || 0) - minDepth);
       const pad = indent * 16;
       if (p.type === 'logic') {
-        html += `<li style="color:var(--purple);padding-left:${pad}px;list-style:none;margin-top:4px;font-style:italic;">${p.text}</li>`;
+        html += `<li class="logic-label" style="${pad ? 'padding-left:' + pad + 'px' : ''}">${p.text}</li>`;
       } else {
         html += `<li style="${pad ? 'padding-left:' + (pad + 14) + 'px' : ''}">${p.text}</li>`;
       }
@@ -3077,24 +3081,29 @@ function renderEffects(trigger) {
     if (clean) html += `<li>${esc(clean)}</li>`;
   });
 
+  function renderEffItem(p) {
+    let t = p.text.replace(/Add <span class="val">-(\d+)<\/span>/g, 'Lose <span class="val">$1</span>');
+    const indent = Math.max(0, (p.depth || 0));
+    const pad = indent * 16;
+    if (p.type === 'logic') {
+      return `<li class="logic-label" style="${pad ? 'padding-left:' + pad + 'px' : ''}">${t}</li>`;
+    }
+    return `<li style="${pad ? 'padding-left:' + (pad + 14) + 'px' : ''}">${t}</li>`;
+  }
   if (effectTooltips.length === 0) {
     // No tooltips — show all parsed mechanical effects
-    filtered.forEach(p => {
-      let t = p.text.replace(/Add <span class="val">-(\d+)<\/span>/g, 'Lose <span class="val">$1</span>');
-      html += `<li>${t}</li>`;
-    });
+    const minD = filtered.length ? Math.min(...filtered.map(p => p.depth || 0)) : 0;
+    filtered.forEach(p => { p.depth = (p.depth || 0) - minD; html += renderEffItem(p); });
   } else {
     // Tooltips exist — also show key mechanical effects (modifiers, resource changes, etc.)
     const knownEffects = /^(Add |Lose |Remove |Gain |Build |Change |Accept |Set |Form |Create |Vassalize|Inherit|Trigger)/i;
     const supplementary = filtered.filter(p => {
       const stripped = p.text.replace(/<[^>]+>/g, '').trim();
-      return knownEffects.test(stripped);
+      return knownEffects.test(stripped) || p.type === 'logic';
     });
     if (supplementary.length > 0) {
-      supplementary.forEach(p => {
-        let t = p.text.replace(/Add <span class="val">-(\d+)<\/span>/g, 'Lose <span class="val">$1</span>');
-        html += `<li>${t}</li>`;
-      });
+      const minD = Math.min(...supplementary.map(p => p.depth || 0));
+      supplementary.forEach(p => { p.depth = (p.depth || 0) - minD; html += renderEffItem(p); });
     }
   }
 
