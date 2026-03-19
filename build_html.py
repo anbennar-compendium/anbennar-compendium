@@ -1985,19 +1985,20 @@ function parseTriggerToReadable(raw) {
           continue;
         }
         // Handle NOT/OR/AND: only parse inline single-line conditions
-        if (key === 'NOT' || key === 'OR' || key === 'AND') {
+        const keyUpper = key.toUpperCase();
+        if (keyUpper === 'NOT' || keyUpper === 'OR' || keyUpper === 'AND') {
           const innerVal = val.trim();
           if (innerVal) {
             const im = innerVal.match(/^(\w+)\s*=\s*(.+)$/);
             if (im) {
               const innerReadable = triggerToText(im[1], im[2].trim());
               if (innerReadable) {
-                if (key === 'NOT') {
+                if (keyUpper === 'NOT') {
                   // Integrate negation into the text
                   const negated = negateCondition(innerReadable.text);
                   results.push({ text: negated, type: innerReadable.type });
                 } else {
-                  if (key === 'OR') results.push({ text: 'One of the following:', type: 'logic' });
+                  if (keyUpper === 'OR') results.push({ text: 'One of the following:', type: 'logic' });
                   results.push(innerReadable);
                 }
               }
@@ -2006,8 +2007,8 @@ function parseTriggerToReadable(raw) {
             // Multi-line block: add label for OR/AND, skip NOT labels (they cause false grouping)
             // Suppress OR/AND inside area/region/superregion scopes (structural, not player choices)
             if (!scopeStack.length) {
-              if (key === 'OR') results.push({ text: 'One of the following:', type: 'logic' });
-              else if (key === 'AND') results.push({ text: 'All of the following:', type: 'logic' });
+              if (keyUpper === 'OR') results.push({ text: 'One of the following:', type: 'logic' });
+              else if (keyUpper === 'AND') results.push({ text: 'All of the following:', type: 'logic' });
             }
             // Don't add "Must NOT:" for multi-line NOT blocks — too error-prone
           }

@@ -537,7 +537,7 @@ def parse_events_for_tag(tag, loc):
             trigger_block = extract_block(block_content, 'trigger')
 
             # Get title and desc
-            title_m = re.search(r'title\s*=\s*([\w.]+)', block_content)
+            title_m = re.search(r'title\s*=\s*"?([\w.]+)"?', block_content)
             desc_m = re.search(r'desc\s*=\s*([\w.]+)', block_content)
 
             title_key = title_m.group(1) if title_m else ''
@@ -578,7 +578,7 @@ def extract_all_event_names(loc):
             if not id_m:
                 continue
             event_id = id_m.group(1)
-            title_m = re.search(r'title\s*=\s*([\w.]+)', block_content)
+            title_m = re.search(r'title\s*=\s*"?([\w.]+)"?', block_content)
             if title_m:
                 title_key = title_m.group(1)
                 title = loc.get(title_key, title_key)
