@@ -610,26 +610,29 @@ body {
 }
 .mission-grid {
   display: grid;
-  gap: 8px 4px;
+  gap: 40px 4px;
   min-width: max-content;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
-.mission-node.has-prereq-above::before {
-  content: '';
+.mission-connectors {
   position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 8px;
-  background: var(--gold);
-  opacity: 0.6;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
+  z-index: 0;
+  overflow: visible;
 }
-.cross-prereq-badge { display: none; }
+.mission-connectors path {
+  fill: none;
+  stroke: rgba(201,168,76,0.35);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mission-connectors .arrow-marker { fill: rgba(201,168,76,0.5); }
 .mission-node {
-  background: transparent;
+  background: #0e0e12;
   border: none;
   padding: 4px 2px;
   cursor: pointer;
@@ -672,6 +675,11 @@ body {
   line-height: 1.15;
   max-width: 100px;
   word-wrap: break-word;
+  position: relative;
+  z-index: 3;
+  background: var(--bg);
+  padding: 1px 4px;
+  border-radius: 2px;
 }
 .mission-node:hover .mission-title { color: var(--text); }
 .mission-node.selected .mission-title { color: var(--gold); }
@@ -991,7 +999,7 @@ body {
   .mission-node { min-width: 70px; max-width: 85px; font-size: 9px; }
   .mission-node .mission-icon { width: 40px; height: 40px; }
   .mission-node .mission-icon-fallback { width: 40px; height: 40px; }
-  .mission-grid { gap: 6px 2px; }
+  .mission-grid { gap: 24px 2px; }
   /* Mission modal: full-width on mobile */
   #mission-modal {
     width: 95%;
@@ -3445,6 +3453,20 @@ function selectCountry(tag) {
 
   detail.innerHTML = html;
 
+  // Track whether connectors have been drawn for missions tab
+  let _connectorsDrawn = false;
+  function drawConnectorsIfNeeded() {
+    if (_connectorsDrawn) return;
+    _connectorsDrawn = true;
+    // Use a small delay to ensure CSS grid layout is fully computed
+    setTimeout(() => {
+      // Only draw for visible grids (hidden campaign grids have zero dimensions)
+      detail.querySelectorAll('.mission-grid-container').forEach(c => {
+        if (c.offsetParent !== null || c.style.display !== 'none') drawMissionConnectors(c);
+      });
+    }, 50);
+  }
+
   // Tab switching
   detail.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -3453,6 +3475,8 @@ function selectCountry(tag) {
       btn.classList.add('active');
       const tabEl = detail.querySelector(`.tab-content[data-tab="${btn.dataset.tab}"]`);
       if (tabEl) tabEl.classList.add('active');
+      // Draw connectors when missions tab is shown
+      if (btn.dataset.tab === 'missions') drawConnectorsIfNeeded();
     });
   });
 
@@ -3460,6 +3484,11 @@ function selectCountry(tag) {
   detail.querySelectorAll('.mission-node').forEach(node => {
     node.addEventListener('click', () => showMissionDetail(tag, node.dataset.missionId));
   });
+
+  // If missions tab is already active on load, draw connectors
+  if (detail.querySelector('.tab-btn.active[data-tab="missions"]')) {
+    drawConnectorsIfNeeded();
+  }
 
   // Campaign tab switching
   detail.querySelectorAll('.campaign-btn').forEach(btn => {
@@ -3475,6 +3504,11 @@ function selectCountry(tag) {
       detail.querySelectorAll('.campaign-grid.active .mission-node').forEach(node => {
         node.onclick = () => showMissionDetail(tag, node.dataset.missionId);
       });
+      // Redraw connectors for newly visible campaign grid (longer delay for layout reflow)
+      setTimeout(() => {
+        const activeGrid = detail.querySelector('.campaign-grid.active');
+        if (activeGrid) drawMissionConnectors(activeGrid);
+      }, 150);
     });
   });
 
@@ -3514,35 +3548,113 @@ function renderMissionGrid(missions, missionById, tag) {
         : `<div class="mission-icon-fallback">&#9876;</div>`;
 
       const reqs = m.required_missions || [];
-      let extraClasses = '', crossBadgeHtml = '', hasSameCol = false;
-      const crossReqs = [];
-      reqs.forEach(reqId => {
-        const reqM = missionById[reqId];
-        if (reqM) { if (reqM.slot === slot) hasSameCol = true; else crossReqs.push(reqM); }
-      });
-      if (hasSameCol) extraClasses += ' has-prereq-above';
-      if (crossReqs.length > 0) {
-        const leftReqs = crossReqs.filter(r => r.slot < slot);
-        const rightReqs = crossReqs.filter(r => r.slot > slot);
-        const parts = [];
-        if (leftReqs.length) parts.push(leftReqs.map(r => '\u2190 ' + esc(resolveGameText(r.title || r.id))).join('\n'));
-        if (rightReqs.length) parts.push(rightReqs.map(r => esc(resolveGameText(r.title || r.id)) + ' \u2192').join('\n'));
-        const posClass = (leftReqs.length && rightReqs.length) ? 'center' : leftReqs.length ? 'left' : 'right';
-        crossBadgeHtml = `<div class="cross-prereq-badge ${posClass}">${parts.join('\n')}</div>`;
-      }
+      const reqStr = reqs.join(',');
 
       // Resolve title — handle dynamic titles
       let title = resolveGameText(m.title || m.id);
       if (!title || title.trim() === '') title = m.id.replace(/_/g, ' ');
 
-      html += `<div class="mission-node${extraClasses}" data-mission-id="${esc(m.id)}" data-slot="${slot}" data-pos="${pos}" style="grid-column:${slot};grid-row:${pos};">
-        ${crossBadgeHtml}${iconHtml}
+      html += `<div class="mission-node" data-mission-id="${esc(m.id)}" data-slot="${slot}" data-pos="${pos}" data-reqs="${esc(reqStr)}" style="grid-column:${slot};grid-row:${pos};">
+        ${iconHtml}
         <div class="mission-title">${esc(title)}</div>
       </div>`;
     }
   }
   html += '</div>';
   return html;
+}
+
+let _arrowIdCounter = 0;
+function drawMissionConnectors(container) {
+  if (!container) return;
+  const old = container.querySelector('.mission-connectors');
+  if (old) old.remove();
+
+  const grid = container.querySelector('.mission-grid');
+  if (!grid) return;
+
+  const nodes = grid.querySelectorAll('.mission-node');
+  if (!nodes.length) return;
+
+  const nodeMap = {};
+  nodes.forEach(n => { nodeMap[n.dataset.missionId] = n; });
+
+  const gridRect = grid.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+  const offsetX = gridRect.left - containerRect.left;
+  const offsetY = gridRect.top - containerRect.top;
+
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('class', 'mission-connectors');
+  svg.style.width = grid.scrollWidth + 'px';
+  svg.style.height = grid.scrollHeight + 'px';
+  svg.style.left = offsetX + 'px';
+  svg.style.top = offsetY + 'px';
+
+  // Unique marker ID per SVG to avoid cross-grid conflicts
+  const markerId = 'arrow-' + (++_arrowIdCounter);
+  const defs = document.createElementNS(svgNS, 'defs');
+  const marker = document.createElementNS(svgNS, 'marker');
+  marker.setAttribute('id', markerId);
+  marker.setAttribute('markerWidth', '10');
+  marker.setAttribute('markerHeight', '8');
+  marker.setAttribute('refX', '10');
+  marker.setAttribute('refY', '4');
+  marker.setAttribute('orient', 'auto');
+  const arrowPath = document.createElementNS(svgNS, 'path');
+  arrowPath.setAttribute('d', 'M0,0.5 L10,4 L0,7.5 Z');
+  arrowPath.setAttribute('class', 'arrow-marker');
+  marker.appendChild(arrowPath);
+  defs.appendChild(marker);
+  svg.appendChild(defs);
+
+  const ARROW_TIP_GAP = 6; // gap between arrowhead tip and target icon top
+
+  nodes.forEach(node => {
+    const reqs = (node.dataset.reqs || '').split(',').filter(r => r);
+    if (!reqs.length) return;
+
+    reqs.forEach(reqId => {
+      const srcNode = nodeMap[reqId];
+      if (!srcNode) return;
+
+      // Source: use FULL node rect (includes title text below icon)
+      // so arrow starts below the title, not through it
+      const srcRect = srcNode.getBoundingClientRect();
+      // Target: use the ICON rect so arrowhead points at the icon
+      const tgtIcon = node.querySelector('.mission-icon, .mission-icon-fallback');
+      const tgtEl = tgtIcon || node;
+      const tgtRect = tgtEl.getBoundingClientRect();
+
+      // Source: bottom-center of full node (below title text)
+      const srcX = srcRect.left - gridRect.left + srcRect.width / 2;
+      const srcY = srcRect.top - gridRect.top + srcRect.height + 2;
+      // Target: top-center of icon, with gap for arrowhead
+      const tgtX = tgtRect.left - gridRect.left + tgtRect.width / 2;
+      const tgtY = tgtRect.top - gridRect.top - ARROW_TIP_GAP;
+
+      if (tgtY <= srcY) return;
+
+      const path = document.createElementNS(svgNS, 'path');
+      let d;
+
+      if (Math.abs(srcX - tgtX) < 5) {
+        d = `M${srcX},${srcY} L${tgtX},${tgtY}`;
+      } else {
+        // Route horizontal segment just below source node (in the gap between rows)
+        // to avoid crossing through other nodes' text
+        const horizY = srcY + 8;
+        d = `M${srcX},${srcY} L${srcX},${horizY} L${tgtX},${horizY} L${tgtX},${tgtY}`;
+      }
+
+      path.setAttribute('d', d);
+      path.setAttribute('marker-end', 'url(#' + markerId + ')');
+      svg.appendChild(path);
+    });
+  });
+
+  container.appendChild(svg);
 }
 
 function renderMissions(c) {
