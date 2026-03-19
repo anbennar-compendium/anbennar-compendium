@@ -1928,6 +1928,7 @@ function parseTriggerToReadable(raw) {
   processed = collapseBlock(processed, 'war_score_against');
   processed = collapseBlock(processed, 'country_event');
   processed = collapseBlock(processed, 'province_event');
+  processed = collapseBlock(processed, 'add_institution_embracement');
   // ROOT/FROM/PREV as scope openers are handled by depth traversal (depth limit = 5)
   const lines = processed.split('\n');
   const _results = [];
@@ -2656,7 +2657,7 @@ function triggerToText(key, val) {
     'change_government_to_tribal': 'Change government to tribal',
     'set_capital': `Move capital to ${/^\d+$/.test(val) ? provSpan(val) : '<span class="val">' + val + '</span>'}`,
     'move_capital': `Move capital to ${/^\d+$/.test(val) ? provSpan(val) : '<span class="val">' + val + '</span>'}`,
-    'add_next_institution_embracement': `Add <span class="val">${val}</span> institution progress`,
+    'add_next_institution_embracement': `Add <span class="val">${val}</span> progress to next institution`,
     'add_institution_embracement': (() => { const wm = val.match(/which\s*=\s*(\w+)/); const vm = val.match(/value\s*=\s*(-?[\d.]+)/); if (wm && vm) return `Add <span class="val">${vm[1]}</span> ${wm[1].replace(/_/g, ' ')} progress`; return 'Add institution progress'; })(),
     'every_province': 'Every province in scope:',
     'random_province': 'A random province:',
